@@ -11,7 +11,9 @@ import android.view.MenuItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ProfiloFrag.FragmentAListener{
+
+    private Fragment frgamentProfilo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +23,10 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView bottNavMenu = (BottomNavigationView) findViewById(R.id.bottNavMenu);
         bottNavMenu.setOnNavigationItemSelectedListener(navListener);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new ProfiloFrag()).commit();
+        frgamentProfilo = new ProfiloFrag();
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new ProfiloFrag()).commit();  //potrei ripetere l istruzione replace inserendo turri i fragment che voglio
+
 
     }
 
@@ -54,4 +59,9 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
     };
+
+    @Override
+    public void onInputASent(CharSequence input) {
+
+    }
 }

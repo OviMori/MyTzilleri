@@ -5,16 +5,17 @@
     android:id="@+id/my_nav"
     app:startDestination="@id/profiloFrag">
 
-    <fragment
-        android:id="@+id/turniFrag"
-        android:name="com.example.mytzilleri.TurniFrag"
-        android:label="fragment_turni"
-        tools:layout="@layout/fragment_turni" />
+
     <fragment
         android:id="@+id/profiloFrag"
         android:name="com.example.mytzilleri.ProfiloFrag"
         android:label="fragment_profilo"
         tools:layout="@layout/fragment_profilo" />
+    <fragment
+        android:id="@+id/turniFrag"
+        android:name="com.example.mytzilleri.TurniFrag"
+        android:label="fragment_turni"
+        tools:layout="@layout/fragment_turni" />
     <fragment
         android:id="@+id/chatFrag"
         android:name="com.example.mytzilleri.ChatFrag"
