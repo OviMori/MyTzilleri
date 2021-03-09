@@ -5,12 +5,15 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,9 +33,12 @@ public class ProfiloFrag extends Fragment {
 
     //------------------------------------------------------
     //Mie variabili
-    FrameLayout framePromemoriaUtente;
+    FragmentAListener listener; //questo listener aspetta che l activity utilizzi il nostro fragment
+    FrameLayout framePromemoriaUtente, frameInfoUtente;
     Button buttonTest;
-    private FragmentAListener listener; //questo listener aspetta che l activity utilizzi il nostro fragment
+    LinearLayout linearLayoutInfoUtente, linearLayoutInEsaurimento, linearLayoutNuoviMessaggi;
+    ImageButton inEsaurimentoArrowHome, nuoviMessaggiArrowHome;
+    RecyclerView inEsaurimentoRecycler, nuoviMessaggiRecycler;
     //------------------------------------------------------
 
     public ProfiloFrag() {
@@ -80,20 +86,72 @@ public class ProfiloFrag extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_profilo, container, false); //MODIFICA: Salvato il valore di ritorno in "View v"
 
-        framePromemoriaUtente = v.findViewById(R.id.promemoria_utente);
-        buttonTest = v.findViewById(R.id.buttonTest);
+        framePromemoriaUtente = v.findViewById(R.id.frame_promemoria_utente);
+        frameInfoUtente = v.findViewById(R.id.frame_info_utente);
+        linearLayoutInfoUtente = v.findViewById(R.id.linear_layout_info_utente);
 
-        buttonTest.setOnClickListener(new View.OnClickListener() {
+        inEsaurimentoArrowHome = v.findViewById(R.id.in_esaurimento_arrow);
+        nuoviMessaggiArrowHome = v.findViewById(R.id.nuovi_messaggi_arrow);
+
+        inEsaurimentoRecycler = v.findViewById(R.id.recycler_view_in_esaurimento_home);
+        nuoviMessaggiRecycler = v.findViewById(R.id.recycler_view_nuovi_messaggi_home);
+
+        linearLayoutInEsaurimento = v.findViewById(R.id.linear_layout_in_esaurimento);
+        linearLayoutNuoviMessaggi = v.findViewById(R.id.linear_layout_nuovi_messaggi);
+
+
+        /**
+         * Gestisce il click che fa apparire/scomparire la RecyclerView dei prodotti in esaurimento
+         * Viene gestita anche la modifica del verso della freccia
+         */
+        linearLayoutInEsaurimento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if(framePromemoriaUtente.getVisibility() == View.GONE){
-                    framePromemoriaUtente.setVisibility(View.VISIBLE);
+                if(inEsaurimentoRecycler.getVisibility() == View.GONE){
+                    inEsaurimentoRecycler.setVisibility(View.VISIBLE);
+                    inEsaurimentoArrowHome.setBackgroundResource(R.drawable.drop_menu_arrow_down);
                 }else{
-                    framePromemoriaUtente.setVisibility(View.GONE);
+                    inEsaurimentoRecycler.setVisibility(View.GONE);
+                    inEsaurimentoArrowHome.setBackgroundResource(R.drawable.drop_menu_arrow_right);
                 }
             }
         });
+
+        /**
+         * Gestisce il click che fa apparire/scomparire la RecyclerView dei messaggi dell utente
+         * Viene gestita anche la modifica del verso della freccia
+         */
+        linearLayoutNuoviMessaggi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(nuoviMessaggiRecycler.getVisibility() == View.GONE){
+                    nuoviMessaggiRecycler.setVisibility(View.VISIBLE);
+                    nuoviMessaggiArrowHome.setBackgroundResource(R.drawable.drop_menu_arrow_down);
+                }else{
+                    nuoviMessaggiRecycler.setVisibility(View.GONE);
+                    nuoviMessaggiArrowHome.setBackgroundResource(R.drawable.drop_menu_arrow_right);
+                }
+            }
+        });
+
+        /**
+         * Gestisce il click che fa apparire/nascondere la sezione con le info
+         * personali dell utente
+         */
+        linearLayoutInfoUtente.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(framePromemoriaUtente.getVisibility() == View.GONE){
+                    frameInfoUtente.setVisibility(View.GONE);
+                    framePromemoriaUtente.setVisibility(View.VISIBLE);
+
+                }else{
+                    framePromemoriaUtente.setVisibility(View.GONE);
+                    frameInfoUtente.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
 
         return v;
     }
