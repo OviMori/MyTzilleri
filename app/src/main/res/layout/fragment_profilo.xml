@@ -319,7 +319,7 @@
                         android:layout_marginLeft="15dp"
                         android:layout_marginRight="15dp"/>
 
-                    <ScrollView
+                    <com.example.mytzilleri.BounceScrollView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="20dp"
@@ -342,38 +342,32 @@
                                 android:text="Informazioni personali"/>
 
                             <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
                                 android:layout_marginRight="10dp"
                                 android:layout_marginLeft="10dp"
                                 android:gravity="center"
                                 android:textSize="20dp"
-                                android:textColor="@color/back_g_profile_image"
-                                android:text="Attenzione!"/>
+                                android:text="Attenzione!"
+                                style="@style/VociElenco"/>
 
                             <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
                                 android:layout_marginRight="10dp"
                                 android:layout_marginBottom="5dp"
                                 android:layout_marginLeft="10dp"
                                 android:gravity="center"
                                 android:textSize="15dp"
-                                android:textColor="@color/back_g_profile_image"
-                                android:text="Le informazioni inserite saranno pubbliche "/>
+                                android:text="Le informazioni inserite saranno pubbliche "
+                                style="@style/VociElenco"/>
 
 
 
                             <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
                                 android:layout_marginRight="10dp"
                                 android:layout_marginTop="20dp"
                                 android:layout_marginLeft="10dp"
                                 android:gravity="center"
                                 android:textSize="15dp"
-                                android:textColor="@color/back_g_profile_image"
-                                android:text="Nome Cognome"/>
+                                android:text="Nome Cognome"
+                                style="@style/VociElenco"/>
 
 
                             <EditText
@@ -393,15 +387,13 @@
                                 style="@style/Separator" />
 
                             <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
                                 android:layout_marginRight="10dp"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginLeft="10dp"
                                 android:gravity="center"
                                 android:textSize="15dp"
-                                android:textColor="@color/back_g_profile_image"
-                                android:text="Indirizzo"/>
+                                android:text="Indirizzo"
+                                style="@style/VociElenco"/>
 
                             <EditText
                                 android:id="@+id/info_utente_indirizzo"
@@ -421,15 +413,13 @@
 
 
                             <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
                                 android:layout_marginRight="10dp"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginLeft="10dp"
                                 android:gravity="center"
                                 android:textSize="15dp"
-                                android:textColor="@color/back_g_profile_image"
-                                android:text="Cellulare"/>
+                                android:text="Cellulare"
+                                style="@style/VociElenco"/>
 
                             <EditText
                                 android:id="@+id/info_utente_cellulare"
@@ -449,15 +439,13 @@
 
 
                             <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
                                 android:layout_marginRight="10dp"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginLeft="10dp"
                                 android:gravity="center"
                                 android:textSize="15dp"
-                                android:textColor="@color/back_g_profile_image"
-                                android:text="Bio"/>
+                                android:text="Bio"
+                                style="@style/VociElenco"/>
 
                             <EditText
                                 android:id="@+id/info_utente_bio"
@@ -473,11 +461,12 @@
                             <View
                                 android:layout_marginRight="10dp"
                                 android:layout_marginLeft="10dp"
+                                android:layout_marginBottom="80dp"
                                 style="@style/Separator" />
 
                         </LinearLayout>
 
-                    </ScrollView>
+                    </com.example.mytzilleri.BounceScrollView>
 
 
 

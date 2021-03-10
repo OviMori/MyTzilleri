@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item>
+        <shape android:shape="rectangle">
+            <!-- Draw a 2dp width border around shape -->
+            <stroke
+                android:color="@color/black"
+                android:width="1dp" tools:ignore="StateListReachable" />
+        </shape>
+    </item>
+    <!-- Overlap the left, top and right border using background color  -->
+    <item
+        android:bottom="2dp" tools:ignore="StateListReachable">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/white"/>
+        </shape>
+    </item>
+
+
+</selector>

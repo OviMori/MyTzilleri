@@ -8,4 +8,16 @@
         <item name="android:layout_marginBottom">15dp</item>
     </style>
 
+    <style name="VociElenco" parent="TextAppearance.AppCompat">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/voce_elenco_grey</item>
+    </style>
+
+    <style name="EditTextElenco" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textColorHint">@color/hint_grey</item>
+
+    </style>
+
 </resources>

@@ -126,7 +126,7 @@
             android:layout_height="2dp"
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"
-            android:background="@color/back_g_profile_image"/>
+            android:background="@color/hint_grey"/>
 
 
     <androidx.recyclerview.widget.RecyclerView
