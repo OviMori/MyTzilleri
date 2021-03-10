@@ -59,7 +59,7 @@
                 android:id="@+id/linear_layout_info_utente"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/back_g_profile_image"
+                android:background="@color/hint_grey"
                 android:gravity="center"
                 android:clickable="true"
                 android:orientation="vertical">
@@ -388,11 +388,9 @@
                                 android:text="Nome Cognome"/>
 
                             <View
-                                android:layout_width="match_parent"
-                                android:layout_height="2dp"
                                 android:layout_marginRight="10dp"
                                 android:layout_marginLeft="10dp"
-                                android:background="@color/back_g_profile_image"/>
+                                style="@style/Separator" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -417,11 +415,9 @@
                                 android:text="Indirizzo"/>
 
                             <View
-                                android:layout_width="match_parent"
-                                android:layout_height="2dp"
                                 android:layout_marginRight="10dp"
                                 android:layout_marginLeft="10dp"
-                                android:background="@color/back_g_profile_image"/>
+                                style="@style/Separator" />
 
 
                             <TextView
@@ -447,11 +443,9 @@
                                 android:text="Cellulare"/>
 
                             <View
-                                android:layout_width="match_parent"
-                                android:layout_height="2dp"
                                 android:layout_marginRight="10dp"
                                 android:layout_marginLeft="10dp"
-                                android:background="@color/back_g_profile_image"/>
+                                style="@style/Separator" />
 
 
                             <TextView
@@ -477,11 +471,9 @@
                                 android:text="Biografia"/>
 
                             <View
-                                android:layout_width="match_parent"
-                                android:layout_height="2dp"
                                 android:layout_marginRight="10dp"
                                 android:layout_marginLeft="10dp"
-                                android:background="@color/back_g_profile_image"/>
+                                style="@style/Separator" />
 
                         </LinearLayout>
 
