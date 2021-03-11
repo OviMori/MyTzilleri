@@ -1,5 +1,6 @@
 package com.example.mytzilleri;
 
+import android.media.Image;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +8,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +27,12 @@ public class ChatFrag extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    //------------------------------------------------------
+    //Mie variabili
+    ImageView showSearchLayoutButton;
+    View messageLayoutSearch;
+    //------------------------------------------------------
 
     public ChatFrag() {
         // Required empty public constructor
@@ -56,9 +66,30 @@ public class ChatFrag extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_chat, container, false);
+        View v = inflater.inflate(R.layout.fragment_chat, container, false);
+
+        showSearchLayoutButton = v.findViewById(R.id.message_search_top_icon);
+        messageLayoutSearch = v.findViewById(R.id.message_layout_search);
+
+
+        /**
+         * Consente di far apparire/scomparire la barra di ricerca dei contatti
+         */
+        showSearchLayoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(messageLayoutSearch.getVisibility() == View.GONE){
+                    messageLayoutSearch.setVisibility(View.VISIBLE);
+                }else{
+                    messageLayoutSearch.setVisibility(View.GONE);
+                }
+            }
+        });
+
+
+
+        return v;
     }
 }

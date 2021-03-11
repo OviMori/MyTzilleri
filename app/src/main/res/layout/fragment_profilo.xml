@@ -181,8 +181,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="5dp"
                         android:background="#454545"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginRight="15dp"/>
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"/>
 
 
                     <LinearLayout
@@ -303,23 +303,24 @@
                         </androidx.recyclerview.widget.RecyclerView>
 
                     </LinearLayout>
-                </FrameLayout>
 
+                </FrameLayout>
 
                 <FrameLayout
                     android:id="@+id/frame_info_utente"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginBottom="24dp"
                     android:visibility="visible">
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="5dp"
                         android:background="@color/main_orange"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginRight="15dp"/>
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginRight="25dp"/>
 
-                    <com.example.mytzilleri.BounceScrollView
+                    <ScrollView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="20dp"
@@ -357,8 +358,6 @@
                                 android:textSize="15dp"
                                 android:text="Le informazioni inserite saranno pubbliche "
                                 style="@style/VociElenco"/>
-
-
 
                             <TextView
                                 android:layout_marginRight="10dp"
@@ -461,18 +460,17 @@
                             <View
                                 android:layout_marginRight="10dp"
                                 android:layout_marginLeft="10dp"
-                                android:layout_marginBottom="80dp"
+                                android:layout_marginBottom="100dp"
                                 style="@style/Separator" />
 
                         </LinearLayout>
 
-                    </com.example.mytzilleri.BounceScrollView>
-
-
+                    </ScrollView>
 
                 </FrameLayout>
 
             </LinearLayout>
+
         </LinearLayout>
 
 </LinearLayout>
