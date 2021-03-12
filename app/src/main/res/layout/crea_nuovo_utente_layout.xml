@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_login_app">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="5">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2.5">
+
+            <LinearLayout
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:gravity="center">
+
+                <ImageButton
+                    android:id="@+id/back_button_registrazione"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center"
+                    android:backgroundTint="@color/black"
+                    android:background="@drawable/back_arrow"/>
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:textSize="35dp"
+                android:textStyle="bold"
+                android:textColor="@color/voce_elenco_grey"
+                android:text="Registrazione"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_weight="0"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:textSize="20dp"
+                android:text="Nome"
+                style="@style/VociElenco"/>
+
+            <EditText
+                android:id="@+id/created_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="10dp"
+                android:gravity="left"
+                android:text=""
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:background="@drawable/edittext_bottom_line"
+                />
+
+
+            <TextView
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:textSize="20dp"
+                android:text="Cognome"
+                style="@style/VociElenco"/>
+
+            <EditText
+                android:id="@+id/created_sname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="7dp"
+                android:gravity="left"
+                android:text=""
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:background="@drawable/edittext_bottom_line"
+                />
+
+
+            <TextView
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:textSize="20dp"
+                android:text="Email"
+                style="@style/VociElenco"/>
+
+            <EditText
+                android:id="@+id/created_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="7dp"
+                android:gravity="left"
+                android:text=""
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:background="@drawable/edittext_bottom_line"
+                />
+
+
+            <TextView
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:textSize="20dp"
+                android:text="Password"
+                style="@style/VociElenco"/>
+
+            <EditText
+                android:id="@+id/created_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="7dp"
+                android:gravity="left"
+                android:text=""
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:background="@drawable/edittext_bottom_line"
+                />
+
+
+            <TextView
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:textSize="20dp"
+                android:text="Conferma password"
+                style="@style/VociElenco"/>
+
+            <EditText
+                android:id="@+id/created_confirm_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="7dp"
+                android:gravity="left"
+                android:text=""
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:background="@drawable/edittext_bottom_line"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical"
+            android:gravity="center">
+
+
+            <Button
+                android:id="@+id/salva_credenziali_button"
+                android:clickable="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_gravity="right"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                android:textSize="30dp"
+                android:background="@color/main_orange"
+                android:text="Registrati"/>
+
+
+        </LinearLayout>
+
+
+
+
+
+    </LinearLayout>
+
+
+
+
+
+
+</LinearLayout>

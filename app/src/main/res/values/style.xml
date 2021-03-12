@@ -17,6 +17,8 @@
     <style name="EditTextElenco" parent="TextAppearance.AppCompat">
         <item name="android:textColor">@color/black</item>
         <item name="android:textColorHint">@color/hint_grey</item>
+        <item name="android:background">@drawable/edittext_bottom_line</item>
+
 
     </style>
 

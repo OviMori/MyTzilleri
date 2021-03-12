@@ -13,14 +13,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyTzilleri">
         <activity android:name=".MainActivity"
-            android:windowSoftInputMode="adjustPan">
+            android:windowSoftInputMode="adjustPan"/>
+
+        <activity android:name=".PaginaProdotto"/>
+        <activity android:name=".LogInActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PaginaProdotto"/>
+        <activity android:name=".RegistrazioneActivity"/>
 
 
     </application>

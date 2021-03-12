@@ -2,4 +2,15 @@
     <string name="app_name">MyTzilleri</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="preference_file_key">credenziali</string>
+
+    <string name="saved_nome_login">password</string>
+    <string name="saved_cognome_login">password</string>
+
+    <string name="saved_email_login">email</string>
+    <string name="saved_password_login">password</string>
+
+
+
+
 </resources>

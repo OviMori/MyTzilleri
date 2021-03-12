@@ -66,7 +66,8 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:orientation="horizontal"
-                android:layout_weight="3.5">
+                android:layout_weight="3.5"
+                android:visibility="visible">
 
                 <ImageView
                     android:id="@+id/immagine_prodotto"
@@ -122,17 +123,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="130dp"
-                        android:layout_marginLeft="7dp"
+                        android:layout_marginLeft="10dp"
                         android:gravity="left"
-                        android:textSize="15dp"
+                        android:textSize="20dp"
                         android:text=""
                         android:hint="Nome prodotto"
                         style="@style/EditTextElenco"/>
 
-                    <View
-                        android:layout_marginRight="130dp"
-                        android:layout_marginLeft="10dp"
-                        style="@style/Separator" />
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"/>
 
                     <TextView
                         android:layout_marginRight="130dp"
@@ -148,17 +148,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="130dp"
-                        android:layout_marginLeft="7dp"
+                        android:layout_marginLeft="10dp"
                         android:gravity="left"
-                        android:textSize="15dp"
+                        android:textSize="20dp"
                         android:text=""
                         android:hint="Categoria"
                         style="@style/EditTextElenco"/>
 
-                    <View
-                        android:layout_marginRight="130dp"
-                        android:layout_marginLeft="10dp"
-                        style="@style/Separator" />
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"/>
 
                     <TextView
                         android:layout_marginRight="10dp"
@@ -174,17 +173,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="130dp"
-                        android:layout_marginLeft="7dp"
+                        android:layout_marginLeft="10dp"
                         android:gravity="left"
-                        android:textSize="15dp"
+                        android:textSize="20dp"
                         android:text=""
                         android:hint="20"
                         style="@style/EditTextElenco"/>
 
-                    <View
-                        android:layout_marginRight="130dp"
-                        android:layout_marginLeft="10dp"
-                        style="@style/Separator" />
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -213,7 +211,7 @@
                                 android:layout_marginRight="151dp"
                                 android:layout_marginLeft="7dp"
                                 android:gravity="left"
-                                android:textSize="15dp"
+                                android:textSize="20dp"
                                 android:text=""
                                 android:hint="1"
                                 style="@style/EditTextElenco"/>
@@ -238,7 +236,9 @@
                     </LinearLayout>
 
                     <View
-                        android:layout_marginRight="130dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_marginRight="10dp"
                         android:layout_marginLeft="10dp"
                         style="@style/Separator" />
 
@@ -271,8 +271,9 @@
                                     android:orientation="horizontal">
 
                                     <TextView
-                                        android:layout_width="wrap_content"
+                                        android:layout_width="50dp"
                                         android:layout_height="25dp"
+                                        android:gravity="right"
                                         android:padding="2dp"
                                         android:textSize="15dp"
                                         android:text="Nome:"
@@ -281,21 +282,20 @@
                                     <EditText
                                         android:layout_width="wrap_content"
                                         android:layout_height="30dp"
-                                        android:padding="5dp"
                                         android:layout_marginRight="130dp"
                                         android:layout_marginLeft="7dp"
                                         android:gravity="left"
                                         android:textSize="15dp"
                                         android:text=""
                                         android:hint="Mario Rossi"
+                                        android:background="@drawable/edittext_bottom_line"
                                         style="@style/EditTextElenco"/>
 
                                 </LinearLayout>
 
-                                <View
-                                    android:layout_marginLeft="57dp"
-                                    style="@style/Separator"
-                                    android:layout_marginRight="130dp" />
+                                <Space
+                                    android:layout_width="match_parent"
+                                    android:layout_height="10dp"/>
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -303,9 +303,9 @@
                                     android:orientation="horizontal">
 
                                     <TextView
-                                        android:layout_width="wrap_content"
+                                        android:layout_width="50dp"
                                         android:layout_height="25dp"
-                                        android:layout_marginRight="5dp"
+                                        android:gravity="right"
                                         android:padding="2dp"
                                         android:textSize="15dp"
                                         android:text="Email:"
@@ -314,21 +314,19 @@
                                     <EditText
                                         android:layout_width="wrap_content"
                                         android:layout_height="30dp"
-                                        android:padding="5dp"
-                                        android:layout_marginRight="130dp"
                                         android:layout_marginLeft="7dp"
                                         android:gravity="left"
                                         android:textSize="15dp"
                                         android:text=""
                                         android:hint="Mariorossi@gmail.com"
+                                        android:background="@drawable/edittext_bottom_line"
                                         style="@style/EditTextElenco"/>
 
                                 </LinearLayout>
 
-                                <View
-                                    android:layout_marginLeft="57dp"
-                                    android:layout_marginRight="130dp"
-                                    style="@style/Separator" />
+                                <Space
+                                    android:layout_width="match_parent"
+                                    android:layout_height="10dp"/>
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -336,32 +334,30 @@
                                     android:orientation="horizontal">
 
                                     <TextView
-                                        android:layout_width="wrap_content"
+                                        android:layout_width="50dp"
                                         android:layout_height="25dp"
-                                        android:layout_marginRight="21dp"
+                                        android:gravity="right"
                                         android:padding="2dp"
                                         android:textSize="15dp"
                                         android:text="Tel:"
                                         style="@style/VociElenco"/>
 
                                     <EditText
-                                        android:layout_width="fill_parent"
+                                        android:layout_width="wrap_content"
                                         android:layout_height="30dp"
-                                        android:padding="5dp"
-                                        android:layout_marginRight="130dp"
                                         android:layout_marginLeft="7dp"
                                         android:gravity="left"
                                         android:textSize="15dp"
                                         android:text=""
                                         android:hint="1234567890"
+                                        android:background="@drawable/edittext_bottom_line"
                                         style="@style/EditTextElenco"/>
 
                                 </LinearLayout>
 
-                                <View
-                                    android:layout_marginLeft="57dp"
-                                    android:layout_marginRight="130dp"
-                                    style="@style/Separator" />
+                                <Space
+                                    android:layout_width="match_parent"
+                                    android:layout_height="20dp"/>
 
                             </LinearLayout>
                         <Space
