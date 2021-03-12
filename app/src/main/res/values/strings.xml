@@ -7,8 +7,14 @@
     <string name="saved_nome_login">password</string>
     <string name="saved_cognome_login">password</string>
 
-    <string name="saved_email_login">email</string>
+    <string name="saved_nome_utente">nomeUtente</string>
+    <string name="saved_cognome_utente">cognomeUtente</string>
+    <string name="saved_cellulare_utente">cellulareUtente</string>
+    <string name="saved_indirizzo_utente">indirizzoUtente</string>
+    <string name="saved_bio_utente">bioUtente</string>
     <string name="saved_password_login">password</string>
+    <string name="saved_email_login">email</string>
+
 
 
 

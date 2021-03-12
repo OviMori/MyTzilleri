@@ -34,21 +34,19 @@
 
             </LinearLayout>
 
-
-
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="3"
+            android:layout_weight="2.9"
             android:gravity="center"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
+                android:layout_gravity="center"
                 android:textSize="35dp"
                 android:textStyle="bold"
                 android:textColor="@color/voce_elenco_grey"
@@ -87,8 +85,7 @@
                 android:id="@+id/created_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="7dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
                 android:gravity="left"
                 android:text=""
                 android:textSize="20dp"
@@ -110,8 +107,7 @@
                 android:id="@+id/created_sname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="7dp"
+                android:layout_marginLeft="10dp"
                 android:gravity="left"
                 android:text=""
                 android:textSize="20dp"
@@ -133,8 +129,7 @@
                 android:id="@+id/created_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="7dp"
+                android:layout_marginLeft="10dp"
                 android:gravity="left"
                 android:text=""
                 android:textSize="20dp"
@@ -156,8 +151,7 @@
                 android:id="@+id/created_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="7dp"
+                android:layout_marginLeft="10dp"
                 android:gravity="left"
                 android:text=""
                 android:textSize="20dp"
@@ -179,8 +173,7 @@
                 android:id="@+id/created_confirm_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="7dp"
+                android:layout_marginLeft="10dp"
                 android:gravity="left"
                 android:text=""
                 android:textSize="20dp"
@@ -219,16 +212,14 @@
                 android:layout_gravity="right"
                 android:textAllCaps="true"
                 android:textStyle="bold"
-                android:textSize="30dp"
+                android:textSize="25dp"
                 android:background="@color/main_orange"
                 android:text="Registrati"/>
 
 
+
+
         </LinearLayout>
-
-
-
-
 
     </LinearLayout>
 

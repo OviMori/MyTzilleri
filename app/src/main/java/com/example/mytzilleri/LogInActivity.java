@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -14,28 +15,30 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class LogInActivity extends AppCompatActivity implements ProfiloFrag.FragmentAListener{
+public class LogInActivity extends AppCompatActivity {
 
-    EditText editUsername, editPassword;
+    EditText editEmail, editPassword;
     Button accedi, registrati;
-    String username, password;
-    private Fragment frgamentProfilo;
+    String email, password;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_layout);
 
-        editUsername = findViewById(R.id.edittext_username);
+        FragmentManager fragM = getSupportFragmentManager();
+        PopUpErrorLogIn dialogErrorFrag = new PopUpErrorLogIn();
+
+        editEmail = findViewById(R.id.edittext_email);
         editPassword = findViewById(R.id.edittext_password);
         accedi = findViewById(R.id.accedi_button);
-
-        username = editUsername.getText().toString();
-        password = editPassword.getText().toString();
         registrati = findViewById(R.id.registrati_button);
 
         registrati.setOnClickListener(new View.OnClickListener() {
@@ -50,12 +53,14 @@ public class LogInActivity extends AppCompatActivity implements ProfiloFrag.Frag
             @Override
             public void onClick(View v) {
 
-                //controllo credenziali
-                if(controlloCredenziali(username, password)){   //se le credenziali sono corrette
-                    startMainFragment();
+                if(checkCredenzialiGiaSalvate()){
+                    //controllo credenziali
+                    if(controlloCredenziali(editEmail.getText().toString(), editPassword.getText().toString())){   //se le credenziali sono corrette
+                        LogInActivity.super.onBackPressed();
 
-                }else{
-                    //implementare un toastMessage o floatingPopUp per avvisare l utente che le credenziali sono errate
+                    }
+                } else{
+                    dialogErrorFrag.show(fragM, "Errore");
                 }
             }
         });
@@ -64,16 +69,30 @@ public class LogInActivity extends AppCompatActivity implements ProfiloFrag.Frag
 
     }
 
-    private boolean controlloCredenziali(String email, String password){
+    private boolean checkCredenzialiGiaSalvate(){
         SharedPreferences pref = getSharedPreferences(getString(R.string.preference_file_key), 0);
-        String savedUsername = pref.getString(getString(R.string.saved_email_login), "");
+        String savedEmail = pref.getString(getString(R.string.saved_email_login), "");
         String savedPassword = pref.getString(getString(R.string.saved_password_login), "");
 
-        if(savedPassword.equals("") || savedUsername.equals("")){
+        if(savedEmail.equals("") || savedPassword.equals("")){
+            return false;
+        }else{
+            editEmail.setText(savedEmail);
+            editPassword.setText(savedPassword);
+            return true;
+        }
+    }
+
+    private boolean controlloCredenziali(String email, String password){
+        SharedPreferences pref = getSharedPreferences(getString(R.string.preference_file_key), 0);
+        String savedEmail = pref.getString(getString(R.string.saved_email_login), "");
+        String savedPassword = pref.getString(getString(R.string.saved_password_login), "");
+
+        if(savedPassword.equals("") || savedEmail.equals("")){
             return false;
         }
 
-        if(savedUsername.equals(username) && savedPassword.equals(password)){
+        if(savedEmail.equals(email) && savedPassword.equals(password)){
             return true;
         }else{
             return false;
@@ -81,51 +100,6 @@ public class LogInActivity extends AppCompatActivity implements ProfiloFrag.Frag
     }
 
 
-
-
-    private void startMainFragment(){
-        BottomNavigationView bottNavMenu = (BottomNavigationView) findViewById(R.id.bottNavMenu);
-        bottNavMenu.setOnNavigationItemSelectedListener(navListener);
-
-        frgamentProfilo = new ProfiloFrag();
-
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new ProfiloFrag()).commit();  //potrei ripetere l istruzione replace inserendo turri i fragment che voglio
-    }
-
-
-    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener(){
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item){
-            Fragment fragment = null;
-
-            switch(item.getItemId()){
-                case R.id.turniFrag:
-                    fragment = new TurniFrag();
-                    break;
-
-                case R.id.profiloFrag:
-                    fragment = new ProfiloFrag();
-                    break;
-
-                case R.id.chatFrag:
-                    fragment = new ChatFrag();
-                    break;
-
-                case R.id.magazzinoFrag:
-                    fragment = new MagazzinoFrag();
-                    break;
-            }
-
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment, fragment).commit();
-
-            return true;
-        }
-    };
-
-    @Override
-    public void onInputASent(CharSequence input) {
-
-    }
 }
 
 

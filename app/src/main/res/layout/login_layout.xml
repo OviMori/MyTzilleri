@@ -35,12 +35,12 @@
                 android:layout_marginLeft="10dp"
                 android:gravity="center"
                 android:textSize="20dp"
-                android:text="Username"
+                android:text="Email"
                 style="@style/VociElenco"/>
 
 
             <EditText
-                android:id="@+id/edittext_username"
+                android:id="@+id/edittext_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="7dp"

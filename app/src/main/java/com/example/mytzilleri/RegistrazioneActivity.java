@@ -2,9 +2,12 @@ package com.example.mytzilleri;
 
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
+import android.graphics.Rect;
 import android.media.Image;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,12 +32,13 @@ public class RegistrazioneActivity extends AppCompatActivity {
         email = findViewById(R.id.created_email);
         password = findViewById(R.id.created_password);
         confermaPassword = findViewById(R.id.created_confirm_password);
-
         backButton = findViewById(R.id.back_button_registrazione);
-
         registrazione = findViewById(R.id.salva_credenziali_button);
 
 
+        /**
+         * tasto indietro tramite l icona del layout
+         */
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,23 +46,33 @@ public class RegistrazioneActivity extends AppCompatActivity {
             }
         });
 
+        /**
+         * pulsante per il controllo e salvataggio dei dati
+         */
         registrazione.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //chiamare le funzioni per il check dell input dell utente
 
-                //controllo che password e conferma password siano corrette
-                checkPassword(password.getText().toString(), confermaPassword.getText().toString());
+                //controllo che password, conferma password e email siano corrette
+                if(checkPassword(password, confermaPassword) && checkEmail(email)){
+                    //salvataggio delle credenziali nei preferiti
+                    salvaCredenziali(nome.getText().toString(), cognome.getText().toString(), email.getText().toString(), password.getText().toString());
+                    RegistrazioneActivity.super.onBackPressed();
 
-                //salvataggio delle credenziali nei preferiti
-                salvaCredenziali(nome.getText().toString(), cognome.getText().toString(), email.getText().toString(), password.getText().toString());
-
+                }
             }
         });
+    }
 
-
-
-
+    private boolean checkEmail(EditText email){
+        if(email.getText().toString().length() == 0 || !email.getText().toString().contains("@")){
+            email.setError("Inserire una mail valida");
+            return false;
+        }else{
+            email.setError(null);
+            return true;
+        }
     }
 
     /**
@@ -67,11 +81,16 @@ public class RegistrazioneActivity extends AppCompatActivity {
      * @param confirmPassword
      * @return true se le due string coincidono
      */
-    private boolean checkPassword(String password, String confirmPassword){
-        if(password.equals(confirmPassword)){
-            return true;
-        }else{
+    private boolean checkPassword(EditText password, EditText confirmPassword){
+
+        if(password.getText().toString().length() == 0
+                || confirmPassword.getText().toString().length() == 0
+                || !password.getText().toString().equals(confirmPassword.getText().toString())){
+            password.setError("Le password inserite non corrispondono");
             return false;
+        }else{
+            password.setError(null);
+            return true;
         }
     }
 
@@ -85,14 +104,28 @@ public class RegistrazioneActivity extends AppCompatActivity {
         editor.putString(getString(R.string.saved_nome_login), nome);
         editor.commit();
 
-        editor.putString(getString(R.string.saved_cognome_login), cognome);
+        Log.i("nome", nome);
+
+        editor.putString(getString(R.string.saved_nome_utente), cognome);
         editor.commit();
+
+        editor.putString(getString(R.string.saved_cognome_utente), cognome);
+        editor.commit();
+
+        Log.i("cognome", cognome);
 
         editor.putString(getString(R.string.saved_email_login), email);
         editor.commit();
 
+        editor.putString(getString(R.string.saved_indirizzo_utente), email);
+        editor.commit();
+
+        Log.i("email", email);
+
         editor.putString(getString(R.string.saved_password_login), password);
         editor.commit();
+
+        Log.i("password", password);
     }
 
 }

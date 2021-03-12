@@ -1,6 +1,7 @@
 package com.example.mytzilleri;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,9 +12,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -35,10 +38,14 @@ public class ProfiloFrag extends Fragment {
     //Mie variabili
     FragmentAListener listener; //questo listener aspetta che l activity utilizzi il nostro fragment
     FrameLayout framePromemoriaUtente, frameInfoUtente;
-    Button buttonTest;
+    Button salvaDatiUtente;
     LinearLayout linearLayoutInfoUtente, linearLayoutInEsaurimento, linearLayoutNuoviMessaggi;
     ImageButton inEsaurimentoArrowHome, nuoviMessaggiArrowHome;
     RecyclerView inEsaurimentoRecycler, nuoviMessaggiRecycler;
+
+    EditText edit_nome_utente, edit_cognome_utente, edit_indirizzo, edit_cellulare, edit_bio;
+    TextView text_top_nome, text_top_cognome, text_top_indirizzo, text_top_cellulare, text_top_bio;
+
     //------------------------------------------------------
 
     public ProfiloFrag() {
@@ -99,6 +106,29 @@ public class ProfiloFrag extends Fragment {
         linearLayoutInEsaurimento = v.findViewById(R.id.linear_layout_in_esaurimento);
         linearLayoutNuoviMessaggi = v.findViewById(R.id.linear_layout_nuovi_messaggi);
 
+        edit_nome_utente = v.findViewById(R.id.info_utente_nome);
+        edit_cognome_utente = v.findViewById(R.id.info_utente_cognome);
+        edit_indirizzo = v.findViewById(R.id.info_utente_indirizzo);
+        edit_cellulare = v.findViewById(R.id.info_utente_cellulare);
+        edit_bio = v.findViewById(R.id.info_utente_bio);
+
+        text_top_nome = v.findViewById(R.id.top_nome_utente);
+        text_top_cognome = v.findViewById(R.id.top_cognome_utente);
+        text_top_cellulare = v.findViewById(R.id.top_cellulare);
+        text_top_indirizzo = v.findViewById(R.id.top_indirizzo);
+        text_top_bio = v.findViewById(R.id.top_bio);
+
+        salvaDatiUtente = v.findViewById(R.id.aggiorna_dati_utente);
+
+        setCampiConDatiUtente();
+
+        salvaDatiUtente.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                aggiornaDatiUtente();
+            }
+        });
+
 
         /**
          * Gestisce il click che fa apparire/scomparire la RecyclerView dei prodotti in esaurimento
@@ -154,6 +184,55 @@ public class ProfiloFrag extends Fragment {
 
 
         return v;
+    }
+
+    private void aggiornaDatiUtente(){
+        String newNome = edit_nome_utente.getText().toString();
+        String newCognome = edit_cognome_utente.getText().toString();
+        String newCellulare = edit_cellulare.getText().toString();
+        String newIndirizzo = edit_indirizzo.getText().toString();
+        String newBio = edit_bio.getText().toString();
+
+        SharedPreferences.Editor edit = this.getActivity().getSharedPreferences(getString(R.string.preference_file_key), 0).edit();
+        edit.putString(getString(R.string.saved_nome_utente), newNome);
+        edit.commit();
+        edit.putString(getString(R.string.saved_cognome_utente), newCognome);
+        edit.commit();
+        edit.putString(getString(R.string.saved_cellulare_utente), newCellulare);
+        edit.commit();
+        edit.putString(getString(R.string.saved_indirizzo_utente), newIndirizzo);
+        edit.commit();
+        edit.putString(getString(R.string.saved_bio_utente), newBio);
+        edit.commit();
+
+        setCampiConDatiUtente();
+    }
+
+    private void setCampiConDatiUtente(){
+        SharedPreferences pref = this.getActivity().getSharedPreferences(getString(R.string.preference_file_key), 0);
+
+        String savedNome = pref.getString(getString(R.string.saved_nome_utente), "");
+        String savedCognome = pref.getString(getString(R.string.saved_cognome_utente), "");
+        String savedCellulare = pref.getString(getString(R.string.saved_cellulare_utente), "");
+        String savedIndirizzo = pref.getString(getString(R.string.saved_indirizzo_utente), "");
+        String savedBio = pref.getString(getString(R.string.saved_bio_utente), "");
+        String savedEmail = pref.getString(getString(R.string.saved_email_login), "");
+        String savedPassword = pref.getString(getString(R.string.saved_password_login), "");
+
+        text_top_nome.setText(savedNome);
+        edit_nome_utente.setText(savedNome);
+
+        text_top_cognome.setText(savedCognome);
+        edit_cognome_utente.setText(savedCognome);
+
+        text_top_cellulare.setText(savedCellulare);
+        edit_cellulare.setText(savedCellulare);
+
+        text_top_indirizzo.setText(savedIndirizzo);
+        edit_indirizzo.setText(savedIndirizzo);
+
+        text_top_bio.setText(savedBio);
+        edit_bio.setText(savedBio);
     }
 
     @Override

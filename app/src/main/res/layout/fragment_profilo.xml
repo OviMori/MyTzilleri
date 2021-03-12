@@ -86,7 +86,7 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/nome_utente"
+                            android:id="@+id/top_nome_utente"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="5dp"
@@ -98,7 +98,7 @@
                             android:textSize="20dp"/>
 
                         <TextView
-                            android:id="@+id/cognome_utente"
+                            android:id="@+id/top_cognome_utente"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="5dp"
@@ -111,14 +111,14 @@
 
 
                     <TextView
-                        android:id="@+id/indirizzo"
+                        android:id="@+id/top_indirizzo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
 
                         android:gravity="center"
                         android:textSize="13dp"
                         android:textColor="@color/black"
-                        android:text="Via Arginamento, 11"/>
+                        android:text="ovimori@gmail.com"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -134,7 +134,7 @@
                             android:text="Cell:  "/>
 
                         <TextView
-                            android:id="@+id/cellulare"
+                            android:id="@+id/top_cellulare"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="13dp"
@@ -144,12 +144,13 @@
                     </LinearLayout>
 
                     <TextView
-                        android:id="@+id/bio"
+                        android:id="@+id/top_bio"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
                         android:gravity="center"
                         android:textSize="13dp"
+                        android:maxLength="15"
                         android:textColor="@color/black"
                         android:text="#ProvaBioUtente"/>
 
@@ -365,12 +366,12 @@
                                 android:layout_marginLeft="10dp"
                                 android:gravity="center"
                                 android:textSize="15dp"
-                                android:text="Nome Cognome"
+                                android:text="Nome"
                                 style="@style/VociElenco"/>
 
 
                             <EditText
-                                android:id="@+id/info_utente_nome_cognome"
+                                android:id="@+id/info_utente_nome"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginRight="10dp"
@@ -378,7 +379,35 @@
                                 android:gravity="left"
                                 android:textSize="20dp"
                                 android:textColor="@color/black"
-                                android:text="Nome Cognome"/>
+                                android:maxLength="15"
+                                android:text=""/>
+
+                            <View
+                                android:layout_marginRight="10dp"
+                                android:layout_marginLeft="10dp"
+                                style="@style/Separator" />
+
+                            <TextView
+                                android:layout_marginRight="10dp"
+                                android:layout_marginTop="20dp"
+                                android:layout_marginLeft="10dp"
+                                android:gravity="center"
+                                android:textSize="15dp"
+                                android:text="Cognome"
+                                style="@style/VociElenco"/>
+
+
+                            <EditText
+                                android:id="@+id/info_utente_cognome"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginLeft="7dp"
+                                android:gravity="left"
+                                android:textSize="20dp"
+                                android:maxLength="15"
+                                android:textColor="@color/black"
+                                android:text=""/>
 
                             <View
                                 android:layout_marginRight="10dp"
@@ -391,7 +420,7 @@
                                 android:layout_marginLeft="10dp"
                                 android:gravity="center"
                                 android:textSize="15dp"
-                                android:text="Indirizzo"
+                                android:text="Email"
                                 style="@style/VociElenco"/>
 
                             <EditText
@@ -402,8 +431,9 @@
                                 android:layout_marginLeft="7dp"
                                 android:gravity="left"
                                 android:textSize="20dp"
+                                android:maxLength="15"
                                 android:textColor="@color/black"
-                                android:text="Indirizzo"/>
+                                android:text=""/>
 
                             <View
                                 android:layout_marginRight="10dp"
@@ -428,8 +458,9 @@
                                 android:layout_marginLeft="7dp"
                                 android:gravity="left"
                                 android:textSize="20dp"
+                                android:maxLength="15"
                                 android:textColor="@color/black"
-                                android:text="Cellulare"/>
+                                android:text=""/>
 
                             <View
                                 android:layout_marginRight="10dp"
@@ -454,8 +485,34 @@
                                 android:layout_marginLeft="7dp"
                                 android:gravity="left"
                                 android:textSize="20dp"
+                                android:maxLength="50"
                                 android:textColor="@color/black"
-                                android:text="Biografia"/>
+                                android:text="njdkljdahfjdklajdahfjdajflkdahjfdlhjandjclasjdahjfldhajklfdhjkafhdjlahfjdklashjfdklahfjdl"/>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:orientation="vertical"
+                                android:gravity="center">
+
+                                <Button
+                                    android:id="@+id/aggiorna_dati_utente"
+                                    android:clickable="true"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="4dp"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginRight="20dp"
+                                    android:layout_gravity="right"
+                                    android:textStyle="bold"
+                                    android:textSize="15dp"
+                                    android:background="@color/main_orange"
+                                    android:text="Salva Modifiche"/>
+
+                            </LinearLayout>
+
 
                             <View
                                 android:layout_marginRight="10dp"
@@ -464,6 +521,7 @@
                                 style="@style/Separator" />
 
                         </LinearLayout>
+
 
                     </ScrollView>
 
