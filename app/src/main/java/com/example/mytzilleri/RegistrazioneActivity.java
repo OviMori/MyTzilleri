@@ -1,6 +1,7 @@
 package com.example.mytzilleri;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Rect;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -63,6 +65,16 @@ public class RegistrazioneActivity extends AppCompatActivity {
                 }
             }
         });
+
+    }
+
+    @Override
+    public void finish() {
+        Intent returnIntent = new Intent();
+        returnIntent.putExtra("passed_item", -1);
+        // setResult(RESULT_OK);
+        setResult(RESULT_OK, returnIntent); //By not passing the intent in the result, the calling activity will get null data.
+        super.finish();
     }
 
     private boolean checkEmail(EditText email){
@@ -106,7 +118,7 @@ public class RegistrazioneActivity extends AppCompatActivity {
 
         Log.i("nome", nome);
 
-        editor.putString(getString(R.string.saved_nome_utente), cognome);
+        editor.putString(getString(R.string.saved_nome_utente), nome);
         editor.commit();
 
         editor.putString(getString(R.string.saved_cognome_utente), cognome);
@@ -126,6 +138,8 @@ public class RegistrazioneActivity extends AppCompatActivity {
         editor.commit();
 
         Log.i("password", password);
+
+        Toast.makeText(RegistrazioneActivity.this, "Credenziali salvate", Toast.LENGTH_LONG).show();
     }
 
 }

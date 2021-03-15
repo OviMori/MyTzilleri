@@ -21,6 +21,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -41,6 +42,8 @@ public class PaginaProdotto extends AppCompatActivity {
     EditText nomeProdotto, categoria, quantita, limiteScorte, nomeFornitore, emailFornitore, telFornitore;
     Button salvaModoficheProdotto;
 
+    Prodotto infoprodotto;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,21 +62,36 @@ public class PaginaProdotto extends AppCompatActivity {
         emailFornitore = findViewById(R.id.email_fornitore);
         telFornitore = findViewById(R.id.cellulare_fornitore);
 
-        Prodotto infoprodotto = (Prodotto) getIntent().getSerializableExtra("infoProdotto");
-
-        if(infoprodotto == null){
-            super.onBackPressed();
-        }
-        initInfoProdotto(infoprodotto); //inizializzo i dati dell utente salvati in precedenza
+        infoprodotto = (Prodotto) getIntent().getSerializableExtra("infoProdotto");
 
         /**
          * Salva le modifiche del prodotto
          */
-
-
         salvaModoficheProdotto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(nomeProdotto.getText().toString() == null){
+                    nomeProdotto.setText(" ");
+                }
+                if(categoria.getText().toString() == null){
+                    nomeProdotto.setText(" ");
+                }
+                if(quantita.getText().toString() == null){
+                    nomeProdotto.setText("0");
+                }
+                if(limiteScorte.getText().toString() == null){
+                    nomeProdotto.setText("0");
+                }
+                if(nomeFornitore.getText().toString() == null){
+                    nomeProdotto.setText(" ");
+                }
+                if(emailFornitore.getText().toString() == null){
+                    nomeProdotto.setText(" ");
+                }
+                if(telFornitore.getText().toString() == null){
+                    nomeProdotto.setText("0");
+                }
+
                 infoprodotto.setNomeProdotto(nomeProdotto.getText().toString());
                 infoprodotto.setCategoria(categoria.getText().toString());
                 infoprodotto.setQuantita(Integer.parseInt(quantita.getText().toString()));
@@ -81,6 +99,8 @@ public class PaginaProdotto extends AppCompatActivity {
                 infoprodotto.setNomeFornitore(nomeFornitore.getText().toString());
                 infoprodotto.setEmailFornitore(emailFornitore.getText().toString());
                 infoprodotto.setTelFornitore(telFornitore.getText().toString());
+
+                Toast.makeText(PaginaProdotto.this, "Salvataggio...", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -116,6 +136,16 @@ public class PaginaProdotto extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public void finish() {
+        Intent returnIntent = new Intent();
+        //returnIntent.putExtra("passed_item", 3);
+        returnIntent.putExtra("infoProdottoReturn", infoprodotto);
+        // setResult(RESULT_OK);
+        setResult(RESULT_OK, returnIntent); //By not passing the intent in the result, the calling activity will get null data.
+        super.finish();
     }
 
     public void  initInfoProdotto(Prodotto prodotto){

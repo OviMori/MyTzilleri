@@ -140,18 +140,6 @@
     </androidx.recyclerview.widget.RecyclerView>
 
 
-    <Button
-        android:id="@+id/bottone"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center"
-        android:backgroundTint="@color/black"
-        android:textAllCaps="true"
-        android:text="TEST"
-        android:textColor="@color/white"
-        />
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

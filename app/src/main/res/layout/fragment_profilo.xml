@@ -62,7 +62,8 @@
                 android:background="@color/hint_grey"
                 android:gravity="center"
                 android:clickable="true"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="visible">
 
 
                 <ImageView
@@ -114,7 +115,6 @@
                         android:id="@+id/top_indirizzo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-
                         android:gravity="center"
                         android:textSize="13dp"
                         android:textColor="@color/black"
@@ -176,7 +176,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:visibility="gone">
+                    android:visibility="visible">
 
                     <View
                         android:layout_width="match_parent"
@@ -311,8 +311,7 @@
                     android:id="@+id/frame_info_utente"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="24dp"
-                    android:visibility="visible">
+                    android:visibility="gone">
 
                     <View
                         android:layout_width="match_parent"

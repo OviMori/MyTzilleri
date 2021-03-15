@@ -85,7 +85,5 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         //creazione di un nuovo elemento della lista
         localDataSet.add(mpList);
 
-        Log.i("telefono-----------------------------------------------------", mpList.getTelFornitore());
-
     }
 }

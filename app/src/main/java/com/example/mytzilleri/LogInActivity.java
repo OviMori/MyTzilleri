@@ -47,27 +47,31 @@ public class LogInActivity extends AppCompatActivity {
         registrati.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LogInActivity.this, RegistrazioneActivity.class);
-                startActivity(intent);
+                //Intent intent = new Intent(LogInActivity.this, RegistrazioneActivity.class);
+                //startActivity(intent);
+
+                startActivityForResult(new Intent(LogInActivity.this, RegistrazioneActivity.class), 0);
             }
         });
 
         accedi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                    //controllo credenziali
+                //controllo credenziali
                 if(controlloCredenziali(editEmail.getText().toString(), editPassword.getText().toString())){   //se le credenziali sono corrette
                     LogInActivity.super.onBackPressed();
 
                 } else{
                     dialogErrorFrag.show(fragM, "Errore");
-
                 }
             }
         });
+    }
 
-
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        checkCredenzialiGiaSalvate();   //riempimento automatico se le credenziali sono gia state salvate
 
     }
 

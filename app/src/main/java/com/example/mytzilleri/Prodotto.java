@@ -11,13 +11,14 @@ public class Prodotto  implements Serializable {
 
 
     public Prodotto(){
+        /*
         this.nomeProdotto = " ";
         this.categoria = " ";
-        this.quantita = 0;
-        this.notificaEsaurimentoScorte = 0;  //valore di default
         this.nomeFornitore = " ";  //valore di default
         this.emailFornitore = " ";  //valore di default
         this.telFornitore = " ";  //valore di default
+
+         */
     }
 
 

@@ -77,7 +77,6 @@ public class ProfiloFrag extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
     }
 
 
@@ -121,7 +120,7 @@ public class ProfiloFrag extends Fragment {
         salvaDatiUtente = v.findViewById(R.id.aggiorna_dati_utente);
 
         setCampiConDatiUtente();
-        aggiornaDatiUtente();
+
 
         salvaDatiUtente.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -175,10 +174,11 @@ public class ProfiloFrag extends Fragment {
                 if(framePromemoriaUtente.getVisibility() == View.GONE){
                     frameInfoUtente.setVisibility(View.GONE);
                     framePromemoriaUtente.setVisibility(View.VISIBLE);
-
+                    setCampiConDatiUtente();
                 }else{
                     framePromemoriaUtente.setVisibility(View.GONE);
                     frameInfoUtente.setVisibility(View.VISIBLE);
+                    setCampiConDatiUtente();
                 }
             }
         });

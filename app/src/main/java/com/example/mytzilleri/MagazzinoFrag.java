@@ -39,9 +39,12 @@ public class MagazzinoFrag extends Fragment {
     //------------------------------------------------------
     //Mie variabili
     Button bottone;
+    public final int REQUEST_CODE = 0;
 
     private RecyclerView recyclerView;
     FloatingActionButton aggiungiButton;
+
+    CustomAdapter adapter;
     //------------------------------------------------------
 
     public MagazzinoFrag() {
@@ -80,17 +83,16 @@ public class MagazzinoFrag extends Fragment {
         // Inflate the layout for this fragment
         View v =  inflater.inflate(R.layout.fragment_magazzino, container, false);
 
-        bottone = v.findViewById(R.id.bottone);
+
         recyclerView = v.findViewById(R.id.recycler_view_prodotti);
         aggiungiButton = v.findViewById(R.id.aggiungi_prodotto_button);
 
         //Elementi della recyclerview
-        CustomAdapter adapter = new CustomAdapter();
+        adapter = new CustomAdapter();
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(v.getContext());
         //-----------------------------------------------------------------------
 
         //questo va eseguito quando premo il pulsante salva
-        adapter.notifyDataSetChanged();
 
         initRecyclerView(adapter, layoutManager);
 
@@ -98,16 +100,6 @@ public class MagazzinoFrag extends Fragment {
             @Override
             public void onClick(View v) {
                 addElement(adapter, layoutManager);
-                adapter.notifyDataSetChanged();
-            }
-        });
-
-        bottone.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent inte = new Intent(getContext(),  PaginaProdotto.class);
-                startActivity(inte);
-
             }
         });
 
@@ -133,12 +125,21 @@ public class MagazzinoFrag extends Fragment {
 
         Intent newProdotto = new Intent(getContext(), PaginaProdotto.class);
         newProdotto.putExtra("infoProdotto", infoProdotto);    //passo il riferimento all oggetto di tipo prodotto
-        startActivity(newProdotto);
 
+        startActivityForResult(newProdotto, REQUEST_CODE);
+    }
 
-        //questo va eseguito quando premo il pulsante salva
-        adapter.reloadList(infoProdotto);   //qua devo passare un oggetto di tipo prodotto
-        adapter.notifyDataSetChanged();
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        //if (requestCode == REQUEST_CODE && resultCode == 1) {
+            Prodotto infoProdotto = (Prodotto) data.getExtras().get("infoProdottoReturn");
+            // deal with the item yourself
+
+            adapter.reloadList(infoProdotto);   //qua devo passare un oggetto di tipo prodotto
+            adapter.notifyDataSetChanged();
+
+        //}
     }
 
 }
