@@ -130,6 +130,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_prodotti"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
@@ -142,10 +143,34 @@
     <Button
         android:id="@+id/bottone"
         android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_height="50dp"
         android:layout_gravity="center"
         android:backgroundTint="@color/black"
+        android:textAllCaps="true"
+        android:text="TEST"
+        android:textColor="@color/white"
         />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/aggiungi_prodotto_button"
+            android:layout_width="458dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="65dp"
+            android:backgroundTint="@color/main_orange"
+            android:elevation="2dp"
+            android:src="@drawable/add_product_icon"
+            tools:ignore="MissingConstraints" />
+
+    </LinearLayout>
 
 </LinearLayout>
 

@@ -17,7 +17,6 @@
         <activity android:name=".PaginaProdotto"/>
         <activity android:name=".LogInActivity"/>
         <activity android:name=".RegistrazioneActivity"/>
-        <activity android:name=".PopUpErrorLogIn"/>
     </application>
     android:usesCleartextTraffic="true"
 </manifest>

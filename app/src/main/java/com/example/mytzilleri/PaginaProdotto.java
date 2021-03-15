@@ -18,6 +18,7 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Switch;
 
@@ -30,11 +31,15 @@ import androidx.appcompat.widget.SwitchCompat;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import java.io.Serializable;
+
 public class PaginaProdotto extends AppCompatActivity {
 
     private static final int PICK_FROM_GALLERY = 1;
     SwitchCompat mySwitch;
     ImageView immagineProdotto, back_button;
+    EditText nomeProdotto, categoria, quantita, limiteScorte, nomeFornitore, emailFornitore, telFornitore;
+    Button salvaModoficheProdotto;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,13 +49,41 @@ public class PaginaProdotto extends AppCompatActivity {
         mySwitch = findViewById(R.id.switch_notifica_esaurimento);
         immagineProdotto = findViewById(R.id.immagine_prodotto);
         back_button = findViewById(R.id.back_button);
+        salvaModoficheProdotto = findViewById(R.id.bottone_salva_modifiche);
 
-        back_button.setOnClickListener(new View.OnClickListener() {
+        nomeProdotto = findViewById(R.id.info_prodotto_nome_prodotto);
+        categoria = findViewById(R.id.info_prodotto_categoria);
+        quantita = findViewById(R.id.info_prodotto_quantita);
+        limiteScorte = findViewById(R.id.info_prodotto_esaurimento_edit);
+        nomeFornitore = findViewById(R.id.nome_fornitore);
+        emailFornitore = findViewById(R.id.email_fornitore);
+        telFornitore = findViewById(R.id.cellulare_fornitore);
+
+        Prodotto infoprodotto = (Prodotto) getIntent().getSerializableExtra("infoProdotto");
+
+        if(infoprodotto == null){
+            super.onBackPressed();
+        }
+        initInfoProdotto(infoprodotto); //inizializzo i dati dell utente salvati in precedenza
+
+        /**
+         * Salva le modifiche del prodotto
+         */
+
+
+        salvaModoficheProdotto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    PaginaProdotto.super.onBackPressed();
+                infoprodotto.setNomeProdotto(nomeProdotto.getText().toString());
+                infoprodotto.setCategoria(categoria.getText().toString());
+                infoprodotto.setQuantita(Integer.parseInt(quantita.getText().toString()));
+                infoprodotto.setNotificaEsaurimentoScorte(Integer.parseInt(limiteScorte.getText().toString()));
+                infoprodotto.setNomeFornitore(nomeFornitore.getText().toString());
+                infoprodotto.setEmailFornitore(emailFornitore.getText().toString());
+                infoprodotto.setTelFornitore(telFornitore.getText().toString());
             }
         });
+
 
         immagineProdotto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +91,7 @@ public class PaginaProdotto extends AppCompatActivity {
                 //procedura per cambiare immagine del prodotto
 
                 try {
+                    //controllo dei permessi necessari per accedere alla galleria
                     if (ActivityCompat.checkSelfPermission(PaginaProdotto.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                         ActivityCompat.requestPermissions(PaginaProdotto.this, new String[]{ Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, PICK_FROM_GALLERY);
                     } else {
@@ -72,11 +106,6 @@ public class PaginaProdotto extends AppCompatActivity {
             }
         });
 
-
-
-
-
-
         mySwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -87,6 +116,16 @@ public class PaginaProdotto extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void  initInfoProdotto(Prodotto prodotto){
+        nomeProdotto.setText(prodotto.getNomeProdotto());
+        categoria.setText(prodotto.getCategoria());
+        quantita.setText(String.valueOf(prodotto.getQuantita()));
+        limiteScorte.setText(String.valueOf(prodotto.getNotificaEsaurimentoScorte()));
+        nomeFornitore.setText(prodotto.getNomeFornitore());
+        emailFornitore.setText(prodotto.getEmailFornitore());
+        telFornitore.setText(prodotto.getTelFornitore());
     }
 
     @Override

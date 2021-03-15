@@ -12,13 +12,26 @@
         android:orientation="vertical"
         android:weightSum="5">
 
+
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="2">
+            android:layout_marginTop="150dp"
+            android:layout_marginLeft="20dp"
+            android:gravity="left"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="35dp"
+                android:textStyle="bold"
+                android:textColor="@color/voce_elenco_grey"
+                android:text="Accedi"
+                />
 
         </LinearLayout>
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -71,6 +84,7 @@
                 android:text=""
                 android:textSize="20dp"
                 android:textColor="@color/black"
+                android:password="true"
                 android:background="@drawable/edittext_bottom_line"
                 />
 

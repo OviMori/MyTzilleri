@@ -1,4 +1,4 @@
-package com.example.mytzilleri;
+ package com.example.mytzilleri;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -121,6 +121,7 @@ public class ProfiloFrag extends Fragment {
         salvaDatiUtente = v.findViewById(R.id.aggiorna_dati_utente);
 
         setCampiConDatiUtente();
+        aggiornaDatiUtente();
 
         salvaDatiUtente.setOnClickListener(new View.OnClickListener() {
             @Override

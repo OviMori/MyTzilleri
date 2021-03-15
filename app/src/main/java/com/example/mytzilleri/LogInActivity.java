@@ -41,6 +41,9 @@ public class LogInActivity extends AppCompatActivity {
         accedi = findViewById(R.id.accedi_button);
         registrati = findViewById(R.id.registrati_button);
 
+
+        checkCredenzialiGiaSalvate();   //riempimento automatico se le credenziali sono gia state salvate
+
         registrati.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,14 +56,13 @@ public class LogInActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(checkCredenzialiGiaSalvate()){
                     //controllo credenziali
-                    if(controlloCredenziali(editEmail.getText().toString(), editPassword.getText().toString())){   //se le credenziali sono corrette
-                        LogInActivity.super.onBackPressed();
+                if(controlloCredenziali(editEmail.getText().toString(), editPassword.getText().toString())){   //se le credenziali sono corrette
+                    LogInActivity.super.onBackPressed();
 
-                    }
                 } else{
                     dialogErrorFrag.show(fragM, "Errore");
+
                 }
             }
         });

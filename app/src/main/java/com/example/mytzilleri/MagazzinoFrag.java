@@ -5,8 +5,11 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.service.controls.actions.FloatAction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +17,8 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -34,6 +39,9 @@ public class MagazzinoFrag extends Fragment {
     //------------------------------------------------------
     //Mie variabili
     Button bottone;
+
+    private RecyclerView recyclerView;
+    FloatingActionButton aggiungiButton;
     //------------------------------------------------------
 
     public MagazzinoFrag() {
@@ -73,6 +81,26 @@ public class MagazzinoFrag extends Fragment {
         View v =  inflater.inflate(R.layout.fragment_magazzino, container, false);
 
         bottone = v.findViewById(R.id.bottone);
+        recyclerView = v.findViewById(R.id.recycler_view_prodotti);
+        aggiungiButton = v.findViewById(R.id.aggiungi_prodotto_button);
+
+        //Elementi della recyclerview
+        CustomAdapter adapter = new CustomAdapter();
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(v.getContext());
+        //-----------------------------------------------------------------------
+
+        //questo va eseguito quando premo il pulsante salva
+        adapter.notifyDataSetChanged();
+
+        initRecyclerView(adapter, layoutManager);
+
+        aggiungiButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addElement(adapter, layoutManager);
+                adapter.notifyDataSetChanged();
+            }
+        });
 
         bottone.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,6 +113,34 @@ public class MagazzinoFrag extends Fragment {
 
         return v;
     }
+
+    /**
+     * Questa funzione va inserita nella classe che gestisce il layout con la recycler view
+     *
+     */
+    private void initRecyclerView(CustomAdapter adapter, RecyclerView.LayoutManager layoutManager){
+
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(adapter);
+
+    }
+
+    private void addElement(CustomAdapter adapter, RecyclerView.LayoutManager layoutManager){
+
+        Prodotto infoProdotto = new Prodotto();
+        //Gson gson = new Gson()
+
+        Intent newProdotto = new Intent(getContext(), PaginaProdotto.class);
+        newProdotto.putExtra("infoProdotto", infoProdotto);    //passo il riferimento all oggetto di tipo prodotto
+        startActivity(newProdotto);
+
+
+        //questo va eseguito quando premo il pulsante salva
+        adapter.reloadList(infoProdotto);   //qua devo passare un oggetto di tipo prodotto
+        adapter.notifyDataSetChanged();
+    }
+
 }
 
 
