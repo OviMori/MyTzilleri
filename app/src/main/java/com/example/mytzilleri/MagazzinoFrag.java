@@ -1,15 +1,18 @@
 package com.example.mytzilleri;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.DialogFragmentNavigatorDestinationBuilder;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.service.controls.actions.FloatAction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,12 +23,15 @@ import android.widget.LinearLayout;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link MagazzinoFrag#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MagazzinoFrag extends Fragment {
+public class MagazzinoFrag extends Fragment implements CustomAdapter.OnNoteListener{
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -41,10 +47,15 @@ public class MagazzinoFrag extends Fragment {
     Button bottone;
     public final int REQUEST_CODE = 0;
 
+    public int testGloabLastiItemModified;
+
     private RecyclerView recyclerView;
     FloatingActionButton aggiungiButton;
 
     CustomAdapter adapter;
+
+    Button refresh;
+    List<Prodotto> listaProdotti  = new ArrayList<Prodotto>();
     //------------------------------------------------------
 
     public MagazzinoFrag() {
@@ -87,19 +98,18 @@ public class MagazzinoFrag extends Fragment {
         recyclerView = v.findViewById(R.id.recycler_view_prodotti);
         aggiungiButton = v.findViewById(R.id.aggiungi_prodotto_button);
 
-        //Elementi della recyclerview
-        adapter = new CustomAdapter();
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(v.getContext());
+
         //-----------------------------------------------------------------------
+
 
         //questo va eseguito quando premo il pulsante salva
 
-        initRecyclerView(adapter, layoutManager);
+        initRecyclerView();
 
         aggiungiButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addElement(adapter, layoutManager);
+                addElement();
             }
         });
 
@@ -110,18 +120,18 @@ public class MagazzinoFrag extends Fragment {
      * Questa funzione va inserita nella classe che gestisce il layout con la recycler view
      *
      */
-    private void initRecyclerView(CustomAdapter adapter, RecyclerView.LayoutManager layoutManager){
-
+    private void initRecyclerView(){
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+        adapter = new CustomAdapter(listaProdotti, this);
         recyclerView.setAdapter(adapter);
 
     }
 
-    private void addElement(CustomAdapter adapter, RecyclerView.LayoutManager layoutManager){
+    private void addElement(){
 
         Prodotto infoProdotto = new Prodotto();
-        //Gson gson = new Gson()
 
         Intent newProdotto = new Intent(getContext(), PaginaProdotto.class);
         newProdotto.putExtra("infoProdotto", infoProdotto);    //passo il riferimento all oggetto di tipo prodotto
@@ -132,16 +142,41 @@ public class MagazzinoFrag extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        //if (requestCode == REQUEST_CODE && resultCode == 1) {
-            Prodotto infoProdotto = (Prodotto) data.getExtras().get("infoProdottoReturn");
-            // deal with the item yourself
+        Log.i("!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ramo aggiunta elemento", "");
 
-            adapter.reloadList(infoProdotto);   //qua devo passare un oggetto di tipo prodotto
-            adapter.notifyDataSetChanged();
 
-        //}
+        Log.i("!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ramo aggiunta elemento", "");
+        Prodotto infoProdotto = (Prodotto) data.getExtras().get("infoProdottoReturn");
+        // deal with the item yourself
+
+        adapter.reloadList(infoProdotto);   //qua devo passare un oggetto di tipo prodotto
+        adapter.notifyDataSetChanged();
+        recyclerView.invalidate();
+
+
+        //    Log.i("!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ramo modofica elemento", "");
+         //   adapter.notifyItemChanged(testGloabLastiItemModified);
+
     }
 
+    @Override
+    public void onNoteClick(int position) {
+        Log.d("onNOteCLick-------------------------------", "" +position);
+        Prodotto infoProdotto = listaProdotti.get(position);
+
+
+        Log.d("onNOteCLick-------------------------------", ""+infoProdotto.getNomeProdotto());
+        Log.d("onNOteCLick-------------------------------", "" +infoProdotto.getNomeProdotto());
+        //Intent intent = new Intent(this.getContext(), PaginaProdotto.class);
+        //startActivity(intent);
+
+        Intent newProdotto = new Intent(getContext(), PaginaProdotto.class);
+        newProdotto.putExtra("infoProdotto", infoProdotto);    //passo il riferimento all oggetto di tipo prodotto
+
+        startActivityForResult(newProdotto, 0);
+    }
+
+    //6870 numero portinaio palazzo
 }
 
 

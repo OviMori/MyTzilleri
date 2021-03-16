@@ -5,11 +5,12 @@
     android:background="@color/white">
 
     <LinearLayout
+        android:id="@+id/clickable_item_magazzino"
+        android:clickable="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="15dp"
         android:orientation="vertical"
-        android:background="#E8E8E8"
+        android:background="#32FF9600"
         android:gravity="left">
 
 
@@ -17,6 +18,8 @@
             android:id="@+id/list_prodotti_nome_prodotto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:paddingLeft="15dp"
             android:textColor="@color/black"
             android:textSize="20dp"
             android:maxLength="20"
@@ -46,10 +49,11 @@
 
         </LinearLayout>
 
-
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_marginTop="5dp"
+            android:layout_height="1dp"
+            android:background="@color/black"/>
     </LinearLayout>
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@color/white"/>
+
 </FrameLayout>

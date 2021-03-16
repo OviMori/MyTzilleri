@@ -2,6 +2,7 @@ package com.example.mytzilleri;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AppComponentFactory;
 import android.content.Context;
@@ -15,6 +16,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -63,46 +65,76 @@ public class PaginaProdotto extends AppCompatActivity {
         telFornitore = findViewById(R.id.cellulare_fornitore);
 
         infoprodotto = (Prodotto) getIntent().getSerializableExtra("infoProdotto");
+        initInfoProdotto(infoprodotto);
 
+        back_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PaginaProdotto.super.onBackPressed();
+            }
+        });
         /**
          * Salva le modifiche del prodotto
          */
         salvaModoficheProdotto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(nomeProdotto.getText().toString() == null){
-                    nomeProdotto.setText(" ");
-                }
-                if(categoria.getText().toString() == null){
-                    nomeProdotto.setText(" ");
-                }
-                if(quantita.getText().toString() == null){
-                    nomeProdotto.setText("0");
-                }
-                if(limiteScorte.getText().toString() == null){
-                    nomeProdotto.setText("0");
-                }
-                if(nomeFornitore.getText().toString() == null){
-                    nomeProdotto.setText(" ");
-                }
-                if(emailFornitore.getText().toString() == null){
-                    nomeProdotto.setText(" ");
-                }
-                if(telFornitore.getText().toString() == null){
-                    nomeProdotto.setText("0");
+
+                if(checkEmail(emailFornitore)){
+                    if(nomeProdotto.getText().toString() == null){
+                        nomeProdotto.setText(" ");
+                        Log.i("Salvataggio--- textBox == null, scrive spazio","");
+                    }else{
+                        infoprodotto.setNomeProdotto(nomeProdotto.getText().toString());
+                        Log.i("TextBox nome == ", nomeProdotto.getText().toString());
+                        Log.i("Salvataggio--- textBox != null, salva valore","");
+                    }
+
+                    if(categoria.getText().toString() == null){
+                        categoria.setText(" ");
+                    }else{
+                        infoprodotto.setCategoria(categoria.getText().toString());
+                    }
+
+                    if(quantita.getText().toString() == null){
+                        quantita.setText("0");
+                    }else{
+                        infoprodotto.setQuantita(Integer.parseInt(quantita.getText().toString()));
+                    }
+
+                    if(limiteScorte.getText().toString() == null){
+                        limiteScorte.setText("0");
+                    }else{
+                        infoprodotto.setNotificaEsaurimentoScorte(Integer.parseInt(limiteScorte.getText().toString()));
+                    }
+
+                    if(nomeFornitore.getText().toString() == null){
+                        nomeFornitore.setText(" ");
+                    }else{
+                        infoprodotto.setNomeFornitore(nomeFornitore.getText().toString());
+                    }
+
+                    if(emailFornitore.getText().toString() == null){
+                        emailFornitore.setText(" ");
+                    }else{
+                        infoprodotto.setEmailFornitore(emailFornitore.getText().toString());
+                    }
+
+                    if(telFornitore.getText().toString() == null){
+                        telFornitore.setText("0");
+                    }else{
+                        infoprodotto.setTelFornitore(telFornitore.getText().toString());
+                    }
+
+                    Toast.makeText(PaginaProdotto.this, "Salvataggio...", Toast.LENGTH_LONG).show();
+                }else{
+                    Toast.makeText(PaginaProdotto.this, "Salvataggio fallito, 1 o piu campi non sono corretti...", Toast.LENGTH_LONG).show();
                 }
 
-                infoprodotto.setNomeProdotto(nomeProdotto.getText().toString());
-                infoprodotto.setCategoria(categoria.getText().toString());
-                infoprodotto.setQuantita(Integer.parseInt(quantita.getText().toString()));
-                infoprodotto.setNotificaEsaurimentoScorte(Integer.parseInt(limiteScorte.getText().toString()));
-                infoprodotto.setNomeFornitore(nomeFornitore.getText().toString());
-                infoprodotto.setEmailFornitore(emailFornitore.getText().toString());
-                infoprodotto.setTelFornitore(telFornitore.getText().toString());
 
-                Toast.makeText(PaginaProdotto.this, "Salvataggio...", Toast.LENGTH_LONG).show();
             }
         });
+
 
 
         immagineProdotto.setOnClickListener(new View.OnClickListener() {
@@ -138,24 +170,37 @@ public class PaginaProdotto extends AppCompatActivity {
 
     }
 
+    private boolean checkEmail(EditText email){
+        if(email.getText().toString().length() == 0 || !email.getText().toString().contains("@")){
+            email.setError("Inserire una mail valida");
+            return false;
+        }else{
+            email.setError(null);
+            return true;
+        }
+    }
+
     @Override
     public void finish() {
+        Log.d("onNOteCLick-------------------------------", "6666666666666666666666666666666666666666666666666666" );
         Intent returnIntent = new Intent();
         //returnIntent.putExtra("passed_item", 3);
         returnIntent.putExtra("infoProdottoReturn", infoprodotto);
         // setResult(RESULT_OK);
-        setResult(RESULT_OK, returnIntent); //By not passing the intent in the result, the calling activity will get null data.
+        setResult(Activity.RESULT_OK, returnIntent); //By not passing the intent in the result, the calling activity will get null data.
         super.finish();
     }
 
     public void  initInfoProdotto(Prodotto prodotto){
-        nomeProdotto.setText(prodotto.getNomeProdotto());
-        categoria.setText(prodotto.getCategoria());
-        quantita.setText(String.valueOf(prodotto.getQuantita()));
-        limiteScorte.setText(String.valueOf(prodotto.getNotificaEsaurimentoScorte()));
-        nomeFornitore.setText(prodotto.getNomeFornitore());
-        emailFornitore.setText(prodotto.getEmailFornitore());
-        telFornitore.setText(prodotto.getTelFornitore());
+        if(!prodotto.getNomeProdotto().equals(" ")){
+            nomeProdotto.setText(prodotto.getNomeProdotto());
+            categoria.setText(prodotto.getCategoria());
+            quantita.setText(String.valueOf(prodotto.getQuantita()));
+            limiteScorte.setText(String.valueOf(prodotto.getNotificaEsaurimentoScorte()));
+            nomeFornitore.setText(prodotto.getNomeFornitore());
+            emailFornitore.setText(prodotto.getEmailFornitore());
+            telFornitore.setText(prodotto.getTelFornitore());
+        }
     }
 
     @Override

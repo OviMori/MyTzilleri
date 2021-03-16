@@ -10,15 +10,28 @@ public class Prodotto  implements Serializable {
     private String telFornitore;
 
 
+    private int idKey;
+    private static int count;
+
+
     public Prodotto(){
-        /*
+
         this.nomeProdotto = " ";
         this.categoria = " ";
         this.nomeFornitore = " ";  //valore di default
         this.emailFornitore = " ";  //valore di default
         this.telFornitore = " ";  //valore di default
+        this.setIdKey(count);
+        count++;
 
-         */
+    }
+
+    public int getIdKey() {
+        return idKey;
+    }
+
+    public void setIdKey(int idKey) {
+        this.idKey = idKey;
     }
 
 
