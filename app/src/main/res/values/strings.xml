@@ -16,6 +16,28 @@
     <string name="saved_email_login">email</string>
 
 
+    <string name="spinner_scelta">Categoria</string>
+    <string name="spinner_analcolici">Analcolici</string>
+    <string name="spinner_alcolici">Alcolici</string>
+    <string name="spinner_super_alcolici">Super Alcolici</string>
+    <string name="spinner_liquori">Liquori</string>
+    <string name="spinner_spina">Spine</string>
+    <string name="spinner_frullati">Frullati</string>
+
+
+    <string-array name="spinner_categoria_array">
+        <item>Analcolico</item>
+        <item>Alcolico</item>
+        <item>Super Alcolico</item>
+        <item>Liquore</item>
+        <item>Spina</item>
+        <item>Frullato</item>
+
+
+
+    </string-array>
+
+
 
 
 

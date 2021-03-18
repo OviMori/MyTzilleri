@@ -3,8 +3,11 @@ package com.example.mytzilleri;
 import java.io.Serializable;
 
 public class Prodotto  implements Serializable {
-    private String nomeProdotto, categoria;
-    private int quantita, notificaEsaurimentoScorte;
+    private String nomeProdotto;
+    private int quantita;
+    private int notificaEsaurimentoScorte;
+    private String categoria;
+
 
     private String nomeFornitore, emailFornitore;
     private String telFornitore;
@@ -17,7 +20,6 @@ public class Prodotto  implements Serializable {
     public Prodotto(){
 
         this.nomeProdotto = " ";
-        this.categoria = " ";
         this.nomeFornitore = " ";  //valore di default
         this.emailFornitore = " ";  //valore di default
         this.telFornitore = " ";  //valore di default

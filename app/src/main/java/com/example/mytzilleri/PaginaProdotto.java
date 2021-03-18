@@ -18,11 +18,15 @@ import android.os.PersistableBundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -36,13 +40,18 @@ import androidx.core.content.ContextCompat;
 
 import java.io.Serializable;
 
-public class PaginaProdotto extends AppCompatActivity {
+public class PaginaProdotto extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private static final int PICK_FROM_GALLERY = 1;
+    ArrayAdapter<CharSequence> spinnerCatArray;
+
+
     SwitchCompat mySwitch;
     ImageView immagineProdotto, back_button;
     EditText nomeProdotto, categoria, quantita, limiteScorte, nomeFornitore, emailFornitore, telFornitore;
     Button salvaModoficheProdotto;
+    Spinner spinner;
+    TextView spinnerTextView;
 
     Prodotto infoprodotto;
 
@@ -63,6 +72,18 @@ public class PaginaProdotto extends AppCompatActivity {
         nomeFornitore = findViewById(R.id.nome_fornitore);
         emailFornitore = findViewById(R.id.email_fornitore);
         telFornitore = findViewById(R.id.cellulare_fornitore);
+
+        spinnerTextView = findViewById(R.id.text_view_categoria);
+
+        spinner = findViewById(R.id.categoria_spinner);    //identifico la risorsa xml
+        spinnerCatArray = ArrayAdapter.createFromResource(this, R.array.spinner_categoria_array, android.R.layout.simple_spinner_item);
+        //specifichiamo il layout da usare quando appare la lista di scelte dello spinner
+        spinnerCatArray.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //associamo l array allo spinner
+        spinner.setAdapter(spinnerCatArray);
+        spinner.setOnItemSelectedListener(this);
+
+
 
         infoprodotto = (Prodotto) getIntent().getSerializableExtra("infoProdotto");
         initInfoProdotto(infoprodotto);
@@ -88,12 +109,6 @@ public class PaginaProdotto extends AppCompatActivity {
                         infoprodotto.setNomeProdotto(nomeProdotto.getText().toString());
                         Log.i("TextBox nome == ", nomeProdotto.getText().toString());
                         Log.i("Salvataggio--- textBox != null, salva valore","");
-                    }
-
-                    if(categoria.getText().toString() == null){
-                        categoria.setText(" ");
-                    }else{
-                        infoprodotto.setCategoria(categoria.getText().toString());
                     }
 
                     if(quantita.getText().toString() == null){
@@ -170,6 +185,32 @@ public class PaginaProdotto extends AppCompatActivity {
 
     }
 
+    /**
+     * Funzione chiamata dallo spinner quando l utente seleziona un elemento
+     * @param parent
+     * @param view
+     * @param position
+     * @param id
+     */
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String sceltaUtente = parent.getItemAtPosition(position).toString();
+        Log.i("sceltaUtente _-------------------------", ""+sceltaUtente+ "Position:   "+position);
+        Toast.makeText(parent.getContext(), sceltaUtente, Toast.LENGTH_LONG).show();
+        spinnerTextView.setText(sceltaUtente);
+
+        infoprodotto.setCategoria(sceltaUtente);
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
+    public void initSpinnerCategoria(Context cont, Spinner spinner, TextView spinnerTextView){
+
+    }
+
     private boolean checkEmail(EditText email){
         if(email.getText().toString().length() == 0 || !email.getText().toString().contains("@")){
             email.setError("Inserire una mail valida");
@@ -192,14 +233,16 @@ public class PaginaProdotto extends AppCompatActivity {
     }
 
     public void  initInfoProdotto(Prodotto prodotto){
+        Log.i("categoria valore @@@@@@@@@@@@@@@@@@@@", ""+ prodotto.getCategoria());
         if(!prodotto.getNomeProdotto().equals(" ")){
             nomeProdotto.setText(prodotto.getNomeProdotto());
-            categoria.setText(prodotto.getCategoria());
             quantita.setText(String.valueOf(prodotto.getQuantita()));
+            spinnerTextView.setText(prodotto.getCategoria());
             limiteScorte.setText(String.valueOf(prodotto.getNotificaEsaurimentoScorte()));
             nomeFornitore.setText(prodotto.getNomeFornitore());
             emailFornitore.setText(prodotto.getEmailFornitore());
             telFornitore.setText(prodotto.getTelFornitore());
+
         }
     }
 
@@ -236,7 +279,6 @@ public class PaginaProdotto extends AppCompatActivity {
             }
         }
     }
-
 
     private void selectImage(Context context) {
         final CharSequence[] options = { "Take Photo", "Choose from Gallery","Cancel" };
