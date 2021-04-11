@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,13 +19,17 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-/**
+import com.example.mytzilleri.databinding.FragmentProfiloBinding;
+import com.google.android.material.tabs.TabLayout;
+
+ /**
  * A simple {@link Fragment} subclass.
  * Use the {@link ProfiloFrag#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class ProfiloFrag extends Fragment {
 
+    private FragmentProfiloBinding binding;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -87,40 +92,56 @@ public class ProfiloFrag extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_profilo, container, false); //MODIFICA: Salvato il valore di ritorno in "View v"
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_profilo, container, false); //MODIFICA: Salvato il valore di ritorno in "View v"
 
-        framePromemoriaUtente = v.findViewById(R.id.frame_promemoria_utente);
-        frameInfoUtente = v.findViewById(R.id.frame_info_utente);
-        linearLayoutInfoUtente = v.findViewById(R.id.linear_layout_info_utente);
 
-        inEsaurimentoArrowHome = v.findViewById(R.id.in_esaurimento_arrow);
-        nuoviMessaggiArrowHome = v.findViewById(R.id.nuovi_messaggi_arrow);
+        framePromemoriaUtente = binding.findViewById(R.id.frame_promemoria_utente);
+        frameInfoUtente = binding.findViewById(R.id.frame_info_utente);
+        linearLayoutInfoUtente = binding.findViewById(R.id.linear_layout_info_utente);
 
-        inEsaurimentoRecycler = v.findViewById(R.id.recycler_view_in_esaurimento_home);
-        nuoviMessaggiRecycler = v.findViewById(R.id.recycler_view_nuovi_messaggi_home);
+        inEsaurimentoArrowHome = binding.findViewById(R.id.in_esaurimento_arrow);
+        nuoviMessaggiArrowHome = binding.findViewById(R.id.nuovi_messaggi_arrow);
 
-        linearLayoutInEsaurimento = v.findViewById(R.id.linear_layout_in_esaurimento);
-        linearLayoutNuoviMessaggi = v.findViewById(R.id.linear_layout_nuovi_messaggi);
+        inEsaurimentoRecycler = binding.findViewById(R.id.recycler_view_in_esaurimento_home);
+        nuoviMessaggiRecycler = binding.findViewById(R.id.recycler_view_nuovi_messaggi_home);
 
-        edit_nome_utente = v.findViewById(R.id.info_utente_nome);
-        edit_cognome_utente = v.findViewById(R.id.info_utente_cognome);
-        edit_indirizzo = v.findViewById(R.id.info_utente_indirizzo);
-        edit_cellulare = v.findViewById(R.id.info_utente_cellulare);
-        edit_bio = v.findViewById(R.id.info_utente_bio);
+        linearLayoutInEsaurimento = binding.findViewById(R.id.linear_layout_in_esaurimento);
+        linearLayoutNuoviMessaggi = binding.findViewById(R.id.linear_layout_nuovi_messaggi);
 
-        text_top_nome = v.findViewById(R.id.top_nome_utente);
-        text_top_cognome = v.findViewById(R.id.top_cognome_utente);
-        text_top_cellulare = v.findViewById(R.id.top_cellulare);
-        text_top_indirizzo = v.findViewById(R.id.top_indirizzo);
-        text_top_bio = v.findViewById(R.id.top_bio);
+        edit_nome_utente = binding.findViewById(R.id.info_utente_nome);
+        edit_cognome_utente = binding.findViewById(R.id.info_utente_cognome);
+        edit_indirizzo = binding.findViewById(R.id.info_utente_indirizzo);
+        edit_cellulare = binding.findViewById(R.id.info_utente_cellulare);
+        edit_bio = binding.findViewById(R.id.info_utente_bio);
 
-        salvaDatiUtente = v.findViewById(R.id.aggiorna_dati_utente);
+        text_top_nome = binding.findViewById(R.id.top_nome_utente);
+        text_top_cognome = binding.findViewById(R.id.top_cognome_utente);
+        text_top_cellulare = binding.findViewById(R.id.top_cellulare);
+        text_top_indirizzo = binding.findViewById(R.id.top_indirizzo);
+        text_top_bio = binding.findViewById(R.id.top_bio);
+
+        salvaDatiUtente = binding.findViewById(R.id.aggiorna_dati_utente);
 
         setCampiConDatiUtente();
 
+        binding.tabController.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+                                                           @Override
+                                                           public void onTabSelected(TabLayout.Tab tab) {
+
+                                                           }
+
+                                                           @Override
+                                                           public void onTabUnselected(TabLayout.Tab tab) {
+
+                                                           }
+
+                                                           @Override
+                                                           public void onTabReselected(TabLayout.Tab tab) {
+
+                                                           }
+                                                       });
 
         salvaDatiUtente.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -184,7 +205,7 @@ public class ProfiloFrag extends Fragment {
         });
 
 
-        return v;
+        return binding.getRoot();
     }
 
     private void aggiornaDatiUtente(){

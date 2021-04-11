@@ -14,6 +14,7 @@
     <string name="saved_bio_utente">bioUtente</string>
     <string name="saved_password_login">password</string>
     <string name="saved_email_login">email</string>
+    <string name="nuovo_utente_registrati">Nuovo utente? Registrati</string>
 
 
     <string name="spinner_scelta">Categoria</string>

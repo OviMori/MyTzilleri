@@ -17,31 +17,27 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.databinding.DataBindingUtil;
+
+import com.example.mytzilleri.databinding.CreaNuovoUtenteLayoutBinding;
 
 public class RegistrazioneActivity extends AppCompatActivity {
-
-    EditText nome, cognome, email, password, confermaPassword;
-    Button registrazione;
-    ImageButton backButton;
+    private CreaNuovoUtenteLayoutBinding  binding;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.crea_nuovo_utente_layout);
 
-        nome = findViewById(R.id.created_name);
-        cognome = findViewById(R.id.created_sname);
-        email = findViewById(R.id.created_email);
-        password = findViewById(R.id.created_password);
-        confermaPassword = findViewById(R.id.created_confirm_password);
-        backButton = findViewById(R.id.back_button_registrazione);
-        registrazione = findViewById(R.id.salva_credenziali_button);
+        binding = DataBindingUtil.setContentView(this, R.layout.crea_nuovo_utente_layout);
+
 
 
         /**
          * tasto indietro tramite l icona del layout
          */
-        backButton.setOnClickListener(new View.OnClickListener() {
+        binding.backButtonRegistrazione.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 RegistrazioneActivity.super.onBackPressed();
@@ -51,15 +47,21 @@ public class RegistrazioneActivity extends AppCompatActivity {
         /**
          * pulsante per il controllo e salvataggio dei dati
          */
-        registrazione.setOnClickListener(new View.OnClickListener() {
+        binding.salvaCredenzialiButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //chiamare le funzioni per il check dell input dell utente
 
                 //controllo che password, conferma password e email siano corrette
-                if(checkPassword(password, confermaPassword) && checkEmail(email)){
+                if(checkPassword(
+                        binding.createdPassword.getEditText().getText().toString(), binding.createdConfirmPassword.getEditText().getText().toString())
+                        && checkEmail(binding.createdEmail.getEditText().getText().toString())){
                     //salvataggio delle credenziali nei preferiti
-                    salvaCredenziali(nome.getText().toString(), cognome.getText().toString(), email.getText().toString(), password.getText().toString());
+                    salvaCredenziali(
+                            binding.createdName.getEditText().getText().toString(),
+                            binding.createdSname.getEditText().getText().toString(),
+                            binding.createdEmail.getEditText().getText().toString(),
+                            binding.createdPassword.getEditText().getText().toString());
                     RegistrazioneActivity.super.onBackPressed();
 
                 }
@@ -77,12 +79,12 @@ public class RegistrazioneActivity extends AppCompatActivity {
         super.finish();
     }
 
-    private boolean checkEmail(EditText email){
-        if(email.getText().toString().length() == 0 || !email.getText().toString().contains("@")){
-            email.setError("Inserire una mail valida");
+    private boolean checkEmail(String email){
+        if(email.length() == 0 || !email.contains("@")){
+            binding.createdEmail.setError("Inserire una mail valida");
             return false;
         }else{
-            email.setError(null);
+            binding.createdEmail.setError(null);
             return true;
         }
     }
@@ -93,15 +95,15 @@ public class RegistrazioneActivity extends AppCompatActivity {
      * @param confirmPassword
      * @return true se le due string coincidono
      */
-    private boolean checkPassword(EditText password, EditText confirmPassword){
+    private boolean checkPassword(String password, String confirmPassword){
 
-        if(password.getText().toString().length() == 0
-                || confirmPassword.getText().toString().length() == 0
-                || !password.getText().toString().equals(confirmPassword.getText().toString())){
-            password.setError("Le password inserite non corrispondono");
+        if(password.length() == 0
+                || confirmPassword.length() == 0
+                || !password.equals(confirmPassword)){
+            binding.createdPassword.setError("Le password inserite non corrispondono");
             return false;
         }else{
-            password.setError(null);
+            binding.createdPassword.setError(null);
             return true;
         }
     }

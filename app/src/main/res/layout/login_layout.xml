@@ -1,154 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/bg_login_app">
-
-
+<layout>
     <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:padding="30dp"
         android:orientation="vertical"
-        android:weightSum="5">
+        android:background="@drawable/bg_login_app">
+
+        <TextView
+            android:id="@+id/text_view_benvenuto"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="110dp"
+            android:layout_marginBottom="50dp"
+            android:text="Benvenuto "
+            android:textSize="45dp"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            />
 
 
-        <LinearLayout
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edittext_email"
+            style="@style/Theme.App.EditTextFields"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="150dp"
-            android:layout_marginLeft="20dp"
-            android:gravity="left"
-            android:orientation="horizontal">
+            app:errorEnabled="true"
+            android:hint="Email">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:textSize="35dp"
-                android:textStyle="bold"
-                android:textColor="@color/voce_elenco_grey"
-                android:text="Accedi"
-                />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_weight="0"
-            android:orientation="vertical">
-
-
-            <TextView
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="10dp"
-                android:gravity="center"
-                android:textSize="20dp"
-                android:text="Email"
-                style="@style/VociElenco"/>
-
-
-            <EditText
-                android:id="@+id/edittext_email"
+            <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="7dp"
-                android:layout_marginRight="10dp"
-                android:gravity="left"
-                android:text=""
-                android:textSize="20dp"
-                android:textColor="@color/black"
-                android:background="@drawable/edittext_bottom_line"
                 />
 
-            <TextView
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:gravity="center"
-                android:textSize="20dp"
-                android:text="Password"
-                style="@style/VociElenco"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
-                android:id="@+id/edittext_password"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edittext_password"
+            style="@style/Theme.App.EditTextFields"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:endIconMode="password_toggle"
+            app:errorEnabled="true"
+            android:hint="Password">
+
+            <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="7dp"
-                android:gravity="left"
-                android:text=""
-                android:textSize="20dp"
-                android:textColor="@color/black"
-                android:password="true"
-                android:background="@drawable/edittext_bottom_line"
+                android:inputType="textPassword"
                 />
 
+        </com.google.android.material.textfield.TextInputLayout>
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/accedi_button"
+            style="@style/Theme.App.Buttons"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:layout_gravity="center"
+            android:text="Accedi"
+            />
 
-            <Button
-                android:id="@+id/accedi_button"
-                android:clickable="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="4dp"
-                android:textAllCaps="true"
-                android:textStyle="bold"
-                android:textSize="30dp"
-                android:background="@color/main_orange"
-                android:text="ACCEDI"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/registrati_button"
+            style="@style/Theme.App.Links"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal"
-            android:gravity="center">
-
-
-            <Button
-                android:id="@+id/registrati_button"
-                android:clickable="true"
-                android:layout_width="90dp"
-                android:layout_height="25dp"
-                android:paddingBottom="4dp"
-                android:layout_marginTop="5dp"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:textAllCaps="true"
-                android:textColor="@color/black"
-                android:background="@drawable/edittext_bottom_line"
-                android:text="registrati"
-                android:backgroundTint="#9E9E9E" />
-
-
-
-        </LinearLayout>
-
-
-
-
+            android:layout_gravity="center"
+            android:text="Nuovo utente? Registrati"
+            />
 
     </LinearLayout>
-
-
-
-
-
-
-</LinearLayout>
+</layout>

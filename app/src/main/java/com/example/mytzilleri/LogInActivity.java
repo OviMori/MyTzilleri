@@ -11,40 +11,37 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.example.mytzilleri.databinding.LoginLayoutBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class LogInActivity extends AppCompatActivity {
-
-    EditText editEmail, editPassword;
-    Button accedi, registrati;
-    String email, password;
+    private LoginLayoutBinding binding;
 
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_layout);
+        binding = DataBindingUtil.setContentView(this, R.layout.login_layout);
 
         FragmentManager fragM = getSupportFragmentManager();
         PopUpErrorLogIn dialogErrorFrag = new PopUpErrorLogIn();
 
-        editEmail = findViewById(R.id.edittext_email);
-        editPassword = findViewById(R.id.edittext_password);
-        accedi = findViewById(R.id.accedi_button);
-        registrati = findViewById(R.id.registrati_button);
-
-
         checkCredenzialiGiaSalvate();   //riempimento automatico se le credenziali sono gia state salvate
 
-        registrati.setOnClickListener(new View.OnClickListener() {
+
+        binding.registratiButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Intent intent = new Intent(LogInActivity.this, RegistrazioneActivity.class);
@@ -54,11 +51,11 @@ public class LogInActivity extends AppCompatActivity {
             }
         });
 
-        accedi.setOnClickListener(new View.OnClickListener() {
+        binding.accediButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //controllo credenziali
-                if(controlloCredenziali(editEmail.getText().toString(), editPassword.getText().toString())){   //se le credenziali sono corrette
+                if(controlloCredenziali(binding.edittextEmail.getEditText().getText().toString(), binding.edittextPassword.getEditText().getText().toString())){   //se le credenziali sono corrette
                     LogInActivity.super.onBackPressed();
 
                 } else{
@@ -83,8 +80,8 @@ public class LogInActivity extends AppCompatActivity {
         if(savedEmail.equals("") || savedPassword.equals("")){
             return false;
         }else{
-            editEmail.setText(savedEmail);
-            editPassword.setText(savedPassword);
+            binding.edittextEmail.getEditText().setText(savedEmail);
+            binding.edittextPassword.getEditText().setText(savedPassword);
             return true;
         }
     }

@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/white"
-    tools:context=".ProfiloFrag"
-    android:weightSum="1">
+<layout>
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white"
+        tools:context=".ProfiloFrag"
+        android:weightSum="1">
 
 
 
@@ -153,381 +154,31 @@
                         android:maxLength="15"
                         android:textColor="@color/black"
                         android:text="#ProvaBioUtente"/>
-
-
-
                 </LinearLayout>
 
-
             </LinearLayout>
 
-
-            <LinearLayout
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tab_controller"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:visibility="visible">
+                android:layout_height="wrap_content">
 
 
-                <FrameLayout
-                    android:id="@+id/frame_promemoria_utente"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:visibility="visible">
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Messaggi"
+                    />
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="5dp"
-                        android:background="#454545"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"/>
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Account"
+                    />
 
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="40dp"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:id="@+id/linear_layout_in_esaurimento"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:clickable="true">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="10dp"
-                                android:padding="5dp"
-                                android:gravity="center"
-                                android:textSize="15dp"
-                                android:textColor="@color/black"
-                                android:text="In esaurimento: " />
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:gravity="right"
-                                android:orientation="horizontal">
-
-                                <ImageButton
-                                    android:id="@+id/in_esaurimento_arrow"
-                                    android:layout_width="25dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_marginRight="10dp"
-                                    android:background="@drawable/drop_menu_arrow_right"
-                                    android:backgroundTint="@color/black"/>
-
-
-                            </LinearLayout>
-
-
-
-                        </LinearLayout>
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="3dp"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            android:background="@color/main_orange" />
-
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/recycler_view_in_esaurimento_home"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            android:visibility="gone">
-
-                        </androidx.recyclerview.widget.RecyclerView>
-
-                        <Space
-                            android:layout_width="match_parent"
-                            android:layout_height="15dp"/>
-
-                        <LinearLayout
-                            android:id="@+id/linear_layout_nuovi_messaggi"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:clickable="true">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="10dp"
-                                android:padding="5dp"
-                                android:gravity="center"
-                                android:textSize="15dp"
-                                android:textColor="@color/black"
-                                android:text="Nuovi messaggi: " />
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:gravity="right"
-                                android:orientation="horizontal">
-
-                                <ImageButton
-                                    android:id="@+id/nuovi_messaggi_arrow"
-                                    android:layout_width="25dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_marginRight="10dp"
-                                    android:background="@drawable/drop_menu_arrow_right"
-                                    android:backgroundTint="@color/black"/>
-
-
-                            </LinearLayout>
-                        </LinearLayout>
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="3dp"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            android:background="@color/main_orange" />
-
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/recycler_view_nuovi_messaggi_home"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="30dp"
-                            android:layout_marginRight="30dp"
-                            android:visibility="gone">
-
-                        </androidx.recyclerview.widget.RecyclerView>
-
-                    </LinearLayout>
-
-                </FrameLayout>
-
-                <FrameLayout
-                    android:id="@+id/frame_info_utente"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:visibility="gone">
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="5dp"
-                        android:background="@color/main_orange"
-                        android:layout_marginLeft="25dp"
-                        android:layout_marginRight="25dp"/>
-
-                    <ScrollView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="20dp"
-                        android:layout_gravity="center">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="10dp"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginLeft="10dp"
-                                android:gravity="center"
-                                android:textSize="25dp"
-                                android:textColor="@color/black"
-                                android:text="Informazioni personali"/>
-
-                            <TextView
-                                android:layout_marginRight="10dp"
-                                android:layout_marginLeft="10dp"
-                                android:gravity="center"
-                                android:textSize="20dp"
-                                android:text="Attenzione!"
-                                style="@style/VociElenco"/>
-
-                            <TextView
-                                android:layout_marginRight="10dp"
-                                android:layout_marginBottom="5dp"
-                                android:layout_marginLeft="10dp"
-                                android:gravity="center"
-                                android:textSize="15dp"
-                                android:text="Le informazioni inserite saranno pubbliche "
-                                style="@style/VociElenco"/>
-
-                            <TextView
-                                android:layout_marginRight="10dp"
-                                android:layout_marginTop="20dp"
-                                android:layout_marginLeft="10dp"
-                                android:gravity="center"
-                                android:textSize="15dp"
-                                android:text="Nome"
-                                style="@style/VociElenco"/>
-
-
-                            <EditText
-                                android:id="@+id/info_utente_nome"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="10dp"
-                                android:layout_marginLeft="7dp"
-                                android:gravity="left"
-                                android:textSize="20dp"
-                                android:textColor="@color/black"
-                                android:maxLength="15"
-                                android:text=""/>
-
-                            <View
-                                android:layout_marginRight="10dp"
-                                android:layout_marginLeft="10dp"
-                                style="@style/Separator" />
-
-                            <TextView
-                                android:layout_marginRight="10dp"
-                                android:layout_marginTop="20dp"
-                                android:layout_marginLeft="10dp"
-                                android:gravity="center"
-                                android:textSize="15dp"
-                                android:text="Cognome"
-                                style="@style/VociElenco"/>
-
-
-                            <EditText
-                                android:id="@+id/info_utente_cognome"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="10dp"
-                                android:layout_marginLeft="7dp"
-                                android:gravity="left"
-                                android:textSize="20dp"
-                                android:maxLength="15"
-                                android:textColor="@color/black"
-                                android:text=""/>
-
-                            <View
-                                android:layout_marginRight="10dp"
-                                android:layout_marginLeft="10dp"
-                                style="@style/Separator" />
-
-                            <TextView
-                                android:layout_marginRight="10dp"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginLeft="10dp"
-                                android:gravity="center"
-                                android:textSize="15dp"
-                                android:text="Email"
-                                style="@style/VociElenco"/>
-
-                            <EditText
-                                android:id="@+id/info_utente_indirizzo"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="10dp"
-                                android:layout_marginLeft="7dp"
-                                android:gravity="left"
-                                android:textSize="20dp"
-                                android:maxLength="15"
-                                android:textColor="@color/black"
-                                android:text=""/>
-
-                            <View
-                                android:layout_marginRight="10dp"
-                                android:layout_marginLeft="10dp"
-                                style="@style/Separator" />
-
-
-                            <TextView
-                                android:layout_marginRight="10dp"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginLeft="10dp"
-                                android:gravity="center"
-                                android:textSize="15dp"
-                                android:text="Cellulare"
-                                style="@style/VociElenco"/>
-
-                            <EditText
-                                android:id="@+id/info_utente_cellulare"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="10dp"
-                                android:layout_marginLeft="7dp"
-                                android:gravity="left"
-                                android:textSize="20dp"
-                                android:maxLength="15"
-                                android:textColor="@color/black"
-                                android:text=""/>
-
-                            <View
-                                android:layout_marginRight="10dp"
-                                android:layout_marginLeft="10dp"
-                                style="@style/Separator" />
-
-
-                            <TextView
-                                android:layout_marginRight="10dp"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginLeft="10dp"
-                                android:gravity="center"
-                                android:textSize="15dp"
-                                android:text="Bio"
-                                style="@style/VociElenco"/>
-
-                            <EditText
-                                android:id="@+id/info_utente_bio"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="10dp"
-                                android:layout_marginLeft="7dp"
-                                android:gravity="left"
-                                android:textSize="20dp"
-                                android:maxLength="50"
-                                android:textColor="@color/black"
-                                android:text="njdkljdahfjdklajdahfjdajflkdahjfdlhjandjclasjdahjfldhajklfdhjkafhdjlahfjdklashjfdklahfjdl"/>
-
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:orientation="vertical"
-                                android:gravity="center">
-
-                                <Button
-                                    android:id="@+id/aggiorna_dati_utente"
-                                    android:clickable="true"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:padding="4dp"
-                                    android:layout_marginTop="5dp"
-                                    android:layout_marginRight="20dp"
-                                    android:layout_gravity="right"
-                                    android:textStyle="bold"
-                                    android:textSize="15dp"
-                                    android:background="@color/main_orange"
-                                    android:text="Salva Modifiche"/>
-
-                            </LinearLayout>
-
-
-                            <View
-                                android:layout_marginRight="10dp"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginBottom="100dp"
-                                style="@style/Separator" />
-
-                        </LinearLayout>
-
-
-                    </ScrollView>
-
-                </FrameLayout>
-
-            </LinearLayout>
+            </com.google.android.material.tabs.TabLayout>
 
         </LinearLayout>
 
-</LinearLayout>
+    </LinearLayout>
+</layout>

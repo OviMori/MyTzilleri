@@ -29,7 +29,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
             android:orientation="horizontal">
 
             <TextView
@@ -48,7 +48,7 @@
         android:layout_height="match_parent"
         android:overScrollMode="always"
 
-        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
         android:layout_marginRight="20dp"
         android:layout_gravity="center">
 
@@ -63,7 +63,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginRight="10dp"
                 android:orientation="horizontal"
                 android:layout_weight="3.5"
@@ -96,7 +96,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="20dp"
                     android:layout_marginRight="20dp"
                     android:orientation="vertical">
 
@@ -107,13 +107,13 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginStart="10dp"
                         android:orientation="vertical">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="-10dp"
+                            android:layout_marginStart="-10dp"
                             android:layout_marginTop="20dp"
                             android:layout_marginBottom="10dp"
                             android:layout_gravity="center"
@@ -125,7 +125,7 @@
                     <TextView
                         android:layout_marginRight="10dp"
                         android:layout_marginTop="20dp"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginStart="10dp"
                         android:gravity="center"
                         android:textSize="15dp"
                         style="@style/VociElenco"
@@ -137,12 +137,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="130dp"
-                        android:layout_marginLeft="10dp"
-                        android:gravity="left"
+                        android:layout_marginStart="10dp"
+                        android:gravity="start"
                         android:textSize="20dp"
-                        android:text=""
-                        android:hint="Nome prodotto"
-                        style="@style/EditTextElenco"/>
+                        android:hint="Nome prodotto" />
 
                     <Space
                         android:layout_width="match_parent"
@@ -150,7 +148,7 @@
 
                     <TextView
                         android:layout_marginRight="130dp"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginStart="10dp"
                         android:gravity="center"
                         android:textSize="15dp"
                         style="@style/VociElenco"
@@ -162,12 +160,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="130dp"
-                        android:layout_marginLeft="10dp"
-                        android:gravity="left"
+                        android:layout_marginStart="10dp"
+                        android:gravity="start"
                         android:textSize="20dp"
-                        android:text=""
-                        android:hint="Categoria"
-                        style="@style/EditTextElenco"/>
+                        android:hint="Categoria" />
 
 
 
@@ -179,7 +175,7 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:layout_marginLeft="10dp"
+                            android:layout_marginStart="10dp"
                             android:gravity="center"
                             android:textSize="20dp"
                             style="@style/VociElenco"
@@ -190,7 +186,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="25dp"
                             android:layout_marginRight="10dp"
-                            android:layout_marginLeft="10dp"
+                            android:layout_marginStart="10dp"
                             android:padding="2dp"
                             android:gravity="center"
                             android:textSize="17dp"
@@ -216,7 +212,7 @@
 
                     <TextView
                         android:layout_marginRight="10dp"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginStart="10dp"
                         android:gravity="center"
                         android:textSize="15dp"
                         style="@style/VociElenco"
@@ -228,13 +224,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="130dp"
-                        android:layout_marginLeft="10dp"
-                        android:gravity="left"
+                        android:layout_marginStart="10dp"
+                        android:gravity="start"
                         android:textSize="20dp"
-                        android:text=""
                         android:inputType="number"
-                        android:hint="20"
-                        style="@style/EditTextElenco"/>
+                        android:hint="20" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -250,7 +244,7 @@
 
                             <TextView
                                 android:layout_marginRight="10dp"
-                                android:layout_marginLeft="10dp"
+                                android:layout_marginStart="10dp"
                                 android:gravity="center"
                                 android:textSize="15dp"
                                 style="@style/VociElenco"
@@ -261,13 +255,11 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginRight="151dp"
-                                android:layout_marginLeft="7dp"
-                                android:gravity="left"
+                                android:layout_marginStart="7dp"
+                                android:gravity="start"
                                 android:textSize="20dp"
-                                android:text=""
                                 android:inputType="number"
-                                android:hint="1"
-                                style="@style/EditTextElenco"/>
+                                android:hint="1" />
 
                         </LinearLayout>
 
@@ -292,14 +284,14 @@
                         android:layout_marginTop="30dp"
                         android:layout_marginBottom="20dp"
                         android:layout_marginRight="10dp"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginStart="10dp"
                         style="@style/Separator" />
 
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginStart="10dp"
                         android:orientation="vertical">
 
                         <TextView
@@ -337,13 +329,11 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="30dp"
                                         android:layout_marginRight="130dp"
-                                        android:layout_marginLeft="7dp"
-                                        android:gravity="left"
+                                        android:layout_marginStart="7dp"
+                                        android:gravity="start"
                                         android:textSize="15dp"
-                                        android:text=""
                                         android:hint="Mario Rossi"
-                                        android:background="@drawable/edittext_bottom_line"
-                                        style="@style/EditTextElenco"/>
+                                        android:background="@drawable/edittext_bottom_line" />
 
                                 </LinearLayout>
 
@@ -369,13 +359,11 @@
                                         android:id="@+id/email_fornitore"
                                         android:layout_width="wrap_content"
                                         android:layout_height="30dp"
-                                        android:layout_marginLeft="7dp"
-                                        android:gravity="left"
+                                        android:layout_marginStart="7dp"
+                                        android:gravity="start"
                                         android:textSize="15dp"
-                                        android:text=""
                                         android:hint="Mariorossi@gmail.com"
-                                        android:background="@drawable/edittext_bottom_line"
-                                        style="@style/EditTextElenco"/>
+                                        android:background="@drawable/edittext_bottom_line" />
 
                                 </LinearLayout>
 
@@ -401,14 +389,12 @@
                                         android:id="@+id/cellulare_fornitore"
                                         android:layout_width="wrap_content"
                                         android:layout_height="30dp"
-                                        android:layout_marginLeft="7dp"
-                                        android:gravity="left"
+                                        android:layout_marginStart="7dp"
+                                        android:gravity="start"
                                         android:textSize="15dp"
                                         android:inputType="number"
-                                        android:text=""
                                         android:hint="1234567890"
-                                        android:background="@drawable/edittext_bottom_line"
-                                        style="@style/EditTextElenco"/>
+                                        android:background="@drawable/edittext_bottom_line" />
 
                                 </LinearLayout>
 
