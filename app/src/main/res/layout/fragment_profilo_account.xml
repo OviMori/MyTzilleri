@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <FrameLayout
+        android:id="@+id/frame_info_utente"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="@color/main_orange"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:layout_gravity="center">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:textSize="25dp"
+                    android:textColor="@color/black"
+                    android:text="Informazioni personali"/>
+
+                <TextView
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:textSize="20dp"
+                    android:text="Attenzione!"
+                    style="@style/VociElenco"/>
+
+                <TextView
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:textSize="15dp"
+                    android:text="Le informazioni inserite saranno pubbliche "
+                    style="@style/VociElenco"/>
+
+                <TextView
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:textSize="15dp"
+                    android:text="Nome"
+                    style="@style/VociElenco"/>
+
+
+                <EditText
+                    android:id="@+id/info_utente_nome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="7dp"
+                    android:gravity="left"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
+                    android:maxLength="15"
+                    android:text=""/>
+
+                <View
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    style="@style/Separator" />
+
+                <TextView
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:textSize="15dp"
+                    android:text="Cognome"
+                    style="@style/VociElenco"/>
+
+
+                <EditText
+                    android:id="@+id/info_utente_cognome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="7dp"
+                    android:gravity="left"
+                    android:textSize="20dp"
+                    android:maxLength="15"
+                    android:textColor="@color/black"
+                    android:text=""/>
+
+                <View
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    style="@style/Separator" />
+
+                <TextView
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:textSize="15dp"
+                    android:text="Email"
+                    style="@style/VociElenco"/>
+
+                <EditText
+                    android:id="@+id/info_utente_indirizzo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="7dp"
+                    android:gravity="left"
+                    android:textSize="20dp"
+                    android:maxLength="15"
+                    android:textColor="@color/black"
+                    android:text=""/>
+
+                <View
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    style="@style/Separator" />
+
+
+                <TextView
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:textSize="15dp"
+                    android:text="Cellulare"
+                    style="@style/VociElenco"/>
+
+                <EditText
+                    android:id="@+id/info_utente_cellulare"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="7dp"
+                    android:gravity="left"
+                    android:textSize="20dp"
+                    android:maxLength="15"
+                    android:textColor="@color/black"
+                    android:text=""/>
+
+                <View
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    style="@style/Separator" />
+
+
+                <TextView
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:textSize="15dp"
+                    android:text="Bio"
+                    style="@style/VociElenco"/>
+
+                <EditText
+                    android:id="@+id/info_utente_bio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="7dp"
+                    android:gravity="left"
+                    android:textSize="20dp"
+                    android:maxLength="50"
+                    android:textColor="@color/black"
+                    android:text="njdkljdahfjdklajdahfjdajflkdahjfdlhjandjclasjdahjfldhajklfdhjkafhdjlahfjdklashjfdklahfjdl"/>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <Button
+                        android:id="@+id/aggiorna_dati_utente"
+                        android:clickable="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="4dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_gravity="right"
+                        android:textStyle="bold"
+                        android:textSize="15dp"
+                        android:background="@color/main_orange"
+                        android:text="Salva Modifiche"/>
+
+                </LinearLayout>
+
+
+                <View
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="100dp"
+                    style="@style/Separator" />
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+    </FrameLayout>
+
+</LinearLayout>
