@@ -1,5 +1,6 @@
 package com.example.mytzilleri;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
@@ -20,6 +21,7 @@ public class TabAdapter extends FragmentStatePagerAdapter {
         mFragmentList.add(fragment);
         mFragmentTitleList.add(title);
     }
+    @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
         return mFragmentTitleList.get(position);

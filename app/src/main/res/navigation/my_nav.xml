@@ -8,9 +8,9 @@
 
     <fragment
         android:id="@+id/profiloFrag"
-        android:name="com.example.mytzilleri.ProfiloFrag"
+        android:name="com.example.mytzilleri.ProfiloHome"
         android:label="fragment_profilo"
-        tools:layout="@layout/fragment_profilo" />
+        tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/turniFrag"
         android:name="com.example.mytzilleri.TurniFrag"

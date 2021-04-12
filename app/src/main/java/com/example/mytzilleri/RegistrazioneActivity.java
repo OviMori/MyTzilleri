@@ -53,8 +53,7 @@ public class RegistrazioneActivity extends AppCompatActivity {
                 //chiamare le funzioni per il check dell input dell utente
 
                 //controllo che password, conferma password e email siano corrette
-                if(checkPassword(
-                        binding.createdPassword.getEditText().getText().toString(), binding.createdConfirmPassword.getEditText().getText().toString())
+                if(checkPassword(binding.createdPassword.getEditText().getText().toString(), binding.createdConfirmPassword.getEditText().getText().toString())
                         && checkEmail(binding.createdEmail.getEditText().getText().toString())){
                     //salvataggio delle credenziali nei preferiti
                     salvaCredenziali(
@@ -62,8 +61,7 @@ public class RegistrazioneActivity extends AppCompatActivity {
                             binding.createdSname.getEditText().getText().toString(),
                             binding.createdEmail.getEditText().getText().toString(),
                             binding.createdPassword.getEditText().getText().toString());
-                    RegistrazioneActivity.super.onBackPressed();
-
+                    finish();
                 }
             }
         });
@@ -72,10 +70,11 @@ public class RegistrazioneActivity extends AppCompatActivity {
 
     @Override
     public void finish() {
-        Intent returnIntent = new Intent();
+        Intent returnIntent = new Intent(RegistrazioneActivity.this, LogInActivity.class);
         returnIntent.putExtra("passed_item", -1);
         // setResult(RESULT_OK);
         setResult(RESULT_OK, returnIntent); //By not passing the intent in the result, the calling activity will get null data.
+        startActivity(returnIntent);
         super.finish();
     }
 
@@ -113,35 +112,18 @@ public class RegistrazioneActivity extends AppCompatActivity {
      *  Salvataggio dei dati dell utente
      */
     @SuppressLint("ApplySharedPref")
-    private void salvaCredenziali(String nome, String cognome, String email, String password){
-        SharedPreferences.Editor editor = getSharedPreferences(getString(R.string.preference_file_key), 0).edit();
-        editor.putString(getString(R.string.saved_nome_login), nome);
-        editor.commit();
+    private boolean salvaCredenziali(String nome, String cognome, String email, String password){
 
-        Log.i("nome", nome);
-
-        editor.putString(getString(R.string.saved_nome_utente), nome);
-        editor.commit();
-
-        editor.putString(getString(R.string.saved_cognome_utente), cognome);
-        editor.commit();
-
-        Log.i("cognome", cognome);
-
-        editor.putString(getString(R.string.saved_email_login), email);
-        editor.commit();
-
-        editor.putString(getString(R.string.saved_indirizzo_utente), email);
-        editor.commit();
-
-        Log.i("email", email);
-
-        editor.putString(getString(R.string.saved_password_login), password);
-        editor.commit();
-
-        Log.i("password", password);
-
-        Toast.makeText(RegistrazioneActivity.this, "Credenziali salvate", Toast.LENGTH_LONG).show();
+        if(!DataRepository.INSTANCE.userExist(email)){
+            //create new user
+            Utente newUser = new Utente(nome, cognome, email, password, false, 1);
+            DataRepository.INSTANCE.salvaUtente(newUser);
+            Toast.makeText(RegistrazioneActivity.this, "Credenziali salvate", Toast.LENGTH_LONG).show();
+            return true;
+        }else{
+            //comunicate user already exist
+            return false;
+        }
     }
 
 }

@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_login_app"
-        android:padding="20dp"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_login_app"
+            android:padding="20dp"
+            android:orientation="vertical">
 
 
             <ImageButton
@@ -37,23 +41,24 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/created_name"
-                style="@style/Theme.App.EditTextFields"
+                style="@style/LoginTextInputLayoutStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="Nome"
                 app:errorEnabled="true"
-                android:hint="Nome">
+                app:hintAnimationEnabled="false">
 
 
                 <com.google.android.material.textfield.TextInputEditText
+                    style="@style/MyEditTextAppearanceText"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    />
+                    android:layout_height="wrap_content" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/created_sname"
-                style="@style/Theme.App.EditTextFields"
+                style="@style/LoginTextInputLayoutStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:errorEnabled="true"
@@ -61,6 +66,7 @@
 
 
                 <com.google.android.material.textfield.TextInputEditText
+                    style="@style/MyEditTextAppearanceText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     />
@@ -69,7 +75,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/created_email"
-                style="@style/Theme.App.EditTextFields"
+                style="@style/LoginTextInputLayoutStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:errorEnabled="true"
@@ -77,6 +83,7 @@
 
 
                 <com.google.android.material.textfield.TextInputEditText
+                    style="@style/MyEditTextAppearanceText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     />
@@ -85,7 +92,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/created_password"
-                style="@style/Theme.App.EditTextFields"
+                style="@style/LoginTextInputLayoutStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:errorEnabled="true"
@@ -94,6 +101,7 @@
 
 
                 <com.google.android.material.textfield.TextInputEditText
+                    style="@style/MyEditTextAppearanceText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
@@ -103,7 +111,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/created_confirm_password"
-                style="@style/Theme.App.EditTextFields"
+                style="@style/LoginTextInputLayoutStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:errorEnabled="true"
@@ -112,6 +120,7 @@
 
 
                 <com.google.android.material.textfield.TextInputEditText
+                    style="@style/MyEditTextAppearanceText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
@@ -126,8 +135,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Registrati"/>
+                android:text="Registrati"
+                android:textColor="@color/white"/>
 
 
-    </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
 </layout>

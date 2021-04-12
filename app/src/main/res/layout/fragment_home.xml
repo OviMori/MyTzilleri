@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:background="@color/white"
-        tools:context=".ProfiloFrag"
-        android:weightSum="1">
-
+        android:orientation="vertical"
+        android:weightSum="1"
+        tools:context=".ProfiloHome">
 
 
         <LinearLayout
@@ -32,7 +31,7 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_gravity="center"
-                        android:background="@drawable/menu_icon"/>
+                        android:background="@drawable/menu_icon" />
 
                 </LinearLayout>
 
@@ -46,9 +45,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:textStyle="bold"
+                        android:text="Home"
                         android:textSize="30dp"
-                        android:text="Home"/>
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
@@ -61,8 +60,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/hint_grey"
-                android:gravity="center"
                 android:clickable="true"
+                android:gravity="center"
                 android:orientation="vertical"
                 android:visibility="visible">
 
@@ -72,8 +71,8 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_marginBottom="10dp"
-                    android:gravity="center"
                     android:foreground="@drawable/profilo_icon"
+                    android:gravity="center"
                     android:visibility="visible" />
 
                 <LinearLayout
@@ -91,13 +90,13 @@
                             android:id="@+id/top_nome_utente"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="5dp"
                             android:layout_marginRight="3dp"
+                            android:layout_marginBottom="5dp"
                             android:gravity="center"
-                            android:textStyle="bold"
                             android:text="Nome"
                             android:textColor="@color/black"
-                            android:textSize="20dp"/>
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/top_cognome_utente"
@@ -107,8 +106,8 @@
                             android:gravity="center"
                             android:text="Cognome"
                             android:textColor="@color/black"
-                            android:textStyle="bold"
-                            android:textSize="20dp"/>
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
                     </LinearLayout>
 
 
@@ -117,9 +116,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:textSize="13dp"
+                        android:text="ovimori@gmail.com"
                         android:textColor="@color/black"
-                        android:text="ovimori@gmail.com"/>
+                        android:textSize="13dp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -130,17 +129,17 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:textSize="13dp"
+                            android:text="Cell:  "
                             android:textColor="@color/black"
-                            android:text="Cell:  "/>
+                            android:textSize="13dp" />
 
                         <TextView
                             android:id="@+id/top_cellulare"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="13dp"
+                            android:text="1234567890"
                             android:textColor="@color/black"
-                            android:text="1234567890"/>
+                            android:textSize="13dp" />
 
                     </LinearLayout>
 
@@ -150,10 +149,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
                         android:gravity="center"
-                        android:textSize="13dp"
                         android:maxLength="15"
+                        android:text="#ProvaBioUtente"
                         android:textColor="@color/black"
-                        android:text="#ProvaBioUtente"/>
+                        android:textSize="13dp" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -167,16 +166,24 @@
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Messaggi"
-                    />
+                    android:text="Messaggi" />
 
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Account"
-                    />
+                    android:text="Account" />
 
             </com.google.android.material.tabs.TabLayout>
+
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+            </androidx.viewpager.widget.ViewPager>
+
 
         </LinearLayout>
 

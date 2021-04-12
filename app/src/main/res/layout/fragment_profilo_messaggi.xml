@@ -1,155 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white">
-
+<layout>
     <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:visibility="visible"
-        android:backgroundTint="@color/white">
+        android:background="@color/white">
 
-
-        <FrameLayout
-            android:id="@+id/frame_promemoria_utente"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:visibility="visible">
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="visible"
+            android:backgroundTint="@color/white">
 
-            <View
+
+            <FrameLayout
+                android:id="@+id/frame_promemoria_utente"
                 android:layout_width="match_parent"
-                android:layout_height="5dp"
-                android:background="#454545"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"/>
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:visibility="visible">
 
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:background="#454545"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:orientation="vertical">
 
                 <LinearLayout
-                    android:id="@+id/linear_layout_in_esaurimento"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:clickable="true">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:padding="5dp"
-                        android:gravity="center"
-                        android:textSize="15dp"
-                        android:textColor="@color/black"
-                        android:text="In esaurimento: " />
+                    android:layout_marginTop="40dp"
+                    android:orientation="vertical">
 
                     <LinearLayout
+                        android:id="@+id/linear_layout_in_esaurimento"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="right"
-                        android:orientation="horizontal">
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:clickable="true">
 
-                        <ImageButton
-                            android:id="@+id/in_esaurimento_arrow"
-                            android:layout_width="25dp"
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:padding="5dp"
+                            android:gravity="center"
+                            android:textSize="15dp"
+                            android:textColor="@color/black"
+                            android:text="In esaurimento: " />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginRight="10dp"
-                            android:background="@drawable/drop_menu_arrow_right"
-                            android:backgroundTint="@color/black"/>
+                            android:gravity="right"
+                            android:orientation="horizontal">
+
+                            <ImageButton
+                                android:id="@+id/in_esaurimento_arrow"
+                                android:layout_width="25dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginRight="10dp"
+                                android:background="@drawable/drop_menu_arrow_right"
+                                android:backgroundTint="@color/black"/>
+
+
+                        </LinearLayout>
+
 
 
                     </LinearLayout>
 
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="3dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@color/main_orange" />
 
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="3dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:background="@color/main_orange" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recycler_view_in_esaurimento_home"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:visibility="gone">
-
-                </androidx.recyclerview.widget.RecyclerView>
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="15dp"/>
-
-                <LinearLayout
-                    android:id="@+id/linear_layout_nuovi_messaggi"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:clickable="true">
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_view_in_esaurimento_home"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:padding="5dp"
-                        android:gravity="center"
-                        android:textSize="15dp"
-                        android:textColor="@color/black"
-                        android:text="Nuovi messaggi: " />
+                        android:layout_marginRight="10dp"
+                        android:visibility="gone">
+
+                    </androidx.recyclerview.widget.RecyclerView>
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="15dp"/>
 
                     <LinearLayout
+                        android:id="@+id/linear_layout_nuovi_messaggi"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="right"
-                        android:orientation="horizontal">
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:clickable="true">
 
-                        <ImageButton
-                            android:id="@+id/nuovi_messaggi_arrow"
-                            android:layout_width="25dp"
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:padding="5dp"
+                            android:gravity="center"
+                            android:textSize="15dp"
+                            android:textColor="@color/black"
+                            android:text="Nuovi messaggi: " />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginRight="10dp"
-                            android:background="@drawable/drop_menu_arrow_right"
-                            android:backgroundTint="@color/black"/>
+                            android:gravity="right"
+                            android:orientation="horizontal">
+
+                            <ImageButton
+                                android:id="@+id/nuovi_messaggi_arrow"
+                                android:layout_width="25dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginRight="10dp"
+                                android:background="@drawable/drop_menu_arrow_right"
+                                android:backgroundTint="@color/black"/>
 
 
+                        </LinearLayout>
                     </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="3dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@color/main_orange" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_view_nuovi_messaggi_home"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginRight="30dp"
+                        android:visibility="gone">
+
+                    </androidx.recyclerview.widget.RecyclerView>
+
                 </LinearLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="3dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:background="@color/main_orange" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recycler_view_nuovi_messaggi_home"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp"
-                    android:visibility="gone">
-
-                </androidx.recyclerview.widget.RecyclerView>
-
-            </LinearLayout>
-
-        </FrameLayout>
+            </FrameLayout>
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+</layout>

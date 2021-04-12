@@ -55,54 +55,41 @@ public class LogInActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //controllo credenziali
-                if(controlloCredenziali(binding.edittextEmail.getEditText().getText().toString(), binding.edittextPassword.getEditText().getText().toString())){   //se le credenziali sono corrette
-                    LogInActivity.super.onBackPressed();
+                if (controlloCredenziali(binding.edittextEmail.getEditText().getText().toString(), binding.edittextPassword.getEditText().getText().toString())) {   //se le credenziali sono corrette
+                    Intent intent = new Intent(LogInActivity.this, ManagerFragment.class);
+                    startActivity(intent);
 
-                } else{
+                } else {
                     dialogErrorFrag.show(fragM, "Errore");
                 }
             }
         });
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        checkCredenzialiGiaSalvate();   //riempimento automatico se le credenziali sono gia state salvate
+    private boolean checkCredenzialiGiaSalvate() {
+        Utente user = DataRepository.INSTANCE.getCurrentUser(); //check if there is a current user already saved
 
-    }
-
-    private boolean checkCredenzialiGiaSalvate(){
-        SharedPreferences pref = getSharedPreferences(getString(R.string.preference_file_key), 0);
-        String savedEmail = pref.getString(getString(R.string.saved_email_login), "");
-        String savedPassword = pref.getString(getString(R.string.saved_password_login), "");
-
-        if(savedEmail.equals("") || savedPassword.equals("")){
+        if (user.getEmail().equals("") || user.getPassword().equals("")) {
             return false;
-        }else{
-            binding.edittextEmail.getEditText().setText(savedEmail);
-            binding.edittextPassword.getEditText().setText(savedPassword);
+        } else {
+            binding.edittextEmail.getEditText().setText(user.getEmail());
+            binding.edittextPassword.getEditText().setText(user.getPassword());
             return true;
         }
     }
 
-    private boolean controlloCredenziali(String email, String password){
-        SharedPreferences pref = getSharedPreferences(getString(R.string.preference_file_key), 0);
-        String savedEmail = pref.getString(getString(R.string.saved_email_login), "");
-        String savedPassword = pref.getString(getString(R.string.saved_password_login), "");
-
-        if(savedPassword.equals("") || savedEmail.equals("")){
-            return false;
+    private boolean controlloCredenziali(String email, String password) {
+        if (DataRepository.INSTANCE.userExist(email)) {   //if user exist
+            Utente user = DataRepository.INSTANCE.getUser(email);
+            if (user.getPassword().equals(password)) {
+                return true;
+            } else {
+                binding.edittextEmail.getEditText().setError("Le credenziali non sono corrette");
+                return false;
+            }
         }
-
-        if(savedEmail.equals(email) && savedPassword.equals(password)){
-            return true;
-        }else{
-            return false;
-        }
+        return false;
     }
-
-
 }
 
 
