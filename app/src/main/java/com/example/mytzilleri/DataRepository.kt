@@ -24,22 +24,6 @@ object DataRepository {
         sharPrefUsers.edit().clear().apply()
     }
 
-    fun isAdmin(user: Utente): Boolean{
-        if(user.admin == 1){
-            return true
-        }
-        return false
-    }
-
-    fun isAdmin(strUser: String): Boolean{
-        var user = Utente()
-        user.creaNuovoUtenteDaStringa(strUser)
-
-        if(user.admin == 1){
-            return true
-        }
-        return false
-    }
 
     fun dropUser(email : String) : Boolean{
         if(sharPrefUsers.contains(email)){
@@ -94,6 +78,9 @@ object DataRepository {
         return currentUser
     }
 
+    /**
+     * Return empty user data if not exit account with @param emil associated
+     */
     fun getUser(email : String) : Utente{
         val userGeneratedFromString = Utente()
         val utenteInString : String = sharPrefUsers.getString(email, "") as String
@@ -108,7 +95,7 @@ object DataRepository {
     }
 
     fun createAdminAccount(){
-        var utenteAdmin = Utente("admin", "admin", "admin", "", false, 1)
+        var utenteAdmin = Utente("admin", "admin", "admin@", "", "")
         salvaCredenziali(utenteAdmin)
     }
 

@@ -18,6 +18,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ManagerFragment extends AppCompatActivity implements ProfiloHome.FragmentAListener {
 
+    private Fragment fragmentProfilo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -44,8 +44,6 @@ public class LogInActivity extends AppCompatActivity {
         binding.registratiButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent intent = new Intent(LogInActivity.this, RegistrazioneActivity.class);
-                //startActivity(intent);
 
                 startActivityForResult(new Intent(LogInActivity.this, RegistrazioneActivity.class), 0);
             }
@@ -66,6 +64,13 @@ public class LogInActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        checkCredenzialiGiaSalvate();   //riempimento automatico se le credenziali sono gia state salvate
+
+    }
+
     private boolean checkCredenzialiGiaSalvate() {
         Utente user = DataRepository.INSTANCE.getCurrentUser(); //check if there is a current user already saved
 
@@ -81,12 +86,16 @@ public class LogInActivity extends AppCompatActivity {
     private boolean controlloCredenziali(String email, String password) {
         if (DataRepository.INSTANCE.userExist(email)) {   //if user exist
             Utente user = DataRepository.INSTANCE.getUser(email);
-            if (user.getPassword().equals(password)) {
-                return true;
-            } else {
-                binding.edittextEmail.getEditText().setError("Le credenziali non sono corrette");
-                return false;
+            if(!user.getEmail().equals("")){   //if is not empty
+                if (user.getPassword().equals(password)) {
+                    DataRepository.INSTANCE.salvaUtenteCorrente(user);
+                    return true;
+                } else {
+                    binding.edittextEmail.getEditText().setError("Le credenziali non sono corrette");
+                    return false;
+                }
             }
+
         }
         return false;
     }

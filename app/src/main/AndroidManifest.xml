@@ -17,7 +17,7 @@
         </activity>
         <activity android:name=".PaginaProdotto"/>
         <activity android:name=".LogInActivity"/>
-        <activity android:name=".RegistrazioneActivity"/>
         <activity android:name=".ManagerFragment"/>
+        <activity android:name=".RegistrazioneActivity"/>
     </application>
 </manifest>

@@ -116,7 +116,7 @@ public class RegistrazioneActivity extends AppCompatActivity {
 
         if(!DataRepository.INSTANCE.userExist(email)){
             //create new user
-            Utente newUser = new Utente(nome, cognome, email, password, false, 1);
+            Utente newUser = new Utente(nome, cognome, email, password, "");
             DataRepository.INSTANCE.salvaUtente(newUser);
             Toast.makeText(RegistrazioneActivity.this, "Credenziali salvate", Toast.LENGTH_LONG).show();
             return true;

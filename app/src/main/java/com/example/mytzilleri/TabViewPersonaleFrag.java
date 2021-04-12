@@ -17,10 +17,13 @@ public class TabViewPersonaleFrag extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_profilo_account, container, false);
 
+        setCampiConDatiUtente();
+
         binding.buttonSalvaDatiUtente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 aggiornaDatiUtente();
+                setCampiConDatiUtente();
             }
         });
 
@@ -30,23 +33,28 @@ public class TabViewPersonaleFrag extends Fragment {
 
     private void aggiornaDatiUtente() {
         String newNome = binding.infoUtenteNome.getEditText().getText().toString();
-        String newCognome = binding.infoUtenteNome.getEditText().getText().toString();
-        String newCellulare = binding.infoUtenteNome.getEditText().getText().toString();
-        String newIndirizzo = binding.infoUtenteNome.getEditText().getText().toString();
-        String newBio = binding.infoUtenteNome.getEditText().getText().toString();
+        String newCognome = binding.infoUtenteCognome.getEditText().getText().toString();
+        String newPassword = binding.infoUtentePassword.getEditText().getText().toString();
+        String newEmail = binding.infoUtenteEmail.getEditText().getText().toString();
+        String newBio = binding.infoUtenteBio.getEditText().getText().toString();
 
-        SharedPreferences.Editor edit = this.getActivity().getSharedPreferences(getString(R.string.preference_file_key), 0).edit();
-        edit.putString(getString(R.string.saved_nome_utente), newNome);
-        edit.commit();
-        edit.putString(getString(R.string.saved_cognome_utente), newCognome);
-        edit.commit();
-        edit.putString(getString(R.string.saved_cellulare_utente), newCellulare);
-        edit.commit();
-        edit.putString(getString(R.string.saved_indirizzo_utente), newIndirizzo);
-        edit.commit();
-        edit.putString(getString(R.string.saved_bio_utente), newBio);
-        edit.commit();
+        Utente newUtente = new Utente(newNome, newCognome,newEmail, newPassword, newBio);
+        DataRepository.INSTANCE.salvaUtenteCorrente(newUtente);
+        DataRepository.INSTANCE.salvaUtente(newUtente);
+        //aggiornare sia la lista degli utenti che i dati dell utente corrente
     }
 
+    private void setCampiConDatiUtente() {
+        SharedPreferences pref = this.getActivity().getSharedPreferences(getString(R.string.preference_file_key), 0);
 
+        Utente currentUser = DataRepository.INSTANCE.getCurrentUser();
+
+        if(!currentUser.getEmail().equals("")) {
+            binding.infoUtenteNome.getEditText().setText(currentUser.getNome());
+            binding.infoUtenteCognome.getEditText().setText(currentUser.getCognome());
+            binding.infoUtenteEmail.getEditText().setText(currentUser.getEmail());
+            binding.infoUtentePassword.getEditText().setText(currentUser.getPassword());
+            binding.infoUtenteBio.getEditText().setText(currentUser.getNome());
+        }
+    }
 }
