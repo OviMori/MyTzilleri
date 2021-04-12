@@ -1,10 +1,8 @@
 package com.example.mytzilleri
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
 
 //TODO aggiungere la classe per passare il contesto a DataRepository
 

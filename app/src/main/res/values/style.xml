@@ -72,6 +72,7 @@
 
     <style name="MyEditTextAppearanceText">
         <item name="android:textColor">@color/colormind_blu_chiaro</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <!-- Style link pulsanti -->
@@ -89,6 +90,13 @@
         <item name="android:textColorHint">@color/colormind_blu_chiaro</item>
         <item name="hintTextColor">@color/colormind_blu_chiaro</item>
         <item name="android:textAppearance">@style/MyEditTextAppearanceText</item>
+        <item name="boxBackgroundColor">@color/color_list_element_grey</item>
+
+    </style>
+
+    <style name="LoginTextInputLayoutStylePassword" parent="LoginTextInputLayoutStyle">
+        <item name="passwordToggleEnabled">true</item>
+        <item name="passwordToggleTint">@color/colormind_blu_scuro</item>
     </style>
 
 </resources>

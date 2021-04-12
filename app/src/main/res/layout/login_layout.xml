@@ -15,8 +15,8 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="110dp"
-            android:layout_marginBottom="50dp"
+            android:layout_marginTop="90dp"
+            android:layout_marginBottom="20dp"
             android:text="Benvenuto "
             android:textSize="45dp"
             android:layout_gravity="center"
@@ -31,6 +31,7 @@
             style="@style/LoginTextInputLayoutStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:passwordToggleEnabled="false"
             app:errorEnabled="true"
             android:hint="Email">
 
@@ -44,10 +45,9 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/edittext_password"
-            style="@style/LoginTextInputLayoutStyle"
+            style="@style/LoginTextInputLayoutStylePassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:endIconMode="password_toggle"
             app:errorEnabled="true"
             android:hint="Password">
 

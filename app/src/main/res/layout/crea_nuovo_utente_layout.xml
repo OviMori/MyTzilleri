@@ -92,11 +92,10 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/created_password"
-                style="@style/LoginTextInputLayoutStyle"
+                style="@style/LoginTextInputLayoutStylePassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:errorEnabled="true"
-                app:passwordToggleEnabled="true"
                 android:hint="Password">
 
 
@@ -111,11 +110,10 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/created_confirm_password"
-                style="@style/LoginTextInputLayoutStyle"
+                style="@style/LoginTextInputLayoutStylePassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:errorEnabled="true"
-                app:passwordToggleEnabled="true"
                 android:hint="Conferma password">
 
 
