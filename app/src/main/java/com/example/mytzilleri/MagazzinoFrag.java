@@ -1,25 +1,18 @@
 package com.example.mytzilleri;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.DialogFragmentNavigatorDestinationBuilder;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.service.controls.actions.FloatAction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -31,7 +24,7 @@ import java.util.List;
  * Use the {@link MagazzinoFrag#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MagazzinoFrag extends Fragment implements CustomAdapter.OnNoteListener{
+public class MagazzinoFrag extends Fragment{
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -43,19 +36,11 @@ public class MagazzinoFrag extends Fragment implements CustomAdapter.OnNoteListe
     private String mParam2;
 
     //------------------------------------------------------
-    //Mie variabili
-    Button bottone;
     public final int REQUEST_CODE = 0;
 
-    public int testGloabLastiItemModified;
-
     private RecyclerView recyclerView;
+    private CustomAdapter adapter;
     FloatingActionButton aggiungiButton;
-
-    CustomAdapter adapter;
-
-    Button refresh;
-    List<Prodotto> listaProdotti  = new ArrayList<Prodotto>();
     //------------------------------------------------------
 
     public MagazzinoFrag() {
@@ -98,12 +83,6 @@ public class MagazzinoFrag extends Fragment implements CustomAdapter.OnNoteListe
         recyclerView = v.findViewById(R.id.recycler_view_prodotti);
         aggiungiButton = v.findViewById(R.id.aggiungi_prodotto_button);
 
-
-        //-----------------------------------------------------------------------
-
-
-        //questo va eseguito quando premo il pulsante salva
-
         initRecyclerView();
 
         aggiungiButton.setOnClickListener(new View.OnClickListener() {
@@ -124,59 +103,26 @@ public class MagazzinoFrag extends Fragment implements CustomAdapter.OnNoteListe
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        adapter = new CustomAdapter(listaProdotti, this);
+        adapter = new CustomAdapter(DataRepository.INSTANCE.getProdList());
         recyclerView.setAdapter(adapter);
-
     }
 
     private void addElement(){
-
-        Prodotto infoProdotto = new Prodotto();
-
         Intent newProdotto = new Intent(getContext(), PaginaProdotto.class);
-        newProdotto.putExtra("infoProdotto", infoProdotto);    //passo il riferimento all oggetto di tipo prodotto
-
         startActivityForResult(newProdotto, REQUEST_CODE);
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Log.i("!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ramo aggiunta elemento", "");
 
-
-        Log.i("!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ramo aggiunta elemento", "");
-        Prodotto infoProdotto = (Prodotto) data.getExtras().get("infoProdottoReturn");
-        // deal with the item yourself
-
-        adapter.reloadList(infoProdotto);   //qua devo passare un oggetto di tipo prodotto
+        //viene restituito il prodotto appena creato
+        //in realta basta anche solo aggiornare la recycler view senza passare il prodotto,
+        //il fatto di aver aggiunto un elemento nelle sharedPreferences basta a far capire alla recycler view qual e' l elemento da aggiungere (credo)
+        Log.i("onActivityResult", "Back from activity");
+        adapter.updateList(DataRepository.INSTANCE.getProdList());
         adapter.notifyDataSetChanged();
-        recyclerView.invalidate();
-
-
-        //    Log.i("!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ramo modofica elemento", "");
-         //   adapter.notifyItemChanged(testGloabLastiItemModified);
-
     }
-
-    @Override
-    public void onNoteClick(int position) {
-        Log.d("onNOteCLick-------------------------------", "" +position);
-        Prodotto infoProdotto = listaProdotti.get(position);
-
-
-        Log.d("onNOteCLick-------------------------------", ""+infoProdotto.getNomeProdotto());
-        Log.d("onNOteCLick-------------------------------", "" +infoProdotto.getNomeProdotto());
-        //Intent intent = new Intent(this.getContext(), PaginaProdotto.class);
-        //startActivity(intent);
-
-        Intent newProdotto = new Intent(getContext(), PaginaProdotto.class);
-        newProdotto.putExtra("infoProdotto", infoProdotto);    //passo il riferimento all oggetto di tipo prodotto
-
-        startActivityForResult(newProdotto, 0);
-    }
-
-    //6870 numero portinaio palazzo
 }
 
 

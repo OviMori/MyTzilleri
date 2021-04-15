@@ -1,10 +1,8 @@
 package com.example.mytzilleri;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.AppComponentFactory;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -14,208 +12,168 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.Spinner;
-import android.widget.Switch;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SwitchCompat;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
+import androidx.databinding.DataBindingUtil;
 
-import java.io.Serializable;
+import com.example.mytzilleri.databinding.PaginaProdottoBinding;
+
+import java.util.Objects;
 
 public class PaginaProdotto extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
+    private PaginaProdottoBinding binding;
     private static final int PICK_FROM_GALLERY = 1;
     ArrayAdapter<CharSequence> spinnerCatArray;
 
 
-    SwitchCompat mySwitch;
-    ImageView immagineProdotto, back_button;
-    EditText nomeProdotto, categoria, quantita, limiteScorte, nomeFornitore, emailFornitore, telFornitore;
-    Button salvaModoficheProdotto;
-    Spinner spinner;
-    TextView spinnerTextView;
-
-    Prodotto infoprodotto;
+    Product infoprodotto;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pagina_prodotto);
+        binding = DataBindingUtil.setContentView(this, R.layout.pagina_prodotto);
 
-        mySwitch = findViewById(R.id.switch_notifica_esaurimento);
-        immagineProdotto = findViewById(R.id.immagine_prodotto);
-        back_button = findViewById(R.id.back_button);
-        salvaModoficheProdotto = findViewById(R.id.bottone_salva_modifiche);
-
-        nomeProdotto = findViewById(R.id.info_prodotto_nome_prodotto);
-        categoria = findViewById(R.id.info_prodotto_categoria);
-        quantita = findViewById(R.id.info_prodotto_quantita);
-        limiteScorte = findViewById(R.id.info_prodotto_esaurimento_edit);
-        nomeFornitore = findViewById(R.id.nome_fornitore);
-        emailFornitore = findViewById(R.id.email_fornitore);
-        telFornitore = findViewById(R.id.cellulare_fornitore);
-
-        spinnerTextView = findViewById(R.id.text_view_categoria);
-
-        spinner = findViewById(R.id.categoria_spinner);    //identifico la risorsa xml
         spinnerCatArray = ArrayAdapter.createFromResource(this, R.array.spinner_categoria_array, android.R.layout.simple_spinner_item);
-        //specifichiamo il layout da usare quando appare la lista di scelte dello spinner
-        spinnerCatArray.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        //associamo l array allo spinner
-        spinner.setAdapter(spinnerCatArray);
-        spinner.setOnItemSelectedListener(this);
+        spinnerCatArray.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);  //specifichiamo il layout da usare quando appare la lista di scelte dello spinner
+        binding.infoProdottoCategoriaSpinner.setAdapter(spinnerCatArray);   //associamo l array allo spinner
+        binding.infoProdottoCategoriaSpinner.setOnItemSelectedListener(this);
 
-
-
-        infoprodotto = (Prodotto) getIntent().getSerializableExtra("infoProdotto");
+        if(getIntent().getSerializableExtra("infoProdotto") == null){
+            infoprodotto = new Product();
+        }else{
+            infoprodotto = (Product) getIntent().getSerializableExtra("infoProdotto");
+        }
         initInfoProdotto(infoprodotto);
 
-        back_button.setOnClickListener(new View.OnClickListener() {
+        /*buttons*/
+        binding.backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PaginaProdotto.super.onBackPressed();
+                //Intent backIntent = new Intent(PaginaProdotto.this, MagazzinoFrag.class);
+                //startActivity(backIntent);
+                getSupportFragmentManager().popBackStack();
+                finish();
             }
         });
         /**
          * Salva le modifiche del prodotto
          */
-        salvaModoficheProdotto.setOnClickListener(new View.OnClickListener() {
+        binding.bottoneSalvaModifiche.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if(checkEmail(emailFornitore)){
-                    if(nomeProdotto.getText().toString() == null){
-                        nomeProdotto.setText(" ");
-                        Log.i("Salvataggio--- textBox == null, scrive spazio","");
-                    }else{
-                        infoprodotto.setNomeProdotto(nomeProdotto.getText().toString());
-                        Log.i("TextBox nome == ", nomeProdotto.getText().toString());
-                        Log.i("Salvataggio--- textBox != null, salva valore","");
-                    }
-
-                    if(quantita.getText().toString() == null){
-                        quantita.setText("0");
-                    }else{
-                        infoprodotto.setQuantita(Integer.parseInt(quantita.getText().toString()));
-                    }
-
-                    if(limiteScorte.getText().toString() == null){
-                        limiteScorte.setText("0");
-                    }else{
-                        infoprodotto.setNotificaEsaurimentoScorte(Integer.parseInt(limiteScorte.getText().toString()));
-                    }
-
-                    if(nomeFornitore.getText().toString() == null){
-                        nomeFornitore.setText(" ");
-                    }else{
-                        infoprodotto.setNomeFornitore(nomeFornitore.getText().toString());
-                    }
-
-                    if(emailFornitore.getText().toString() == null){
-                        emailFornitore.setText(" ");
-                    }else{
-                        infoprodotto.setEmailFornitore(emailFornitore.getText().toString());
-                    }
-
-                    if(telFornitore.getText().toString() == null){
-                        telFornitore.setText("0");
-                    }else{
-                        infoprodotto.setTelFornitore(telFornitore.getText().toString());
-                    }
-
+                if (inputControl()) {
+                    saveData();
                     Toast.makeText(PaginaProdotto.this, "Salvataggio...", Toast.LENGTH_LONG).show();
-                }else{
+                } else {
                     Toast.makeText(PaginaProdotto.this, "Salvataggio fallito, 1 o piu campi non sono corretti...", Toast.LENGTH_LONG).show();
                 }
-
-
             }
         });
 
 
-
-        immagineProdotto.setOnClickListener(new View.OnClickListener() {
+        binding.immagineProdotto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //procedura per cambiare immagine del prodotto
-
-                try {
-                    //controllo dei permessi necessari per accedere alla galleria
-                    if (ActivityCompat.checkSelfPermission(PaginaProdotto.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                        ActivityCompat.requestPermissions(PaginaProdotto.this, new String[]{ Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, PICK_FROM_GALLERY);
-                    } else {
-
-                        selectImage(PaginaProdotto.this);
-
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
+                imageManager();
             }
         });
-
-        mySwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-
-                } else {
-
-                }
-            }
-        });
-
     }
 
-    /**
-     * Funzione chiamata dallo spinner quando l utente seleziona un elemento
-     * @param parent
-     * @param view
-     * @param position
-     * @param id
-     */
+    private void imageManager(){
+        try {
+            //controllo dei permessi necessari per accedere alla galleria
+            if (ActivityCompat.checkSelfPermission(PaginaProdotto.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(PaginaProdotto.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, PICK_FROM_GALLERY);
+            } else {
+                selectImage(PaginaProdotto.this);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void saveData(){
+        infoprodotto.setNomeProdotto(Objects.requireNonNull(binding.infoProdottoNomeProdotto.getEditText()).getText().toString());
+        infoprodotto.setCategoria(Objects.requireNonNull(binding.infoProdottoCategoria.getEditText()).getText().toString());
+        infoprodotto.setQuantita(Objects.requireNonNull(binding.infoProdottoQuantita.getEditText()).getText().toString());
+        infoprodotto.setNotificaEsaurimentoScorte(Objects.requireNonNull(binding.infoProdottoLimiteScorte.getEditText()).getText().toString());
+        infoprodotto.setNomeFornitore(Objects.requireNonNull(binding.nomeFornitore.getEditText()).getText().toString());
+        infoprodotto.setEmailFornitore(Objects.requireNonNull(binding.emailFornitore.getEditText()).getText().toString());
+        infoprodotto.setTelFornitore(binding.cellulareFornitore.getEditText().getText().toString());
+
+        DataRepository.INSTANCE.saveProduct(infoprodotto);
+    }
+
+    private boolean inputControl() {
+        String infoNomeProdotto = Objects.requireNonNull(binding.infoProdottoNomeProdotto.getEditText()).getText().toString();
+        String infoCategoriaProdotto = Objects.requireNonNull(binding.infoProdottoCategoria.getEditText()).getText().toString();
+        String infoQuantitaProdotto = Objects.requireNonNull(binding.infoProdottoQuantita.getEditText()).getText().toString();
+        String infoLimiteProdotto = Objects.requireNonNull(binding.infoProdottoLimiteScorte.getEditText()).getText().toString();
+        String infoNomeFornitore = Objects.requireNonNull(binding.nomeFornitore.getEditText()).getText().toString();
+        String infoEmailFornitore = Objects.requireNonNull(binding.emailFornitore.getEditText()).getText().toString();
+        String infoCellulareFornitore = Objects.requireNonNull(binding.cellulareFornitore.getEditText()).getText().toString();
+
+        if(infoNomeProdotto.trim().equals("")){
+            binding.infoProdottoNomeProdotto.setError("Name cannot be blank");
+            return false;
+        }
+        if(infoCategoriaProdotto.trim().equals("")){
+            binding.infoProdottoCategoria.setError("Categoria cannot be blank");
+            return false;
+        }
+        if(infoQuantitaProdotto.trim().equals("")){
+            binding.infoProdottoQuantita.setError("Quantita cannot be blank");
+            return false;
+        }
+        if(infoLimiteProdotto.trim().equals("")){
+            binding.infoProdottoLimiteScorte.setError("Limite cannot be blank");
+            return false;
+        }
+        if(infoNomeFornitore.trim().equals("")){
+            binding.nomeFornitore.setError("Name cannot be blank");
+            return false;
+        }
+        if(infoEmailFornitore.trim().equals("") || !checkEmail(binding.emailFornitore.getEditText())){
+            binding.emailFornitore.setError("Email cannot be blank");
+            return false;
+        }
+        if(infoCellulareFornitore.trim().equals("")){
+            binding.cellulareFornitore.setError("Cellulare cannot be blank");
+            return false;
+        }
+        return true;
+    }
+
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String sceltaUtente = parent.getItemAtPosition(position).toString();
-        Log.i("sceltaUtente _-------------------------", ""+sceltaUtente+ "Position:   "+position);
         Toast.makeText(parent.getContext(), sceltaUtente, Toast.LENGTH_LONG).show();
-        spinnerTextView.setText(sceltaUtente);
-
+        Objects.requireNonNull(binding.infoProdottoCategoria.getEditText()).setText(sceltaUtente);
         infoprodotto.setCategoria(sceltaUtente);
     }
 
     @Override
-    public void onNothingSelected(AdapterView<?> parent) {
+    public void onNothingSelected(AdapterView<?> parent) {}
 
-    }
-
-    public void initSpinnerCategoria(Context cont, Spinner spinner, TextView spinnerTextView){
-
-    }
-
-    private boolean checkEmail(EditText email){
-        if(email.getText().toString().length() == 0 || !email.getText().toString().contains("@")){
+    private boolean checkEmail(EditText email) {
+        if (email == null) {
+            return false;
+        }
+        if (email.getText().toString().length() == 0 || !email.getText().toString().contains("@")) {
             email.setError("Inserire una mail valida");
             return false;
-        }else{
+        } else {
             email.setError(null);
             return true;
         }
@@ -223,7 +181,6 @@ public class PaginaProdotto extends AppCompatActivity implements AdapterView.OnI
 
     @Override
     public void finish() {
-        Log.d("onNOteCLick-------------------------------", "6666666666666666666666666666666666666666666666666666" );
         Intent returnIntent = new Intent();
         //returnIntent.putExtra("passed_item", 3);
         returnIntent.putExtra("infoProdottoReturn", infoprodotto);
@@ -232,18 +189,19 @@ public class PaginaProdotto extends AppCompatActivity implements AdapterView.OnI
         super.finish();
     }
 
-    public void  initInfoProdotto(Prodotto prodotto){
-        Log.i("categoria valore @@@@@@@@@@@@@@@@@@@@", ""+ prodotto.getCategoria());
-        if(!prodotto.getNomeProdotto().equals(" ")){
-            nomeProdotto.setText(prodotto.getNomeProdotto());
-            quantita.setText(String.valueOf(prodotto.getQuantita()));
-            spinnerTextView.setText(prodotto.getCategoria());
-            limiteScorte.setText(String.valueOf(prodotto.getNotificaEsaurimentoScorte()));
-            nomeFornitore.setText(prodotto.getNomeFornitore());
-            emailFornitore.setText(prodotto.getEmailFornitore());
-            telFornitore.setText(prodotto.getTelFornitore());
-
+    public void initInfoProdotto(Product product) {
+        if(product != null){
+            if (!product.getNomeProdotto().equals(" ")) {
+                Objects.requireNonNull(binding.infoProdottoNomeProdotto.getEditText()).setText(product.getNomeProdotto());
+                Objects.requireNonNull(binding.infoProdottoQuantita.getEditText()).setText(String.valueOf(product.getQuantita()));
+                Objects.requireNonNull(binding.infoProdottoCategoria.getEditText()).setText(product.getCategoria());
+                Objects.requireNonNull(binding.infoProdottoLimiteScorte.getEditText()).setText(String.valueOf(product.getNotificaEsaurimentoScorte()));
+                Objects.requireNonNull(binding.nomeFornitore.getEditText()).setText(product.getNomeFornitore());
+                Objects.requireNonNull(binding.emailFornitore.getEditText()).setText(product.getEmailFornitore());
+                Objects.requireNonNull(binding.cellulareFornitore.getEditText()).setText(product.getTelFornitore());
+            }
         }
+
     }
 
     @Override
@@ -254,9 +212,8 @@ public class PaginaProdotto extends AppCompatActivity implements AdapterView.OnI
                 case 0:
                     if (resultCode == RESULT_OK && data != null) {
                         Bitmap selectedImage = (Bitmap) data.getExtras().get("data");
-                        immagineProdotto.setImageBitmap(selectedImage);
+                        binding.immagineProdotto.setImageBitmap(selectedImage);
                     }
-
                     break;
                 case 1:
                     if (resultCode == RESULT_OK && data != null) {
@@ -269,8 +226,8 @@ public class PaginaProdotto extends AppCompatActivity implements AdapterView.OnI
 
                                 int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
                                 String picturePath = cursor.getString(columnIndex);
-                                immagineProdotto.setImageBitmap(BitmapFactory.decodeFile(picturePath));
-                                //cursor.close();
+                                binding.immagineProdotto.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+                                cursor.close();
                             }
                         }
 
@@ -281,8 +238,7 @@ public class PaginaProdotto extends AppCompatActivity implements AdapterView.OnI
     }
 
     private void selectImage(Context context) {
-        final CharSequence[] options = { "Take Photo", "Choose from Gallery","Cancel" };
-
+        final CharSequence[] options = {"Take Photo", "Choose from Gallery", "Cancel"};
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle("Choose your profile picture");
 
@@ -297,7 +253,7 @@ public class PaginaProdotto extends AppCompatActivity implements AdapterView.OnI
 
                 } else if (options[item].equals("Choose from Gallery")) {
                     Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                    startActivityForResult(pickPhoto , 1);
+                    startActivityForResult(pickPhoto, 1);
 
                 } else if (options[item].equals("Cancel")) {
                     dialog.dismiss();
@@ -306,7 +262,6 @@ public class PaginaProdotto extends AppCompatActivity implements AdapterView.OnI
         });
         builder.show();
     }
-
 
 
 }

@@ -20,40 +20,40 @@ public class TabViewMessaggiFrag extends Fragment {
          * Gestisce il click che fa apparire/scomparire la RecyclerView dei prodotti in esaurimento
          * Viene gestita anche la modifica del verso della freccia
          */
-        /*
-        linearLayoutInEsaurimento.setOnClickListener(new View.OnClickListener() {
+
+        binding.textViewEsaurimentoIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (inEsaurimentoRecycler.getVisibility() == View.GONE) {
-                    inEsaurimentoRecycler.setVisibility(View.VISIBLE);
-                    inEsaurimentoArrowHome.setBackgroundResource(R.drawable.drop_menu_arrow_down);
+                if (binding.recyclerViewInEsaurimentoHome.getVisibility() == View.GONE) {
+                    binding.recyclerViewInEsaurimentoHome.setVisibility(View.VISIBLE);
+                    binding.textViewEsaurimentoIcon.setBackgroundResource(R.drawable.drop_menu_arrow_down);
                 } else {
-                    inEsaurimentoRecycler.setVisibility(View.GONE);
-                    inEsaurimentoArrowHome.setBackgroundResource(R.drawable.drop_menu_arrow_right);
+                    binding.recyclerViewInEsaurimentoHome.setVisibility(View.GONE);
+                    binding.textViewEsaurimentoIcon.setBackgroundResource(R.drawable.drop_menu_arrow_right);
                 }
             }
         });
-        */
+
 
         /**
          * Gestisce il click che fa apparire/scomparire la RecyclerView dei messaggi dell utente
          * Viene gestita anche la modifica del verso della freccia
          */
-        /*
-        linearLayoutNuoviMessaggi.setOnClickListener(new View.OnClickListener() {
+
+        binding.textViewNuoviMessaggiIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (nuoviMessaggiRecycler.getVisibility() == View.GONE) {
-                    nuoviMessaggiRecycler.setVisibility(View.VISIBLE);
-                    nuoviMessaggiArrowHome.setBackgroundResource(R.drawable.drop_menu_arrow_down);
+                if (binding.recyclerViewNuoviMessaggiHome.getVisibility() == View.GONE) {
+                    binding.recyclerViewNuoviMessaggiHome.setVisibility(View.VISIBLE);
+                    binding.textViewNuoviMessaggiIcon.setBackgroundResource(R.drawable.drop_menu_arrow_down);
                 } else {
-                    nuoviMessaggiRecycler.setVisibility(View.GONE);
-                    nuoviMessaggiArrowHome.setBackgroundResource(R.drawable.drop_menu_arrow_right);
+                    binding.recyclerViewNuoviMessaggiHome.setVisibility(View.GONE);
+                    binding.textViewNuoviMessaggiIcon.setBackgroundResource(R.drawable.drop_menu_arrow_right);
                 }
             }
         });
 
-        */
+
         return binding.getRoot();
     }
 }

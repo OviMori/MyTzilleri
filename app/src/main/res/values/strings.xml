@@ -24,6 +24,7 @@
     <string name="spinner_liquori">Liquori</string>
     <string name="spinner_spina">Spine</string>
     <string name="spinner_frullati">Frullati</string>
+    <string name="imposta_limite_scorte_rimanenti">Imposta limite scorte rimanenti</string>
 
 
     <string-array name="spinner_categoria_array">

@@ -1,7 +1,7 @@
 package com.example.mytzilleri
 
 
-data class Utente(
+data class User(
         var nome: String = "",
         var cognome: String = "",
         var email: String = "",
@@ -20,5 +20,12 @@ data class Utente(
 
     override fun toString(): String {
         return ""+this.nome+"*"+this.cognome+"*"+this.email+"*"+this.password+"*"+this.bio
+    }
+
+    fun setTempAdmin(){
+        this.nome = "admin"
+        this.cognome = "admin"
+        this.email = "admin@"
+        this.password = "admin"
     }
 }

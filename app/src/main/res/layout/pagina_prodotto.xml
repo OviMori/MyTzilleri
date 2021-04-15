@@ -1,442 +1,270 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/white">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@color/main_orange"
-        android:weightSum="1">
-
-        <LinearLayout
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:gravity="center">
-
-            <ImageView
-                android:id="@+id/back_button"
-                android:clickable="true"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:background="@drawable/back_arrow"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginStart="10dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:textStyle="bold"
-                android:textSize="30dp"
-                android:text="Nome prodotto"/>
-
-        </LinearLayout>
-    </LinearLayout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/apk/res-auto">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:overScrollMode="always"
-
-        android:layout_marginStart="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_gravity="center">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:weightSum="5">
+        android:layout_height="wrap_content">
 
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FBAE5B"
+            android:orientation="vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp">
+
+
+            <ImageButton
+                android:id="@+id/back_button"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="start"
                 android:layout_marginTop="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginRight="10dp"
-                android:orientation="horizontal"
-                android:layout_weight="3.5"
-                android:background="@color/hint_grey"
-                android:visibility="visible">
+                android:background="@drawable/back_arrow"
+                android:backgroundTint="@color/voce_elenco_grey"
+                tool:layout_constraintStart_toStartOf="parent"
+                tool:layout_constraintTop_toTopOf="parent" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center">
-
-                    <ImageView
-                        android:id="@+id/immagine_prodotto"
-                        android:clickable="true"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:src="@drawable/empty_image_product"/>
-
-                </LinearLayout>
-
-
-
-            </LinearLayout>
-
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_prodotto"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1.5">
+                android:background="@drawable/shape"
+                android:layout_height="200dp"
+                tool:layout_constraintStart_toStartOf="parent"
+                tool:layout_constraintTop_toBottomOf="@id/back_button"
+                app:layout_constraintEnd_toEndOf="parent">
 
-                <LinearLayout
+                <ImageView
+                android:id="@+id/immagine_prodotto"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/grigio_nav_bar"
+                    android:clickable="true"
+                    android:src="@drawable/empty_image_product"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+            <TextView
+                android:id="@+id/dati_prodotto_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="Dati product"
+                android:textColor="@color/white"
+                android:textSize="30dp"
+                tool:layout_constraintStart_toStartOf="parent"
+                tool:layout_constraintTop_toBottomOf="@id/layout_prodotto" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/info_prodotto_nome_prodotto"
+                style="@style/LoginTextInputLayoutStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:hint="Nome Prodotto"
+                tool:errorEnabled="true"
+                tool:layout_constraintEnd_toEndOf="parent"
+                tool:layout_constraintStart_toStartOf="parent"
+                tool:layout_constraintTop_toBottomOf="@id/dati_prodotto_text">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/MyEditTextAppearanceText"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginRight="20dp"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content" />
 
-                    <Space
-                        android:layout_width="match_parent"
-                        android:layout_height="20dp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:orientation="vertical">
+            <TextView
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="-10dp"
-                            android:layout_marginTop="20dp"
-                            android:layout_marginBottom="10dp"
-                            android:layout_gravity="center"
-                            android:textSize="25dp"
-                            android:text="Dati prodotto"
-                            android:textColor="@color/main_orange"/>
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_marginRight="10dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginStart="10dp"
-                        android:gravity="center"
-                        android:textSize="15dp"
-                        style="@style/VociElenco"
-                        android:text="Nome prodotto"/>
+                android:layout_width="160dp"
+                android:layout_height="40dp"
+                android:background="@color/white"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                tool:layout_constraintStart_toStartOf="parent"
+                tool:layout_constraintTop_toBottomOf="parent"/>
 
 
-                    <EditText
-                        android:id="@+id/info_prodotto_nome_prodotto"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="130dp"
-                        android:layout_marginStart="10dp"
-                        android:gravity="start"
-                        android:textSize="20dp"
-                        android:hint="Nome prodotto" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/info_prodotto_categoria"
+                style="@style/LoginTextInputLayoutStyle"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:hint="Categoria"
+                tool:layout_constraintStart_toStartOf="parent"
+                tool:layout_constraintTop_toBottomOf="@id/info_prodotto_nome_prodotto">
 
-                    <Space
-                        android:layout_width="match_parent"
-                        android:layout_height="20dp"/>
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/MyEditTextAppearanceText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
-                    <TextView
-                        android:layout_marginRight="130dp"
-                        android:layout_marginStart="10dp"
-                        android:gravity="center"
-                        android:textSize="15dp"
-                        style="@style/VociElenco"
-                        android:text="Categoria"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
-
-                    <EditText
-                        android:id="@+id/info_prodotto_categoria"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="130dp"
-                        android:layout_marginStart="10dp"
-                        android:gravity="start"
-                        android:textSize="20dp"
-                        android:hint="Categoria" />
+            <Spinner
+                android:id="@+id/info_prodotto_categoria_spinner"
+                android:theme="@style/spinnerTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                tool:layout_constraintEnd_toEndOf="parent"
+                tool:layout_constraintStart_toEndOf="@id/info_prodotto_categoria"
+                tool:layout_constraintTop_toTopOf="@id/info_prodotto_categoria"
+                tool:layout_constraintBottom_toBottomOf="@id/info_prodotto_categoria"/>
 
 
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginRight="10dp"
-                        android:orientation="horizontal">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/info_prodotto_quantita"
+                style="@style/LoginTextInputLayoutStyle"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:hint="Quantita'"
+                tool:errorEnabled="true"
+                tool:layout_constraintStart_toStartOf="parent"
+                tool:layout_constraintTop_toBottomOf="@id/info_prodotto_categoria">
 
-                        <TextView
-                            android:layout_marginStart="10dp"
-                            android:gravity="center"
-                            android:textSize="20dp"
-                            style="@style/VociElenco"
-                            android:text="Categoria"/>
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/MyEditTextAppearanceText"
+                    android:inputType="number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
-                        <TextView
-                            android:id="@+id/text_view_categoria"
-                            android:layout_width="wrap_content"
-                            android:layout_height="25dp"
-                            android:layout_marginRight="10dp"
-                            android:layout_marginStart="10dp"
-                            android:padding="2dp"
-                            android:gravity="center"
-                            android:textSize="17dp"
-                            android:background="@color/main_orange"
-                            android:textColor="@color/black"
-                            android:text="Quantita'"
-                            android:visibility="gone"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
-                        <Spinner
-                            android:id="@+id/categoria_spinner"
-                            android:layout_width="120dp"
-                            android:layout_height="25dp"/>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/info_prodotto_limite_scorte"
+                style="@style/LoginTextInputLayoutStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/imposta_limite_scorte_rimanenti"
+                app:boxStrokeErrorColor="#FFFFFF"
+                tool:errorEnabled="true"
+                tool:layout_constraintEnd_toStartOf="@id/info_prodotto_limite_scorte_switch"
+                tool:layout_constraintStart_toStartOf="parent"
+                tool:layout_constraintTop_toBottomOf="@id/info_prodotto_quantita">
 
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/MyEditTextAppearanceText"
+                    android:inputType="number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
-                    </LinearLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
-
-
-
-                    <Space
-                        android:layout_width="match_parent"
-                        android:layout_height="20dp"/>
-
-                    <TextView
-                        android:layout_marginRight="10dp"
-                        android:layout_marginStart="10dp"
-                        android:gravity="center"
-                        android:textSize="15dp"
-                        style="@style/VociElenco"
-                        android:text="Quantita'"/>
-
-
-                    <EditText
-                        android:id="@+id/info_prodotto_quantita"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="130dp"
-                        android:layout_marginStart="10dp"
-                        android:gravity="start"
-                        android:textSize="20dp"
-                        android:inputType="number"
-                        android:hint="20" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:weightSum="5">
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:layout_weight="3">
-
-                            <TextView
-                                android:layout_marginRight="10dp"
-                                android:layout_marginStart="10dp"
-                                android:gravity="center"
-                                android:textSize="15dp"
-                                style="@style/VociElenco"
-                                android:text="Imposta notifica esaurimento scorte"/>
-
-                            <EditText
-                                android:id="@+id/info_prodotto_esaurimento_edit"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="151dp"
-                                android:layout_marginStart="7dp"
-                                android:gravity="start"
-                                android:textSize="20dp"
-                                android:inputType="number"
-                                android:hint="1" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:orientation="vertical"
-                            android:layout_weight="2">
-
-                            <androidx.appcompat.widget.SwitchCompat
-                                android:id="@+id/switch_notifica_esaurimento"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:checked="true"
-                                android:theme="@style/SCBSwitch"/>
-
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <View
-                        android:layout_marginTop="30dp"
-                        android:layout_marginBottom="20dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginStart="10dp"
-                        style="@style/Separator" />
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/info_prodotto_limite_scorte_switch"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:checked="true"
+                android:theme="@style/SCBSwitch"
+                tool:layout_constraintBottom_toBottomOf="@id/info_prodotto_limite_scorte"
+                tool:layout_constraintEnd_toEndOf="parent"
+                tool:layout_constraintStart_toEndOf="@id/info_prodotto_limite_scorte"
+                tool:layout_constraintTop_toTopOf="@+id/info_prodotto_limite_scorte" />
 
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:orientation="vertical">
+            <TextView
+                android:id="@+id/dati_fornitore_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Dati fornitore"
+                android:textColor="@color/white"
+                android:textSize="30dp"
+                tool:layout_constraintStart_toStartOf="parent"
+                tool:layout_constraintTop_toBottomOf="@id/info_prodotto_limite_scorte" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="20dp"
-                            android:layout_marginBottom="10dp"
-                            android:layout_gravity="center"
-                            android:textSize="25dp"
-                            android:text="Dati fornitore"
-                            android:textColor="@color/main_orange"/>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/nome_fornitore"
+                style="@style/LoginTextInputLayoutStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:hint="Nome fornitore"
+                tool:errorEnabled="true"
+                tool:layout_constraintEnd_toEndOf="parent"
+                tool:layout_constraintStart_toStartOf="parent"
+                tool:layout_constraintTop_toBottomOf="@id/dati_fornitore_text">
 
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/MyEditTextAppearanceText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
+            </com.google.android.material.textfield.TextInputLayout>
 
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="horizontal">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/email_fornitore"
+                style="@style/LoginTextInputLayoutStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Email fornitore"
+                tool:errorEnabled="true"
+                tool:layout_constraintEnd_toEndOf="parent"
+                tool:layout_constraintStart_toStartOf="parent"
+                tool:layout_constraintTop_toBottomOf="@id/nome_fornitore">
 
-                                    <TextView
-                                        android:layout_width="50dp"
-                                        android:layout_height="25dp"
-                                        android:gravity="right"
-                                        android:padding="2dp"
-                                        android:textSize="15dp"
-                                        android:text="Nome:"
-                                        style="@style/VociElenco"/>
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/MyEditTextAppearanceText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
-                                    <EditText
-                                        android:id="@+id/nome_fornitore"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="30dp"
-                                        android:layout_marginRight="130dp"
-                                        android:layout_marginStart="7dp"
-                                        android:gravity="start"
-                                        android:textSize="15dp"
-                                        android:hint="Mario Rossi"
-                                        android:background="@drawable/edittext_bottom_line" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                                </LinearLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/cellulare_fornitore"
+                style="@style/LoginTextInputLayoutStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Cellulare fornitore"
+                tool:errorEnabled="true"
+                tool:layout_constraintEnd_toEndOf="@id/info_prodotto_limite_scorte_switch"
+                tool:layout_constraintStart_toStartOf="parent"
+                tool:layout_constraintTop_toBottomOf="@id/email_fornitore">
 
-                                <Space
-                                    android:layout_width="match_parent"
-                                    android:layout_height="10dp"/>
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/MyEditTextAppearanceText"
+                    android:inputType="number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="horizontal">
-
-                                    <TextView
-                                        android:layout_width="50dp"
-                                        android:layout_height="25dp"
-                                        android:gravity="right"
-                                        android:padding="2dp"
-                                        android:textSize="15dp"
-                                        android:text="Email:"
-                                        style="@style/VociElenco"/>
-
-                                    <EditText
-                                        android:id="@+id/email_fornitore"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="30dp"
-                                        android:layout_marginStart="7dp"
-                                        android:gravity="start"
-                                        android:textSize="15dp"
-                                        android:hint="Mariorossi@gmail.com"
-                                        android:background="@drawable/edittext_bottom_line" />
-
-                                </LinearLayout>
-
-                                <Space
-                                    android:layout_width="match_parent"
-                                    android:layout_height="10dp"/>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="horizontal">
-
-                                    <TextView
-                                        android:layout_width="50dp"
-                                        android:layout_height="25dp"
-                                        android:gravity="right"
-                                        android:padding="2dp"
-                                        android:textSize="15dp"
-                                        android:text="Tel:"
-                                        style="@style/VociElenco"/>
-
-                                    <EditText
-                                        android:id="@+id/cellulare_fornitore"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="30dp"
-                                        android:layout_marginStart="7dp"
-                                        android:gravity="start"
-                                        android:textSize="15dp"
-                                        android:inputType="number"
-                                        android:hint="1234567890"
-                                        android:background="@drawable/edittext_bottom_line" />
-
-                                </LinearLayout>
-
-                                <Space
-                                    android:layout_width="match_parent"
-                                    android:layout_height="20dp"/>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="horizontal"
-                                    android:gravity="right">
-
-                                    <Button
-                                        android:id="@+id/bottone_salva_modifiche"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_gravity="center"
-                                        android:backgroundTint="@color/main_orange"
-                                        android:textAllCaps="false"
-                                        android:text="Salva modofiche"
-                                        android:textColor="@color/white"
-                                        />
-
-                                </LinearLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
 
-                            </LinearLayout>
-                        <Space
-                            android:layout_width="match_parent"
-                            android:layout_height="90dp"/>
-                    </LinearLayout>
+            <Button
+                android:id="@+id/bottone_salva_modifiche"
+                style="@style/Theme.App.Buttons"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="100dp"
+                android:text="Salva"
+                tool:layout_constraintEnd_toEndOf="parent"
+                tool:layout_constraintStart_toStartOf="parent"
+                tool:layout_constraintTop_toBottomOf="@id/cellulare_fornitore" />
 
-                </LinearLayout>
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                tool:layout_constraintEnd_toEndOf="parent"
+                tool:layout_constraintStart_toStartOf="parent"
+                tool:layout_constraintTop_toBottomOf="@id/bottone_salva_modifiche" />
 
-            </LinearLayout>
-        </LinearLayout>
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
-
-
-
-
-
-</LinearLayout>
+</layout>

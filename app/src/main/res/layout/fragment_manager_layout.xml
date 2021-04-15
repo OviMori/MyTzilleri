@@ -10,9 +10,11 @@
         android:id="@+id/bottNavMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/grigio_nav_bar"
         app:menu="@menu/bottom_menu"/>
 
     <fragment

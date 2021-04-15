@@ -2,10 +2,10 @@ package com.example.mytzilleri;
 
 import java.io.Serializable;
 
-public class Prodotto  implements Serializable {
+public class Product implements Serializable {
     private String nomeProdotto;
-    private int quantita;
-    private int notificaEsaurimentoScorte;
+    private String quantita;
+    private String notificaEsaurimentoScorte;
     private String categoria;
 
 
@@ -17,15 +17,36 @@ public class Prodotto  implements Serializable {
     private static int count;
 
 
-    public Prodotto(){
+    public Product(){
 
+        this.nomeProdotto = " ";
+        this.categoria = " ";
         this.nomeProdotto = " ";
         this.nomeFornitore = " ";  //valore di default
         this.emailFornitore = " ";  //valore di default
-        this.telFornitore = " ";  //valore di default
         this.setIdKey(count);
         count++;
+    }
 
+    public Product fromString(String prodInString){
+        String[] infoProdArray = prodInString.split("#");
+        if(infoProdArray.length == 7){
+            this.nomeProdotto = infoProdArray[0];
+            this.quantita = infoProdArray[1];
+            this.notificaEsaurimentoScorte = infoProdArray[2];
+            this.categoria = infoProdArray[3];
+            this.nomeFornitore = infoProdArray[4];
+            this.emailFornitore = infoProdArray[5];
+            this.telFornitore = infoProdArray[6];
+        }
+
+
+        return this;
+    }
+
+    @Override
+    public String toString(){
+        return ""+this.nomeProdotto+"#"+this.quantita+"#"+this.notificaEsaurimentoScorte+"#"+this.categoria+"#"+this.nomeFornitore+"#"+this.emailFornitore+"#"+this.telFornitore;
     }
 
     public int getIdKey() {
@@ -53,19 +74,19 @@ public class Prodotto  implements Serializable {
         this.categoria = categoria;
     }
 
-    public int getQuantita() {
+    public String getQuantita() {
         return quantita;
     }
 
-    public void setQuantita(int quantita) {
+    public void setQuantita(String quantita) {
         this.quantita = quantita;
     }
 
-    public int getNotificaEsaurimentoScorte() {
+    public String getNotificaEsaurimentoScorte() {
         return notificaEsaurimentoScorte;
     }
 
-    public void setNotificaEsaurimentoScorte(int notificaEsaurimentoScorte) {
+    public void setNotificaEsaurimentoScorte(String notificaEsaurimentoScorte) {
         this.notificaEsaurimentoScorte = notificaEsaurimentoScorte;
     }
 

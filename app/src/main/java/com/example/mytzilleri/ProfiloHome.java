@@ -104,8 +104,8 @@ public class ProfiloHome extends Fragment {
         viewPager = binding.viewPager;
         tabLayout = binding.tabController;
         adapter = new TabAdapter(getChildFragmentManager());
-        adapter.addFragment(new TabViewMessaggiFrag(), "Tab Messaggi");
-        adapter.addFragment(new TabViewPersonaleFrag(), "Tab Personale");
+        adapter.addFragment(new TabViewMessaggiFrag(), "Messaggi");
+        adapter.addFragment(new TabViewPersonaleFrag(), "Personale");
 
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);

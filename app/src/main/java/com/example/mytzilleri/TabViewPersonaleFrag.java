@@ -23,9 +23,10 @@ public class TabViewPersonaleFrag extends Fragment {
             @Override
             public void onClick(View v) {
                 aggiornaDatiUtente();
-                setCampiConDatiUtente();
+
             }
         });
+
 
         return binding.getRoot();
     }
@@ -38,23 +39,24 @@ public class TabViewPersonaleFrag extends Fragment {
         String newEmail = binding.infoUtenteEmail.getEditText().getText().toString();
         String newBio = binding.infoUtenteBio.getEditText().getText().toString();
 
-        Utente newUtente = new Utente(newNome, newCognome,newEmail, newPassword, newBio);
-        DataRepository.INSTANCE.salvaUtenteCorrente(newUtente);
-        DataRepository.INSTANCE.salvaUtente(newUtente);
+        User newUser = new User(newNome, newCognome,newEmail, newPassword, newBio);
+        DataRepository.INSTANCE.salvaUtenteCorrente(newUser);
+        DataRepository.INSTANCE.salvaUtente(newUser);
         //aggiornare sia la lista degli utenti che i dati dell utente corrente
+        setCampiConDatiUtente();
     }
 
     private void setCampiConDatiUtente() {
         SharedPreferences pref = this.getActivity().getSharedPreferences(getString(R.string.preference_file_key), 0);
 
-        Utente currentUser = DataRepository.INSTANCE.getCurrentUser();
+        User currentUser = DataRepository.INSTANCE.getCurrentUser();
 
         if(!currentUser.getEmail().equals("")) {
             binding.infoUtenteNome.getEditText().setText(currentUser.getNome());
             binding.infoUtenteCognome.getEditText().setText(currentUser.getCognome());
             binding.infoUtenteEmail.getEditText().setText(currentUser.getEmail());
             binding.infoUtentePassword.getEditText().setText(currentUser.getPassword());
-            binding.infoUtenteBio.getEditText().setText(currentUser.getNome());
+            binding.infoUtenteBio.getEditText().setText(currentUser.getBio());
         }
     }
 }

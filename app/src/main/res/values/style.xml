@@ -51,6 +51,7 @@
         <item name="android:textSize">25sp</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">false</item>
         <item name="backgroundTint">@color/colormind_arancione</item>
         <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.App.SmallComponent.Button</item>
     </style>
@@ -71,7 +72,7 @@
     </style>
 
     <style name="MyEditTextAppearanceText">
-        <item name="android:textColor">@color/colormind_blu_chiaro</item>
+        <item name="android:textColor">@color/white</item>
         <item name="android:textStyle">bold</item>
     </style>
 
@@ -91,7 +92,7 @@
         <item name="android:textColorHint">@color/colormind_blu_chiaro</item>
         <item name="hintTextColor">@color/colormind_blu_chiaro</item>
         <item name="android:textAppearance">@style/MyEditTextAppearanceText</item>
-        <item name="boxBackgroundColor">@color/color_list_element_grey</item>
+        <item name="boxBackgroundColor">#ECECEC</item>
 
     </style>
 
@@ -100,4 +101,23 @@
         <item name="passwordToggleTint">@color/colormind_blu_scuro</item>
     </style>
 
+
+    <style name="CustomTabLayoutStyle" parent="Base.Widget.Design.TabLayout">
+        <item name="tabSelectedTextColor">@color/colormind_arancione</item>
+        <item name="tabIndicatorColor">@color/colormind_arancione</item>
+        <item name="tabTextAppearance">@style/CustomTabTexStyle</item>
+    </style>
+
+    <style name="CustomTabTexStyle" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/nav_bar_color</item>
+        <item name="textAllCaps">false</item>
+        ...
+    </style>
+
+    <style name="spinnerTheme" parent= "Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
+        <item name="strokeColor">@color/main_orange</item>
+        <item name="android:textColor">@color/colormind_blu_chiaro</item>
+        <item name="android:background">@color/white</item>
+    </style>
 </resources>

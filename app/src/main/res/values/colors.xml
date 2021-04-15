@@ -19,7 +19,8 @@
     <color name="disable_foreground_grey">#42221f1f</color>
     <color name="disable_thumb_grey">#1c000000</color>
     <color name="enable_thumb_green">#FFBA5C</color>
-    <color name="color_list_element_grey">#D6D6D6</color>
+    <color name="back_ground_grey">#D6D6D6</color>
+    <color name="grigio_nav_bar">#7C7C7C</color>
 
     <!-- Colors by Colormind. -->
     <color name="colormind_arancione">#FFBA5C</color>
@@ -29,6 +30,9 @@
     <color name="colormind_blu_scuro">#131F28</color>
     <color name="colormind_blu_chiaro">#3E739A</color>
     <color name="colormind_rosso">#E40505</color>
+    <color name="azzurro_sfondo_activity">#8D067F9E</color>
+    <color name="grey_edit_text">#ECECEC</color>
+
 
 
 </resources>
