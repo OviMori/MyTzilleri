@@ -2,13 +2,11 @@ package com.example.mytzilleri;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 
 
-public class MainActivity extends AppCompatActivity {
+public class ActivityMain extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         DataRepository.INSTANCE.salvaUtente(testUser);
         //test
 
-        Intent intent = new Intent(MainActivity.this, LogInActivity.class);
+        Intent intent = new Intent(ActivityMain.this, ActivityLogin.class);
         startActivity(intent);
         finish();
     }

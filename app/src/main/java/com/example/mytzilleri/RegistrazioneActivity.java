@@ -60,7 +60,7 @@ public class RegistrazioneActivity extends AppCompatActivity {
 
     @Override
     public void finish() {
-        Intent returnIntent = new Intent(RegistrazioneActivity.this, LogInActivity.class);
+        Intent returnIntent = new Intent(RegistrazioneActivity.this, ActivityLogin.class);
         returnIntent.putExtra("passed_item", -1);
         // setResult(RESULT_OK);
         setResult(RESULT_OK, returnIntent); //By not passing the intent in the result, the calling activity will get null data.

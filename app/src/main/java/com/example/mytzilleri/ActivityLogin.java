@@ -7,11 +7,10 @@ import android.view.View;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.FragmentManager;
 
 import com.example.mytzilleri.databinding.LoginLayoutBinding;
 
-public class LogInActivity extends AppCompatActivity {
+public class ActivityLogin extends AppCompatActivity {
     private LoginLayoutBinding binding;
 
 
@@ -21,7 +20,7 @@ public class LogInActivity extends AppCompatActivity {
         setContentView(R.layout.login_layout);
         binding = DataBindingUtil.setContentView(this, R.layout.login_layout);
 
-        FragmentManager fragM = getSupportFragmentManager();
+        androidx.fragment.app.FragmentManager fragM = getSupportFragmentManager();
         PopUpErrorLogIn dialogErrorFrag = new PopUpErrorLogIn();
 
         checkCredenzialiGiaSalvate();   //riempimento automatico se le credenziali sono gia state salvate
@@ -34,7 +33,7 @@ public class LogInActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                startActivityForResult(new Intent(LogInActivity.this, RegistrazioneActivity.class), 0);
+                startActivityForResult(new Intent(ActivityLogin.this, RegistrazioneActivity.class), 0);
             }
         });
 
@@ -43,7 +42,7 @@ public class LogInActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //controllo credenziali
                 if (controlloCredenziali(binding.edittextEmail.getEditText().getText().toString(), binding.edittextPassword.getEditText().getText().toString())) {   //se le credenziali sono corrette
-                    Intent intent = new Intent(LogInActivity.this, ManagerFragment.class);
+                    Intent intent = new Intent(ActivityLogin.this, FragmentManager.class);
                     startActivity(intent);
 
                 } else {

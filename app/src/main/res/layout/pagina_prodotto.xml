@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tool="http://schemas.android.com/apk/res-auto">
@@ -12,7 +11,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#FBAE5B"
+            android:background="@color/white"
             android:orientation="vertical"
             android:paddingStart="20dp"
             android:paddingEnd="20dp">
@@ -32,17 +31,17 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/layout_prodotto"
                 android:layout_width="match_parent"
-                android:background="@drawable/shape"
                 android:layout_height="200dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shape"
                 tool:layout_constraintStart_toStartOf="parent"
                 tool:layout_constraintTop_toBottomOf="@id/back_button"
                 app:layout_constraintEnd_toEndOf="parent">
 
                 <ImageView
                 android:id="@+id/immagine_prodotto"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:background="@color/grigio_nav_bar"
                     android:clickable="true"
                     android:src="@drawable/empty_image_product"
@@ -57,11 +56,9 @@
 
             <TextView
                 android:id="@+id/dati_prodotto_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/VociElenco"
                 android:layout_marginTop="30dp"
-                android:text="Dati product"
-                android:textColor="@color/white"
+                android:text="Dati prodotto"
                 android:textSize="30dp"
                 tool:layout_constraintStart_toStartOf="parent"
                 tool:layout_constraintTop_toBottomOf="@id/layout_prodotto" />
@@ -179,11 +176,9 @@
 
             <TextView
                 android:id="@+id/dati_fornitore_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/VociElenco"
                 android:layout_marginTop="20dp"
                 android:text="Dati fornitore"
-                android:textColor="@color/white"
                 android:textSize="30dp"
                 tool:layout_constraintStart_toStartOf="parent"
                 tool:layout_constraintTop_toBottomOf="@id/info_prodotto_limite_scorte" />

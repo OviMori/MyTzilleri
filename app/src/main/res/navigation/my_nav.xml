@@ -8,22 +8,22 @@
 
     <fragment
         android:id="@+id/profiloFrag"
-        android:name="com.example.mytzilleri.ProfiloHome"
+        android:name="com.example.mytzilleri.FragmentHome"
         android:label="fragment_profilo"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/turniFrag"
-        android:name="com.example.mytzilleri.TurniFrag"
+        android:name="com.example.mytzilleri.FragmentTurni"
         android:label="fragment_turni"
         tools:layout="@layout/fragment_turni" />
     <fragment
         android:id="@+id/chatFrag"
-        android:name="com.example.mytzilleri.ChatFrag"
+        android:name="com.example.mytzilleri.FragmentChat"
         android:label="fragment_chat"
         tools:layout="@layout/fragment_chat" />
     <fragment
         android:id="@+id/magazzinoFrag"
-        android:name="com.example.mytzilleri.MagazzinoFrag"
+        android:name="com.example.mytzilleri.FragmentMagazzino"
         android:label="fragment_magazzino"
         tools:layout="@layout/fragment_magazzino" />
 </navigation>

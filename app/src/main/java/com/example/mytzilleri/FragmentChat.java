@@ -1,23 +1,27 @@
 package com.example.mytzilleri;
 
-import android.media.Image;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.internal.ForegroundLinearLayout;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link ChatFrag#newInstance} factory method to
+ * Use the {@link FragmentChat#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ChatFrag extends Fragment {
+public class FragmentChat extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -30,11 +34,14 @@ public class ChatFrag extends Fragment {
 
     //------------------------------------------------------
     //Mie variabili
+    FloatingActionButton fab;
     ImageView showSearchLayoutButton;
     View messageLayoutSearch;
+    RecyclerView recyclerView;
+    ChatAdapter adapter;
     //------------------------------------------------------
 
-    public ChatFrag() {
+    public FragmentChat() {
         // Required empty public constructor
     }
 
@@ -47,8 +54,8 @@ public class ChatFrag extends Fragment {
      * @return A new instance of fragment ChatFrag.
      */
     // TODO: Rename and change types and number of parameters
-    public static ChatFrag newInstance(String param1, String param2) {
-        ChatFrag fragment = new ChatFrag();
+    public static FragmentChat newInstance(String param1, String param2) {
+        FragmentChat fragment = new FragmentChat();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -72,6 +79,10 @@ public class ChatFrag extends Fragment {
 
         showSearchLayoutButton = v.findViewById(R.id.message_search_top_icon);
         messageLayoutSearch = v.findViewById(R.id.message_layout_search);
+        fab = v.findViewById(R.id.fab);
+        recyclerView = v.findViewById(R.id.messaggi_recycler_view);
+
+        initRecyclerView();
 
 
         /**
@@ -88,8 +99,25 @@ public class ChatFrag extends Fragment {
             }
         });
 
-
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                createNewChat();
+            }
+        });
 
         return v;
+    }
+
+    private void createNewChat(){
+        //lanciare qualcosa per creare la nuova chat, idea: un CustomPicker
+    }
+
+    private void initRecyclerView(){
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        adapter = new ChatAdapter(DataRepositoryChat.INSTANCE.getNameChatsList());
+        recyclerView.setAdapter(adapter);
     }
 }

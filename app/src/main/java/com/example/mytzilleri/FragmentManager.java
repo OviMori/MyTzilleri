@@ -1,22 +1,16 @@
 package com.example.mytzilleri;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import android.content.Intent;
-import android.os.Bundle;
 import android.view.MenuItem;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class ManagerFragment extends AppCompatActivity implements ProfiloHome.FragmentAListener {
+public class FragmentManager extends AppCompatActivity implements FragmentHome.FragmentAListener {
 
     private Fragment fragmentProfilo;
 
@@ -31,7 +25,7 @@ public class ManagerFragment extends AppCompatActivity implements ProfiloHome.Fr
         BottomNavigationView bottNavMenu = (BottomNavigationView) findViewById(R.id.bottNavMenu);
         bottNavMenu.setOnNavigationItemSelectedListener(navListener);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new ProfiloHome()).commit();  //potrei ripetere l istruzione replace inserendo turri i fragment che voglio
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new FragmentHome()).commit();  //potrei ripetere l istruzione replace inserendo turri i fragment che voglio
     }
 
 
@@ -42,19 +36,19 @@ public class ManagerFragment extends AppCompatActivity implements ProfiloHome.Fr
 
             switch(item.getItemId()){
                 case R.id.turniFrag:
-                    fragment = new TurniFrag();
+                    fragment = new FragmentTurni();
                     break;
 
                 case R.id.profiloFrag:
-                    fragment = new ProfiloHome();
+                    fragment = new FragmentHome();
                     break;
 
                 case R.id.chatFrag:
-                    fragment = new ChatFrag();
+                    fragment = new FragmentChat();
                     break;
 
                 case R.id.magazzinoFrag:
-                    fragment = new MagazzinoFrag();
+                    fragment = new FragmentMagazzino();
                     break;
             }
 

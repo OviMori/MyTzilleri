@@ -1,43 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <style name="Separator" parent="TextAppearance.AppCompat">
-        <item name="android:background">@color/black_separator</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">1dp</item>
-        <item name="android:layout_marginTop">10dp</item>
-        <item name="android:layout_marginBottom">15dp</item>
-    </style>
-
     <style name="VociElenco" parent="TextAppearance.AppCompat">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/voce_elenco_grey</item>
-    </style>
-
-
-    <!-- Style EditText -->
-    <style name="Theme.App.EditTextFields" parent="Theme.MaterialComponents">
-        ...
-        <item name="colorPrimary">@color/white</item>
-        <item name="colorOnSurface">@color/white</item>
-        <item name="colorError">@color/colormind_rosso</item>
-        <item name="boxBackgroundColor">@color/colormind_verde_acqua</item>
-        <item name="textAppearanceSubtitle1">@style/TextAppearance.App.Subtitle1</item>
-        <item name="textAppearanceCaption">@style/TextAppearance.App.Caption</item>
-        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.App.SmallComponent.EditText</item>
-    </style>
-
-    <style name="TextAppearance.App.Subtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">
-        <!-- implementare font style -->
-    </style>
-
-    <style name="TextAppearance.App.Caption" parent="TextAppearance.MaterialComponents.Caption">
-        <!-- implementare font style -->
-    </style>
-
-    <!--Questo rende smussati gli angoli -->
-    <style name="ShapeAppearance.App.SmallComponent.EditText" parent="ShapeAppearance.MaterialComponents.SmallComponent">
-        <item name="cornerSize">10dp</item>
     </style>
 
 
@@ -47,7 +13,6 @@
         ...
         <item name="colorPrimary">@color/colormind_verde_acqua</item>
         <item name="colorOnPrimary">@color/colormind_verde_acqua</item>
-        <item name="textAppearanceButton">@style/TextAppearance.App.Button</item>
         <item name="android:textSize">25sp</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textStyle">bold</item>
@@ -62,19 +27,11 @@
         <item name="titleTextColor">@color/white</item>
     </style>
 
-    <style name="TextAppearance.App.Button" parent="TextAppearance.MaterialComponents.Button">
-        <!-- implementare font style -->
-
-    </style>
-
     <style name="ShapeAppearance.App.SmallComponent.Button" parent="ShapeAppearance.MaterialComponents.SmallComponent">
         <item name="cornerSize">4dp</item>
     </style>
 
-    <style name="MyEditTextAppearanceText">
-        <item name="android:textColor">@color/white</item>
-        <item name="android:textStyle">bold</item>
-    </style>
+
 
     <!-- Style link pulsanti -->
     <style name="Theme.App.Links" parent="Theme.MaterialComponents">
@@ -85,15 +42,18 @@
     </style>
 
 
-    <!-- sostituito con : Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense -->
+    <!-- TextInputLayout Style -->
     <style name="LoginTextInputLayoutStyle" parent="Theme.MaterialComponents">
-        <item name="boxStrokeColor">@color/colormind_blu_chiaro</item>
+        <item name="boxStrokeColor">@color/colormind_arancione</item>
         <item name="boxStrokeWidth">2dp</item>
-        <item name="android:textColorHint">@color/colormind_blu_chiaro</item>
-        <item name="hintTextColor">@color/colormind_blu_chiaro</item>
+        <item name="android:textColorHint">@color/colormind_arancione</item>
+        <item name="hintTextColor">@color/colormind_arancione</item>
         <item name="android:textAppearance">@style/MyEditTextAppearanceText</item>
         <item name="boxBackgroundColor">#ECECEC</item>
-
+        <!--<item name="android:background">@drawable/shape_edit_text</item>-->
+    </style>
+    <style name="MyEditTextAppearanceText">
+        <item name="android:textColor">@color/colormind_blu_scuro</item>
     </style>
 
     <style name="LoginTextInputLayoutStylePassword" parent="LoginTextInputLayoutStyle">
@@ -102,6 +62,7 @@
     </style>
 
 
+    <!--Tab Layout-->
     <style name="CustomTabLayoutStyle" parent="Base.Widget.Design.TabLayout">
         <item name="tabSelectedTextColor">@color/colormind_arancione</item>
         <item name="tabIndicatorColor">@color/colormind_arancione</item>
@@ -112,12 +73,11 @@
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/nav_bar_color</item>
         <item name="textAllCaps">false</item>
-        ...
     </style>
 
     <style name="spinnerTheme" parent= "Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
         <item name="strokeColor">@color/main_orange</item>
         <item name="android:textColor">@color/colormind_blu_chiaro</item>
-        <item name="android:background">@color/white</item>
+        <item name="android:background">@color/colormind_arancione</item>
     </style>
 </resources>

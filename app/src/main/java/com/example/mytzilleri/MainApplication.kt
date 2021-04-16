@@ -8,5 +8,6 @@ class MainApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         DataRepository.init(this)
+        DataRepositoryChat.init(this)
     }
 }

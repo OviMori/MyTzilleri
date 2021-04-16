@@ -13,7 +13,7 @@
     <color name="hint_grey">#B1B1B1</color>
     <color name="black_separator">#C5C5C5</color>
 
-    <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">@color/colormind_blu_chiaro</color>
+    <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">@color/black</color>
 
 
     <color name="disable_foreground_grey">#42221f1f</color>

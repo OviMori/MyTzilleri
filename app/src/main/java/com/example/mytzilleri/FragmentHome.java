@@ -1,7 +1,6 @@
 package com.example.mytzilleri;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -27,10 +26,10 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link ProfiloHome#newInstance} factory method to
+ * Use the {@link FragmentHome#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ProfiloHome extends Fragment {
+public class FragmentHome extends Fragment {
 
     private FragmentHomeBinding binding;
     // TODO: Rename parameter arguments, choose names that match
@@ -49,18 +48,8 @@ public class ProfiloHome extends Fragment {
     private ViewPager viewPager;
 
     FragmentAListener listener; //questo listener aspetta che l activity utilizzi il nostro fragment
-    FrameLayout framePromemoriaUtente, frameInfoUtente;
-    Button salvaDatiUtente;
-    LinearLayout linearLayoutInfoUtente, linearLayoutInEsaurimento, linearLayoutNuoviMessaggi;
-    ImageButton inEsaurimentoArrowHome, nuoviMessaggiArrowHome;
-    RecyclerView inEsaurimentoRecycler, nuoviMessaggiRecycler;
 
-    EditText edit_nome_utente, edit_cognome_utente, edit_indirizzo, edit_cellulare, edit_bio;
-    TextView text_top_nome, text_top_cognome, text_top_indirizzo, text_top_cellulare, text_top_bio;
-
-    //------------------------------------------------------
-
-    public ProfiloHome() {
+    public FragmentHome() {
         // Required empty public constructor
     }
 
@@ -73,8 +62,8 @@ public class ProfiloHome extends Fragment {
      * @return A new instance of fragment ProfiloFrag.
      */
     // TODO: Rename and change types and number of parameters
-    public static ProfiloHome newInstance(String param1, String param2) {
-        ProfiloHome fragment = new ProfiloHome();
+    public static FragmentHome newInstance(String param1, String param2) {
+        FragmentHome fragment = new FragmentHome();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -90,7 +79,6 @@ public class ProfiloHome extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-
 
     public interface FragmentAListener {
         void onInputASent(CharSequence input);
@@ -113,8 +101,6 @@ public class ProfiloHome extends Fragment {
 
         return binding.getRoot();
     }
-
-
 
     @Override
     public void onAttach(@NonNull Context context) {

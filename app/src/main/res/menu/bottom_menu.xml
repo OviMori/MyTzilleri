@@ -2,23 +2,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
 
-
     <item
         android:id="@+id/profiloFrag"
-        android:title="Home"
-        android:icon="@drawable/home_icon"/>
+        android:icon="@drawable/home_icon"
+        android:title="Home" />
     <item
         android:id="@+id/turniFrag"
-        android:title="Turni"
-        android:icon="@drawable/turni_icon"/>
+        android:icon="@drawable/turni_icon"
+        android:title="Turni" />
 
     <item
         android:id="@+id/chatFrag"
-        android:title="Chat"
-        android:icon="@drawable/chat_icon"/>
+        android:icon="@drawable/chat_icon"
+        android:title="Chat" />
 
     <item
         android:id="@+id/magazzinoFrag"
-        android:title="Magazzino"
-        android:icon="@drawable/magazzino_icon"/>
+        android:icon="@drawable/magazzino_icon"
+        android:title="Magazzino" />
 </menu>

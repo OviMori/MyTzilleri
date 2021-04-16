@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyTzilleri">
-        <activity android:name=".MainActivity"
+        <activity android:name=".ActivityMain"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -16,8 +16,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".PaginaProdotto"/>
-        <activity android:name=".LogInActivity"/>
-        <activity android:name=".ManagerFragment"/>
+        <activity android:name=".ActivityLogin"/>
+        <activity android:name=".FragmentManager"/>
         <activity android:name=".RegistrazioneActivity"/>
     </application>
 </manifest>

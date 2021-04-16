@@ -7,12 +7,12 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical"
-    tools:context=".MagazzinoFrag">
+    tools:context=".FragmentMagazzino">
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:background="@color/main_orange"
         android:weightSum="1">
 
@@ -40,8 +40,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:textStyle="bold"
-                android:textSize="30dp"
-                android:text="Magazzino"/>
+                android:textSize="25dp"
+                android:text="Stock"/>
 
         </LinearLayout>
 
@@ -103,7 +103,7 @@
                     android:layout_weight="3"
                     android:textSize="20dp"
                     android:textColorHint="@color/hint_grey"
-                    android:hint="Cerca product"
+                    android:hint="Search product"
                     android:textColor="@color/hint_grey"/>
 
                 <ImageView

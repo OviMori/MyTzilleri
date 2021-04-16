@@ -12,19 +12,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link MagazzinoFrag#newInstance} factory method to
+ * Use the {@link FragmentMagazzino#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MagazzinoFrag extends Fragment{
+public class FragmentMagazzino extends Fragment{
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -39,11 +35,11 @@ public class MagazzinoFrag extends Fragment{
     public final int REQUEST_CODE = 0;
 
     private RecyclerView recyclerView;
-    private CustomAdapter adapter;
+    private ProductAdapter adapter;
     FloatingActionButton aggiungiButton;
     //------------------------------------------------------
 
-    public MagazzinoFrag() {
+    public FragmentMagazzino() {
         // Required empty public constructor
     }
 
@@ -56,8 +52,8 @@ public class MagazzinoFrag extends Fragment{
      * @return A new instance of fragment MagazzinoFrag.
      */
     // TODO: Rename and change types and number of parameters
-    public static MagazzinoFrag newInstance(String param1, String param2) {
-        MagazzinoFrag fragment = new MagazzinoFrag();
+    public static FragmentMagazzino newInstance(String param1, String param2) {
+        FragmentMagazzino fragment = new FragmentMagazzino();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -103,7 +99,7 @@ public class MagazzinoFrag extends Fragment{
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        adapter = new CustomAdapter(DataRepository.INSTANCE.getProdList());
+        adapter = new ProductAdapter(DataRepository.INSTANCE.getProdList());
         recyclerView.setAdapter(adapter);
     }
 
