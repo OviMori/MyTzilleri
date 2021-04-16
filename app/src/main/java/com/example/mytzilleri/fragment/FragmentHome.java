@@ -1,4 +1,4 @@
-package com.example.mytzilleri;
+package com.example.mytzilleri.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -6,19 +6,14 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.FrameLayout;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
+import com.example.mytzilleri.R;
+import com.example.mytzilleri.TabAdapter;
 import com.example.mytzilleri.databinding.FragmentHomeBinding;
 import com.google.android.material.tabs.TabLayout;
 

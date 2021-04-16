@@ -1,7 +1,9 @@
-package com.example.mytzilleri;
+package com.example.mytzilleri.chat;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.mytzilleri.R;
 
 public class ChatActivityManager extends AppCompatActivity {
 

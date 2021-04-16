@@ -1,4 +1,4 @@
-package com.example.mytzilleri;
+package com.example.mytzilleri.chat;
 
 import org.jetbrains.annotations.NotNull;
 

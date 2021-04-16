@@ -1,4 +1,4 @@
-package com.example.mytzilleri;
+package com.example.mytzilleri.product;
 
 import java.io.Serializable;
 

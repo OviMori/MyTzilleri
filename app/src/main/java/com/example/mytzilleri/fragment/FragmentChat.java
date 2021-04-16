@@ -1,8 +1,9 @@
-package com.example.mytzilleri;
+package com.example.mytzilleri.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,8 +14,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.example.mytzilleri.R;
+import com.example.mytzilleri.chat.ChatAdapter;
+import com.example.mytzilleri.chat.ChatChoseContact;
+import com.example.mytzilleri.chat.Contact;
+import com.example.mytzilleri.chat.DataRepositoryChat;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.internal.ForegroundLinearLayout;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -110,7 +115,22 @@ public class FragmentChat extends Fragment {
     }
 
     private void createNewChat(){
-        //lanciare qualcosa per creare la nuova chat, idea: un CustomPicker
+        Intent newChat = new Intent(getContext(), ChatChoseContact.class);
+        startActivityForResult(newChat, 0);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Intent getIntent = new Intent();
+        String result = getIntent.getStringExtra("SceltaContatto");
+
+        if(result != null){
+            Contact contact = new Contact();
+            contact.createNewUserFromString(result);
+            //aggiornare la recyclerview con 'contact'. E' l utente che e' stato appena creato
+            //se la chat viene aggiunta alle SharedPreferences subito dopo la creazione basta aggiornare la lista dell adapter
+        }
     }
 
     private void initRecyclerView(){

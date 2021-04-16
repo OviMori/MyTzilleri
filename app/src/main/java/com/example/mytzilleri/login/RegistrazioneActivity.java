@@ -1,4 +1,4 @@
-package com.example.mytzilleri;
+package com.example.mytzilleri.login;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -10,7 +10,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import com.example.mytzilleri.R;
 import com.example.mytzilleri.databinding.CreaNuovoUtenteLayoutBinding;
+import com.example.mytzilleri.product.DataRepository;
 
 public class RegistrazioneActivity extends AppCompatActivity {
     private CreaNuovoUtenteLayoutBinding  binding;

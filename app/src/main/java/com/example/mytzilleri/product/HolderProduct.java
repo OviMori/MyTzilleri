@@ -1,10 +1,12 @@
-package com.example.mytzilleri;
+package com.example.mytzilleri.product;
 
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.mytzilleri.R;
 
 public class HolderProduct extends RecyclerView.ViewHolder {
 

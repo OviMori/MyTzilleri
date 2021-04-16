@@ -5,6 +5,10 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.mytzilleri.login.ActivityLogin;
+import com.example.mytzilleri.login.User;
+import com.example.mytzilleri.product.DataRepository;
+
 
 public class ActivityMain extends AppCompatActivity {
 
@@ -28,7 +32,7 @@ public class ActivityMain extends AppCompatActivity {
     }
 
     private void verifyAdminAccount(){
-        if(!com.example.mytzilleri.DataRepository.INSTANCE.adminExist()){   //if admin does not exist
+        if(!DataRepository.INSTANCE.adminExist()){   //if admin does not exist
             DataRepository.INSTANCE.createAdminAccount();
         }
     }

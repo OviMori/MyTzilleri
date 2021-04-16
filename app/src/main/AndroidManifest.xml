@@ -15,9 +15,9 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".PaginaProdotto"/>
-        <activity android:name=".ActivityLogin"/>
-        <activity android:name=".FragmentManager"/>
-        <activity android:name=".RegistrazioneActivity"/>
+        <activity android:name=".product.PaginaProdotto"/>
+        <activity android:name=".login.ActivityLogin"/>
+        <activity android:name=".fragment.FragmentManager"/>
+        <activity android:name=".login.RegistrazioneActivity"/>
     </application>
 </manifest>

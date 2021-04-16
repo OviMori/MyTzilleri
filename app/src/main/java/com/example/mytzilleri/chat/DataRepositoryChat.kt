@@ -1,8 +1,7 @@
-package com.example.mytzilleri
+package com.example.mytzilleri.chat
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.util.Log
 
 object DataRepositoryChat {
 

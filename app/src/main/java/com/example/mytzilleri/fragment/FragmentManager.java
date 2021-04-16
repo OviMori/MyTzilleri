@@ -1,4 +1,4 @@
-package com.example.mytzilleri;
+package com.example.mytzilleri.fragment;
 
 import android.os.Bundle;
 
@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 
 import android.view.MenuItem;
 
+import com.example.mytzilleri.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class FragmentManager extends AppCompatActivity implements FragmentHome.FragmentAListener {
@@ -48,7 +49,7 @@ public class FragmentManager extends AppCompatActivity implements FragmentHome.F
                     break;
 
                 case R.id.magazzinoFrag:
-                    fragment = new FragmentMagazzino();
+                    fragment = new FragmentStock();
                     break;
             }
 

@@ -1,31 +1,29 @@
-package com.example.mytzilleri
+package com.example.mytzilleri.chat
 
-
-data class User(
+data class Contact(
         var nome: String = "",
         var cognome: String = "",
         var email: String = "",
-        var password : String = "",
-        var bio : String = ""
+        var cell : String = "",
 ) : HashSet<String>() {
 
-    fun  creaNuovoUtenteDaStringa(str : String){
+    fun  createNewUserFromString(str : String){
         var strArrUtente = str.split("*")
         this.nome = strArrUtente[0]
         this.cognome = strArrUtente[1]
         this.email = strArrUtente[2]
-        this.password = strArrUtente[3]
-        this.bio = strArrUtente[4]
+        this.cell = strArrUtente[3]
+
     }
 
     override fun toString(): String {
-        return ""+this.nome+"*"+this.cognome+"*"+this.email+"*"+this.password+"*"+this.bio
+        return ""+this.nome+"*"+this.cognome+"*"+this.email+"*"+this.cell
     }
 
     fun setTempAdmin(){
         this.nome = "admin"
         this.cognome = "admin"
         this.email = "admin@"
-        this.password = "admin"
+        this.cell = "123456"
     }
 }

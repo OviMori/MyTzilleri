@@ -1,4 +1,4 @@
-package com.example.mytzilleri;
+package com.example.mytzilleri.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,14 +13,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.mytzilleri.R;
+import com.example.mytzilleri.product.DataRepository;
+import com.example.mytzilleri.product.PaginaProdotto;
+import com.example.mytzilleri.product.ProductAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link FragmentMagazzino#newInstance} factory method to
+ * Use the {@link FragmentStock#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragmentMagazzino extends Fragment{
+public class FragmentStock extends Fragment{
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -39,7 +43,7 @@ public class FragmentMagazzino extends Fragment{
     FloatingActionButton aggiungiButton;
     //------------------------------------------------------
 
-    public FragmentMagazzino() {
+    public FragmentStock() {
         // Required empty public constructor
     }
 
@@ -52,8 +56,8 @@ public class FragmentMagazzino extends Fragment{
      * @return A new instance of fragment MagazzinoFrag.
      */
     // TODO: Rename and change types and number of parameters
-    public static FragmentMagazzino newInstance(String param1, String param2) {
-        FragmentMagazzino fragment = new FragmentMagazzino();
+    public static FragmentStock newInstance(String param1, String param2) {
+        FragmentStock fragment = new FragmentStock();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);

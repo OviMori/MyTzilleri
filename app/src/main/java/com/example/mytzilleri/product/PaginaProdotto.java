@@ -1,4 +1,4 @@
-package com.example.mytzilleri;
+package com.example.mytzilleri.product;
 
 import android.Manifest;
 import android.app.Activity;
@@ -24,6 +24,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.databinding.DataBindingUtil;
 
+import com.example.mytzilleri.R;
 import com.example.mytzilleri.databinding.PaginaProdottoBinding;
 
 import java.util.Objects;

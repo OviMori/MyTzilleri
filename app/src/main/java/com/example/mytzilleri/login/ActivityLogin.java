@@ -1,4 +1,4 @@
-package com.example.mytzilleri;
+package com.example.mytzilleri.login;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,7 +8,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import com.example.mytzilleri.R;
 import com.example.mytzilleri.databinding.LoginLayoutBinding;
+import com.example.mytzilleri.fragment.FragmentManager;
+import com.example.mytzilleri.product.DataRepository;
 
 public class ActivityLogin extends AppCompatActivity {
     private LoginLayoutBinding binding;

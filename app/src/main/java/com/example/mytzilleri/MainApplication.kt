@@ -1,7 +1,8 @@
 package com.example.mytzilleri
 
 import android.app.Application
-import android.content.Context
+import com.example.mytzilleri.chat.DataRepositoryChat
+import com.example.mytzilleri.product.DataRepository
 
 class MainApplication : Application() {
 

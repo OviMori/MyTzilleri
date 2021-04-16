@@ -1,8 +1,9 @@
-package com.example.mytzilleri
+package com.example.mytzilleri.product
 
 import android.content.Context
 import android.content.SharedPreferences
 import android.util.Log
+import com.example.mytzilleri.login.User
 
 //TODO aggiungere la classe per passare il contesto a DataRepository
 
@@ -130,7 +131,7 @@ object DataRepository {
         salvaCredenziali(newUser)
     }
 
-    fun getCurrentUser() : User{
+    fun getCurrentUser() : User {
         val strCurrentUser = sharPrefMyUser.getString(UTENTE_CORRENTE_KEY, "") as String
         val currentUser = User()
         Log.i("recupero Utente  corrente ", ""+strCurrentUser)
@@ -144,7 +145,7 @@ object DataRepository {
     /**
      * Return empty user data if not exit account with @param emil associated
      */
-    fun getUser(email : String) : User{
+    fun getUser(email : String) : User {
         val userGeneratedFromString = User()
         val utenteInString : String = sharPrefUsers.getString(email, "") as String
 

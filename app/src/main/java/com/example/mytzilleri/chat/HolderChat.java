@@ -1,10 +1,12 @@
-package com.example.mytzilleri;
+package com.example.mytzilleri.chat;
 
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.mytzilleri.R;
 
 
 public class HolderChat extends RecyclerView.ViewHolder {

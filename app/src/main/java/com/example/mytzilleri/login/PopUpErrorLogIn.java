@@ -1,4 +1,4 @@
-package com.example.mytzilleri;
+package com.example.mytzilleri.login;
 
 import android.app.Activity;
 import android.app.AlertDialog;

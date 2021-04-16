@@ -1,4 +1,4 @@
-package com.example.mytzilleri;
+package com.example.mytzilleri.product;
 
 import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
@@ -7,6 +7,10 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.mytzilleri.R;
+import com.example.mytzilleri.product.HolderProduct;
+import com.example.mytzilleri.product.Product;
 
 import java.util.List;
 

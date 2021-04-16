@@ -1,4 +1,4 @@
-package com.example.mytzilleri;
+package com.example.mytzilleri.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
+import com.example.mytzilleri.R;
 import com.example.mytzilleri.databinding.FragmentProfiloMessaggiBinding;
 
 public class TabViewMessaggiFrag extends Fragment {
